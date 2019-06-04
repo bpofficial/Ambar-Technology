@@ -3,7 +3,7 @@ Server/node_modules/
 .vscode/
 .env
 Build/
+
 package-lock.json
-package-lockk.json
 Client/package-lock.json
 Server/package-lock.json
