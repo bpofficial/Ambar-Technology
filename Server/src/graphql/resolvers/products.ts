@@ -1,7 +1,7 @@
 import Product from "../../models/product.mdl";
 import { LoggedInOnly } from '../types/products';
 import { GraphQLError } from "graphql";
-const converter = new (require('showdown').Converter())
+//const converter = new (require('showdown').Converter())
 
 export interface IO {
     [index: string]: string;
@@ -56,7 +56,9 @@ export default {
             )
         },
         products: ( _root: string, args: any, context: any ): Promise<any[]> | Error => {
-            let filter: any = {}, sort: any = {};
+            let filter: any = {
+                $or: []
+            }, sort: any = {};
             if ( 'orderBy' in args) {
                 let subject: Array<string> = args.orderBy.split('_');
                 sort = {
@@ -64,44 +66,17 @@ export default {
                 }
             }
             if ( 'search' in args ) {
-                // Later implement string searching rather than keyword searching. e.g. "Harris regs"
-                // Loop through array, find item with "... then find next item with ..." and join everything in between as one string.
                 let string: Array<string> = args.search.split(' ');
-                let keyword: string;
-                filter.$or = [];
-                for( keyword of string ) {
-                    filter.$or.push(...[
-                        {
-                            details: {
+                let searchKeys = ['details', 'short', 'name', 'sku', 'category']
+                for( let keyword of string ) {
+                    for ( let key of searchKeys ) {
+                        filter.$or.push({
+                            [key]: {
                                 $regex: keyword,
                                 $options: 'i'
                             }
-                        },
-                        {
-                            short: {
-                                $regex: keyword,
-                                $options: 'i'
-                            }
-                        },
-                        {
-                            name: {
-                                $regex: keyword,
-                                $options: 'i'
-                            }
-                        },
-                        {
-                            sku: {
-                                $regex: keyword,
-                                $options: 'i'
-                            }
-                        },
-                        {
-                            category: {
-                                $regex: keyword,
-                                $options: 'i'
-                            }
-                        }
-                    ])
+                        })
+                    }
                 }
             }
             if ( 'category' in args ) {
@@ -156,7 +131,7 @@ export default {
 
                 try {
                     // Open details and convert from markdown to html.
-                    args.details = converter.makeHtml(args.details)
+                    //args.details = converter.makeHtml(args.details)
                     const newProduct = new Product( args )
                     return await newProduct.save( ( err: Error, product: any ): void => {
                         if ( err ) reject( err ); else resolve( product );

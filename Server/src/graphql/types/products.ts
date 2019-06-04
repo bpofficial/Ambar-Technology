@@ -7,7 +7,6 @@ export default `
         short: String!
         price: String!
         stock: String
-        assets: String
         category: String
     }
     type Query {
@@ -22,7 +21,6 @@ export default `
             short: String!, 
             price: String!, 
             stock: String, 
-            assets: String, 
             category: String
         ): Product
         editProduct(
@@ -32,8 +30,7 @@ export default `
             details: String, 
             short: String, 
             price: String, 
-            stock: String, 
-            assets: String, 
+            stock: String,
             category: String
         ): Product
         deleteProduct(
@@ -54,6 +51,5 @@ export interface Product {
     details: string;
     short: string;
     price: string;
-    stock: string
-    assets?: string;
+    stock: string;
 }

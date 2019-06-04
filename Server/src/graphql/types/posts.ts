@@ -10,12 +10,26 @@ export default `
     }
     type Query {
         post(id: String!): Post
-        posts: [Post]
+        posts(orderBy: String, search: String): [Post]
     }
     type Mutation {
-        addPost(title: String!, editor_content: String!, status: String!, public: String, password: String): Post
-        editPost(id: String!, editor_content: String, status: String, public: String, password: String): Post
-        deletePost(id: String!): Post
+        addPost(
+            title: String!, 
+            editor_content: String!, 
+            status: String, 
+            public: String, 
+            password: String
+        ): Post
+        editPost(
+            id: String!, 
+            editor_content: String, 
+            status: String, 
+            public: String, 
+            password: String
+        ): Post
+        deletePost(
+            id: String!
+        ): Post
     }
 `;
 

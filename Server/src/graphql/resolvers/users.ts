@@ -14,41 +14,17 @@ interface JWT {
 
 export default {
     Query: {
-        
-
-        //Currently, no reason for anyone to be able to query users.
-
-        user: ( _root: string, args: IO ): Promise<object> | Error => {
-            return new Promise<object>( ( resolve: Function, reject: Function ): void => {
-                if( 'id' in args ) args = { ...args, _id: args.id }; delete args.id
-                User.findOne ( args ).exec( ( err: Error, res: IO ): void => {
-                    err ? reject( err ) : resolve( res );
-                });
-            });
-        },
-        users: ( _root: string, _args: IO ): Promise<object> | Error => {
-
-            // User not in Apollo context, assume unauthenticated, return error.
-            //if (!context.user) return new Error('User not authenticated.');
-            return new Promise<object>( ( resolve: Function, reject: Function ): void => {
-                User.find().exec( ( err: Error, res: IO[] ): void => {
-                    for ( let product in res ) {
-                        if ( '_id' in res[product] ) {
-                            res[product].id = res[product]._id;
-                        }
-                    }                
-                    err ? reject( err ) : resolve( res );
-                });
-            });
-        },
-        checkEmail: ( _root: string, { email }: IO ): Promise<object> | Error => {
+        user: ( _: any, context: IO ): Promise<object> | Error => {
+            console.log(_)
             return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
                 try {
-                    return await User.findOne({ email: email }).exec( ( err: Error, exists: any ): void => {
-                        if ( err ) reject(err); else resolve( exists ? {result:true} : {result:false});
+                    if ( '_id' !in context ) reject( new Error( 'Please login to view account info.' ) )
+                    return await User.findOne ({ _id: context._id }).exec( ( err: Error, res: IO ): void => {
+                        err ? reject( err ) : resolve( res );
                     });
-                } catch( err ) {
-                    reject(err);
+                } catch ( err ) {
+                    console.warn('CAUGHT: [user] ~ try...catch \n', err.message)
+                    throw err;
                 }
             }).then(
                 ( result: any ) => {
@@ -56,13 +32,35 @@ export default {
                 }
             ).catch(
                 ( err ) => {
+                    console.warn('CAUGHT: [user] ~ then...catch \n', err.message)
+                    throw new GraphQLError(err.message)
+                }
+            )
+        },
+        checkEmail: ( _: string, { email }: IO ): Promise<object> | Error => {
+            return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
+                try {
+                    return await User.findOne({ email: email }).exec( ( err: Error, exists: any ): void => {
+                        if ( err ) reject( err ); else resolve( exists ? {result: true} : {result: false} );
+                    });
+                } catch ( err ) {
+                    console.warn('CAUGHT: [checkEmail] ~ try...catch \n', err.message)
+                    throw err;
+                }
+            }).then(
+                ( result: any ) => {
+                    return result
+                }
+            ).catch(
+                ( err ) => {
+                    console.warn('CAUGHT: [checkEmail] ~ then...catch \n', err.message)
                     throw new GraphQLError(err.message)
                 }
             )
         }
     },
     Mutation: {
-        addUser: ( _root: string, args: IO ): Promise<any> | Error => {
+        addUser: ( _: string, args: IO ): Promise<any> | Error => {
             return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
                 try {
                     args.password = crypt.hashSync( args.password, crypt.genSaltSync(8) );
@@ -100,7 +98,7 @@ export default {
                 }
             )
         },
-        editUser: ( _root: string, args: IO, context: any ): Promise<object> | Error => {
+        editUser: ( _: string, args: IO, context: any ): Promise<object> | Error => {
             return new Promise<object>( (resolve: Function, reject: Function ): void => {
                 try {
                     if ( !context.logged || !context._perm.user.canEdit.includes( args.id ) ) 
@@ -110,7 +108,7 @@ export default {
                             err ? reject( err ) : resolve( res );
                         }
                     );
-                    } catch( err ) {
+                    } catch ( err ) {
                         console.warn('CAUGHT: [editUser] ~ try...catch \n', err.message)
                         throw err;
                     }
@@ -125,7 +123,7 @@ export default {
                 }
             )
         },
-        deleteUser: ( _root: string, { userId }: IO, context: any ): Promise<object> | Error => {
+        deleteUser: ( _: string, { userId }: IO, context: any ): Promise<object> | Error => {
             return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
                 try {
                     // Check whether the user isn't logged in or doesn't have rights to remove the requested user.
@@ -149,14 +147,14 @@ export default {
                 }
             )
         },
-        loginUser: ( _root: string, { email, password }: IO, context: any ): Promise<object> | Error => {
+        loginUser: ( _: string, { email, password }: IO, context: any ): Promise<object> | Error => {
             return new Promise<object>( ( resolve: Function, reject: Function ): void => {
                 try {
                     if ( context._id ) throw new Error('Already logged in.')
                     User.findOne ( { email } ).exec( ( err: Error, res: IO ): void => {
                         err ? reject( err ) : resolve( res );
                     });
-                } catch( err ) {
+                } catch ( err ) {
                     console.warn('CAUGHT: [loginUser] ~ try...catch \n', err.message)
                     throw err;
                 }

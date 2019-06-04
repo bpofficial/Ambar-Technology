@@ -7,7 +7,9 @@
         "build": "webpack --config ./config/webpack.config.js --env.",
         "start:prod": "node ../Build/Production/server.bundled.js | pino-colada",
         "start:dev": "node ../Build/Development/server.bundled.js | pino-colada",
-        "lint": "eslint -c ./config/eslint/eslint.js src/** --ignore-path ./config/eslint/eslint.ignore"
+        "lint": "eslint -c ./config/eslint/eslint.js src/** --ignore-path ./config/eslint/eslint.ignore",
+        "start": "node --inspect=9333 -r ts-node/register ./src/index.ts | pino-colada",
+        "start:watch": "nodemon"
     },
     "keywords": [],
     "author": "",
@@ -17,6 +19,8 @@
         "@types/bcryptjs": "^2.4.2",
         "@types/express-jwt": "0.0.42",
         "@types/jsonwebtoken": "^8.3.2",
+        "@types/mongoose-sequence": "^3.0.3",
+        "@types/mongoose-unique-validator": "^1.0.1",
         "apollo-server-express": "^2.5.0",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
@@ -27,13 +31,14 @@
         "express-pino-logger": "^4.0.0",
         "graphql": "^14.3.0",
         "graphql-tools": "^4.0.4",
+        "helmet": "^3.18.0",
         "html-minifier": "^4.0.0",
         "jsonwebtoken": "^8.5.1",
         "merge-graphql-schemas": "^1.5.8",
         "mongoose": "^5.5.10",
+        "mongoose-sequence": "^5.0.1",
         "mongoose-unique-validator": "^2.0.3",
-        "path": "^0.12.7",
-        "showdown": "^1.9.0"
+        "path": "^0.12.7"
     },
     "devDependencies": {
         "@types/express": "^4.16.1",
@@ -41,7 +46,6 @@
         "@types/html-minifier": "^3.5.3",
         "@types/mongoose": "^5.5.1",
         "@types/node": "^12.0.2",
-        "@types/showdown": "^1.9.3",
         "@typescript-eslint/eslint-plugin": "^1.9.0",
         "awesome-typescript-loader": "^5.2.1",
         "bufferutil": "^4.0.1",
@@ -53,14 +57,29 @@
         "eslint-plugin-node": "^9.0.1",
         "eslint-plugin-promise": "^4.1.1",
         "eslint-plugin-standard": "^4.0.0",
+        "nodemon": "^1.19.1",
         "pino-colada": "^1.4.4",
         "pino-pretty": "^3.0.0",
         "symlink-webpack-plugin": "^0.2.0",
+        "ts-node": "^8.2.0",
         "typescript": "^3.4.5",
         "typescript-eslint-parser": "^22.0.0",
         "utf-8-validate": "^5.0.2",
         "webpack": "^4.32.0",
         "webpack-cli": "^3.3.2",
         "webpack-node-externals": "^1.7.2"
+    },
+    "nodemonConfig": {
+        "ignore": [
+            "**/*.test.ts",
+            "**/*.spec.ts",
+            ".git",
+            "node_modules"
+        ],
+        "watch": [
+            "src"
+        ],
+        "exec": "npm start",
+        "ext": "ts"
     }
 }

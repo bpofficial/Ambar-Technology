@@ -20,8 +20,7 @@ export default `
         result: Boolean
     }
     type Query {
-        user(id: String!): User
-        users: [User]
+        user: User
         checkEmail(email: String!): Check
     }
     type Mutation {

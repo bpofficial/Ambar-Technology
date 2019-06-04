@@ -3,7 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const fs = require('fs');
 
 require('dotenv').config({ path: '../.env' });
-const dev = process.env.MODE == 'development' || process.env.MODE == 'dev' ? true : false;
+const dev = true;//process.env.MODE == 'development' || process.env.MODE == 'dev' ? true : false;
 
 const tsConfig = {
     "compilerOptions": {
