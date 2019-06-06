@@ -51,6 +51,9 @@ export default `
     }
 `;
 
+export const ORDER_STATUS_OK = { complete: true }
+export const ORDER_STATUS_BAD = { complete: false }
+
 export interface Order {
     id: String;
     number: String;

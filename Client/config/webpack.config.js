@@ -1,22 +1,33 @@
 const path = require('path');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+require('dotenv').config({ path: '../.env' });
 
-module.exports = env => {
-    if ( !( 'development' in env || 'production' in env ) ) {
-        env.production = true;
+module.exports = () => {
+    const dev = true;//process.env.MODE == 'development' || process.env.MODE == 'dev' ? true : false;
+    const build = {
+        out: path.resolve( __dirname + '/../../Build/' + ( dev ? 'Development/Public/' : 'Production/Public/' ) ),
+        public: path.resolve( __dirname + '/../../Build/' + ( dev ? 'Development/Public/' : 'Production/Public/' ) )
     }
+
     var config = {
-        mode: env.development ? 'development' : 'production',
+        mode: dev ? 'development' : 'production',
         entry: {
             client: path.join( __dirname, '../src/index.tsx' ) 
         },
         devtool: 'source-map',
+        devServer: {
+            contentBase: build.public,
+            hot: true,
+            historyApiFallback: true
+        },
         resolve: {
             extensions: ['.ts', '.tsx', '.js', '.jsx']
         },
         output: { 
-            path: path.resolve( __dirname + '/../../Build/' + ( env.development ? 'Development/Public/' : 'Production/Public/' ) ),
+            path: build.out,
+            publicPath: '/',
             filename: '[name].bundled.js',
             chunkFilename: '[name].chunk.js',
             sourceMapFilename: '[name].js.map'
@@ -27,7 +38,7 @@ module.exports = env => {
                     test: /\.(ts|tsx)$/,
                     exclude: /node_modules/, 
                     use: [
-                        { loader: "awesome-typescript-loader?configFileName=./config/ts/tsconfig" + ( env.development ? ".dev.json" : ".prod.json" ) },
+                        { loader: "awesome-typescript-loader?configFileName=./config/ts/tsconfig" + ( dev ? ".dev.json" : ".prod.json" ) },
                         { loader: require.resolve('react-docgen-typescript-loader') },
                     ]
                 }, 
@@ -41,7 +52,7 @@ module.exports = env => {
                     loader: "source-map-loader" 
                 }
             ] 
-        },
+        },/*
         optimization: {
             runtimeChunk: 'single',
             splitChunks: {
@@ -58,16 +69,19 @@ module.exports = env => {
                     }
                 }
             }
-        }
+        }*/
     }
-    if ( env.development ) {
+    if ( dev ) {
         config.plugins = [
             new webpack.HotModuleReplacementPlugin(),
+            new HtmlWebpackPlugin({
+                title: 'Ambar Technology',
+                filename: build.public + '\\index.html',
+                template: 'src/index.html'
+            })
+            //new BundleAnalyzerPlugin()
         ]
-        if ( env.analyze ) {
-            config.plugins.push(new BundleAnalyzerPlugin())
-        }
-    } else if ( env.production ) {
+    } else {
         config.plugins = [
             // Nothing
         ]

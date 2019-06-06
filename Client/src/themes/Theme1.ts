@@ -1,20 +1,17 @@
-import CustomThemes from './types';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const ThemeOne: CustomThemes = {
+export default createMuiTheme({
     palette: {
         primary: {
-            light: '#fff',
-            main: 'rgb(23, 105, 170)',
-            dark: '#000'
+            light: 'white',
+            main: '#ffd200',
+            dark: '#00011f'
         },
         secondary: {
-            main: '#f44336',
+            light: '#fffff7',
+            main: '#6b695f',
+            dark: 'black'
         },
     },
-    typography: { 
-        useNextVariants: true
-    }
-}
-
-export default createMuiTheme(ThemeOne);
+    typography: {}
+});

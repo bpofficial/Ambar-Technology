@@ -1,7 +1,6 @@
-import CustomThemes from './types';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const ThemeThree: CustomThemes = {
+export default createMuiTheme({
     palette: {
         primary: {
             light: '#fff',
@@ -11,10 +10,5 @@ const ThemeThree: CustomThemes = {
         secondary: {
             main: '#f44336',
         },
-    },
-    typography: { 
-        useNextVariants: true
     }
-}
-
-export default createMuiTheme(ThemeThree);
+});
