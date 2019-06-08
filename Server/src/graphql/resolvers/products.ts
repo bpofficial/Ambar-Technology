@@ -46,6 +46,7 @@ export default {
                     } catch( err ) {
                         console.warn('CAUGHT: [product] ~ try...catch \n', err)
                     }
+                    newData['stock'] = newData['stock'].available;
                     return newData
                 }
             ).catch(
@@ -66,7 +67,7 @@ export default {
                 }
             }
             if ( 'search' in args ) {
-                let string: Array<string> = args.search.split(' ');
+                let string: Array<string> = args.search.replace('-','').split(' ');
                 let searchKeys = ['details', 'short', 'name', 'sku', 'category']
                 for( let keyword of string ) {
                     for ( let key of searchKeys ) {
@@ -78,9 +79,6 @@ export default {
                         })
                     }
                 }
-            }
-            if ( 'category' in args ) {
-                filter.$and = [{ category: args.category }]
             }
             return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
                 return await Product.find(
@@ -97,6 +95,7 @@ export default {
                     try {
                         for( let product of data ) {
                             if ( '_doc' in product) product = product._doc;
+                            product.stock = product.stock.available;
                             let filteredProduct = {}
                             Object.keys( product ).map( ( val ) => {
                                 if ( val == '_id' ) filteredProduct['id'] = product._id;
@@ -118,6 +117,17 @@ export default {
                 ( err ) => {
                     console.warn('CAUGHT: [products] ~ then...catch \n', err)
                     return err;
+                }
+            )
+        },
+        productCategories: ( _root: string, args: any, context: any ): Promise<any> | Error => {
+            return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
+                return await Product.distinct('category').exec( ( err: Error, res: any ): void => {
+                    if ( err ) reject( err ); else resolve( res );
+                });
+            }).then(
+                ( result ) => {
+                    return result
                 }
             )
         }

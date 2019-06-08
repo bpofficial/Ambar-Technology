@@ -20,7 +20,8 @@ module.exports = () => {
         devServer: {
             contentBase: build.public,
             hot: true,
-            historyApiFallback: true
+            historyApiFallback: true,
+            port: 8081
         },
         resolve: {
             extensions: ['.ts', '.tsx', '.js', '.jsx']
@@ -43,7 +44,8 @@ module.exports = () => {
                     ]
                 }, 
                 { 
-                    test: /\.css$/, 
+                    test: /\.css$/,
+                    exclude: /node_modules/,
                     use: ["style-loader", "css-loader"] 
                 }, 
                 { 

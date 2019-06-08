@@ -4,7 +4,10 @@ import Paper from '@material-ui/core/Paper';
 import { useMediaQuery } from "@material-ui/core";
 import { Switch, Route } from "react-router-dom";
 import Navbar from "../../functional/Navbar/Navbar";
-import { Home, News, Shop } from "../Pages/";
+import Home from "./Home/Home";
+import News from "./News/News";
+import Shop from "./Shop/Shop";
+//import Footer from "../Footer/Footer";
 
 const containerStyles = makeStyles( theme => {
     return {
@@ -12,11 +15,13 @@ const containerStyles = makeStyles( theme => {
             display: 'flex',
             backgroundColor: '#ffea85',
             overflowY: 'auto',
-            overflowX: 'hidden'
+            overflowX: 'hidden',
+            height: 'auto'
         },
         container: {
             backgroundColor: theme.palette.secondary.light,
             display: 'flex',
+            position: 'relative',
             flexFlow: 'column wrap'
         },
         padder: {
@@ -61,6 +66,8 @@ export default function PageContainer() {
                     <Route             path="/shop"    component={ Shop } />
                     <Route             path="/account" component={ Home } />
                 </Switch>
+                <br /><br/><br /><br/><br /><br/>
+                {/*<Footer />*/}
             </Paper>
             {   // Show side padding only if the device is a desktop in landscape mode.
                 media.desktop.landscape && <div className={classes.padder} />

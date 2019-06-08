@@ -9,9 +9,11 @@ export default `
         stock: String
         category: String
     }
+
     type Query {
         product(id: String!): Product
         products(orderBy: String, search: String, category: String): [Product]
+        productCategories: [String]
     }
     type Mutation {
         addProduct(
