@@ -1,5 +1,5 @@
-import Product from "../../models/product.mdl";
-import { LoggedInOnly } from '../types/products';
+import Product from "./ProductModel";
+import { LoggedInOnly } from './ProductGraph';
 import { GraphQLError } from "graphql";
 //const converter = new (require('showdown').Converter())
 

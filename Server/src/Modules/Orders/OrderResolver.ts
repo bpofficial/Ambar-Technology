@@ -1,6 +1,6 @@
-import Order from "../../models/order.mdl";
-import Product from "../../models/product.mdl";
-import { ORDER_STATUS_OK } from "../types/orders";
+import Order from "./OrderModel";
+import Product from "../Products/ProductModel";
+import { ORDER_STATUS_OK } from "./OrderGraph";
 import { GraphQLError } from "graphql";
 
 export interface IO {

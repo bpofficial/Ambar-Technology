@@ -1,4 +1,4 @@
-import Post from "../../models/post.mdl";
+import Post from "./PostModel";
 const ObjectID = require('mongodb').ObjectID;
 
 export interface IO {

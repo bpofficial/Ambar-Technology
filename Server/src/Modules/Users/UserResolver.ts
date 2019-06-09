@@ -1,4 +1,4 @@
-import User from "../../models/user.mdl";
+import User from "./UserModel";
 import * as crypt from 'bcryptjs';
 import * as JWT from 'jsonwebtoken';
 import { GraphQLError } from "graphql";
