@@ -35,7 +35,7 @@ export default function Product( props: any ) {
     if( !props || !props.details ) {
         // 404?? Or redirect back to shop?
     }
-    const classes = useStyles()
+    const classes = useStyles({})
     return(
         <div className={classes.root}>
             <Paper className={classes.container}>

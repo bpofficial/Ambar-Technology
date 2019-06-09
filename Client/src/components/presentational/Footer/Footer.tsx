@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 })
 
 export default function Footer() {
-    const classes = useStyles();
+    const classes = useStyles({});
     return(
         <div className={ classes.root } >
             Footer

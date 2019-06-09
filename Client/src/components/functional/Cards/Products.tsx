@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { gql } from "apollo-boost";
 import { Query } from "react-apollo";
-import Product from "./Product";
+import Product from "../../Presentational/Pages/Product";
 
 const useStyles = makeStyles({
     itemsContainer: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 })
 
 export default function Products( props: any, state: any ) {
-    const classes = useStyles();
+    const classes = useStyles({});
     const PRODUCT_ATTRIBS = 'id, name, details, short, sku, stock, price';
     let query: any;
     if ( props.default ) {

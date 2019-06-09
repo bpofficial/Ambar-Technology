@@ -1,6 +1,6 @@
 import * as React from "react";
 import { makeStyles } from "@material-ui/core";
-import Products from "../../../functional/ProductCard/Products";
+import Products from "../../Functional/Products/Product";
 
 const useStyles = makeStyles({
     root: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 })
 
 export default function ShopContent( props: any ) {
-    const classes = useStyles();
+    const classes = useStyles({});
     let template;
     console.log(props)
     if ( props !== undefined && 'location' in props ) {

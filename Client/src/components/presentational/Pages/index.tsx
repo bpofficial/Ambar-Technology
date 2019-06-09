@@ -3,10 +3,10 @@ import { useTheme, makeStyles } from "@material-ui/core/styles";
 import Paper from '@material-ui/core/Paper';
 import { useMediaQuery } from "@material-ui/core";
 import { Switch, Route } from "react-router-dom";
-import Navbar from "../../functional/Navbar/Navbar";
-import Home from "./Home/Home";
-import News from "./News/News";
-import Shop from "./Shop/Shop";
+import Navbar from "../../Functional/Navbar/Navbar";
+import Home from "./Home";
+import News from "./News";
+import Shop from "./Shop";
 //import Footer from "../Footer/Footer";
 
 const containerStyles = makeStyles( theme => {

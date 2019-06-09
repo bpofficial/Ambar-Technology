@@ -1,7 +1,7 @@
 import * as React from "react";
 import { makeStyles } from "@material-ui/core";
-import Carousel from "../../../functional/Carousel/Carousel";
-import Sidebar from "../../../functional/Sidebar/Sidebar";
+import Carousel from "../../functional/Carousel/Carousel";
+import Sidebar from "../../functional/Sidebar/Sidebar";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 
@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 })
 
 export default function HomeContent() {
-    const classes = useStyles();
+    const classes = useStyles({});
     return(
         <div className={classes.root}>
             <Carousel /><br />

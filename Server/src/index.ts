@@ -13,6 +13,7 @@ import User from "./Modules/Users/UserModel";
 
 try {
     require("dotenv").config({ path: "../.env" });
+    
     mongoose.connect("mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT + "/" + process.env.DB_TABLE, { 
         useFindAndModify: false, 
         useCreateIndex: true, 
