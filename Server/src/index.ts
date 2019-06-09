@@ -6,10 +6,10 @@ import * as mongoose from "mongoose";
 import * as cors from "cors";
 import * as helmet from "helmet";
 import { ApolloServer } from "apollo-server-express";
-import GQSchema from "./graphql/";
+import GQSchema from "./Modules/GraphQL";
 import { GraphQLError } from "graphql";
 import * as jwt from "jsonwebtoken";
-import User from "./models/user.mdl";
+import User from "./Modules/Users/UserModel";
 
 try {
     require("dotenv").config({ path: "../.env" });
