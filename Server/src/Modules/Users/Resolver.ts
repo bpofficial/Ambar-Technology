@@ -2,7 +2,6 @@ import {
     Resolver,
     Query,
     Arg,
-    Args,
     Mutation,
     Ctx,
     Authorized,
@@ -12,25 +11,22 @@ import {
     LOGGED_IN_ADMIN,
     PUBLIC
 } from "../../Common/Constants";
-import {
-    ERR_UNAUTHORISED
-} from "../../Common/Constants/Errors";
 import User from "./Class";
 import UserService from "./Service";
 import { Context } from "apollo-server-core";
 import { NewUserInput, EditUserInput } from "./IO";
-import { GraphQLError } from "graphql";
 
 @Resolver(User)
 export class UserResolver {
 
+    // Untested
     @Authorized(LOGGED_IN_USER)
     @Query(returns => User, { nullable: true })
     async user(@Arg("email", type => String, { description: "Email of user." }) email: string, @Ctx() ctx: any): Promise<User | Error> {
-        if ('email' in ctx && ctx.email !== email) throw new GraphQLError(ERR_UNAUTHORISED.message);
         return UserService.findOne(email, ctx)
     }
 
+    // Untested
     @Authorized(LOGGED_IN_ADMIN)
     @Query(returns => [User], { nullable: true })
     async users(
@@ -41,25 +37,28 @@ export class UserResolver {
         return UserService.find(args, ctx)
     }
 
+    // Untested
     @Authorized(PUBLIC)
     @Mutation(returns => User)
     async addUser(user: NewUserInput, @Ctx() ctx: Context): Promise<User | Error> {
         return UserService.add(user, ctx)
     }
 
+    // Untested
     @Authorized(LOGGED_IN_USER)
     @Mutation(returns => User)
     async editUser(@Arg("user") user: EditUserInput, @Ctx() ctx: Context): Promise<User | Error> {
         return UserService.edit(user, ctx)
     }
 
+    // Untested
     @Authorized(LOGGED_IN_USER)
     @Mutation(returns => Boolean)
     async removeUser(@Arg("email", type => String) email: string, @Ctx() ctx: any): Promise<Boolean | Error> {
-        if ('email' in ctx && ctx.email !== email) throw new GraphQLError(ERR_UNAUTHORISED.message);
         return UserService.delete(email, ctx)
     }
 
+    // Mostly works, run tests.
     @Authorized(PUBLIC)
     @Mutation(returns => User)
     async login(
@@ -69,7 +68,8 @@ export class UserResolver {
         return UserService.login(email, password, ctx);
     }
 
-    @Authorized(PUBLIC)
+    // TODO: Doesn't authorise when logging out, as if the context is deleted before this is complete. Bloody annoying.
+    @Authorized(LOGGED_IN_USER)
     @Mutation(returns => Boolean || Error)
     async logout(@Ctx() ctx: any): Promise<Boolean | Error> {
         return UserService.logout(ctx)
