@@ -7,7 +7,9 @@ import {
     ERR_LOGGED_IN,
     ERR_NO_TOKEN,
     ERR_TOKEN_EMPTY,
-    ERR_USR_NOT_FOUND
+    ERR_USR_NOT_FOUND,
+    ERR_INVALID_DETAILS,
+    ERR_UNAUTHORISED
 } from "../Constants/Errors"
 import * as crypt from 'bcryptjs';
 import * as jwt from "jsonwebtoken";
@@ -69,31 +71,6 @@ export default class AuthenticatorService {
         }
     }
 
-    // Look into this function and it's necessity.
-    public static async checkPerm(check: string, headers: { [index: string]: any }): Promise<any> {
-        try {
-            if ("authorization" in headers) {
-                var token: { [index: string]: any } = <{ [index: string]: any }>jwt.verify(<string>headers.authorization, process.env.JWT_SECRET || "");
-                if (Object.keys(token).length < 2 && "iat" in token) throw new Error("No payload in token provided.");
-            } else {
-                throw ERR_NO_TOKEN;
-            }
-            try {
-                const user = redis.get(token.id, (err, res) => {
-                    if (err) throw err;
-                    if (!("_perm" in res)) throw ERR_USR_NOT_FOUND(token.id);
-                    return res
-                });
-                return user
-            } catch (err) {
-                console.warn("CAUGHT: [context:redis] ~ try...catch \n", err.message)
-            }
-        } catch (err) {
-            console.warn("CAUGHT: [context:mon] ~ try...catch \n", err.message)
-            return '';
-        }
-    }
-
     /**
      * The 'login' method will find a user with a matching email in Mongo and attempt to
      * match the password. If successful, the user object (minus password property) will
@@ -102,27 +79,20 @@ export default class AuthenticatorService {
      * @param email User's un-validated email.
      * @param password User's "plaintext" password.
      */
-    public static async login(email: string, password: string): Promise<User | Error> {
+    public static async login(email: string, password: string, ctx: any): Promise<User | Error> {
         return new Promise<User | Error>((resolve: Function, reject: Function): void => {
             try {
                 UserModel.findOne({ email }).exec((err: Error, res: any): void => {
-                    err ? reject(err) : false;
 
-                    // Look in redis to find whether the user is already logged in (res._id is a key)
-                    client.get(res._id.toString(), async (REDISErr: Error, REDISRes: any) => {
-                        REDISErr || REDISErr !== null ? reject(REDISErr) : false;
-                        REDISRes = JSON.parse(REDISRes);
+                    // If there's an error with query, reject.
+                    if (err) reject(err);
 
-                        // REDISRes is null if there's no keys found. Reject if a key is found.
-                        if (REDISRes !== null && 'token' in REDISRes) {
-                            await jwt.verify(REDISRes.token, process.env.JWT_SECRET, (JWTError: Error) => {
-                                // If there's an error, token has expired (allow to login). Otherwise, user is already logged in.
-                                JWTError ? resolve(res) : reject(ERR_LOGGED_IN)
-                            })
-                        } else {
-                            // Allow user to login. No errors and not in redis.
-                            resolve(res)
-                        }
+                    // If context exists and is not empty, reject.
+                    if (ctx !== null && ctx !== {} && !('email' in ctx || '_id' in ctx)) reject(ERR_LOGGED_IN);
+
+                    // If there's no context and no instance of user in redis, resolve.
+                    redis.get(res._id.toString(), (er: Error, re: string) => {
+                        er ? reject(er) : !re ? reject(ERR_LOGGED_IN) : resolve(res);
                     })
                 });
             } catch (err) {
@@ -132,18 +102,23 @@ export default class AuthenticatorService {
         }).then(
             async ({ _doc }: any): Promise<any> => {
                 try {
-                    let user = _doc;
+                    let user: User = _doc;
                     const match: boolean = crypt.compareSync(password, user.password)
                     delete user.password;
-                    if (!match) throw new Error('Invalid password.')
-                    user.token = await jwt.sign({
-                        id: user._id
+                    if (!match) throw ERR_INVALID_DETAILS
+                    user.token = <string>await jwt.sign({
+                        id: user._id,
+                        // E.g. John D
+                        //name: `${user.first.charAt(0).toUpperCase() + user.first.slice(1)} ${user.last.charAt(0).toUpperCase()}`
                     },
-                        process.env.JWT_SECRET || '',
-                        { expiresIn: '7d' }
+                        process.env.JWT_SECRET,
+                        // Expires in 8 hours
+                        { expiresIn: Math.floor(Date.now() / 1000) + (60 * 60 * 8) }
                     )
-                    // Expires in 30 days
-                    client.set(user._id.toString(), JSON.stringify(user), 'EX', 60 * 60 * 24 * 7);
+                    // Expires in 8 hours
+                    client.set(user._id.toString(), JSON.stringify(user), 'EX', 60 * 60 * 8, (err: Error) => {
+                        if (err) throw err;
+                    });
                     return user;
                 } catch (err) {
                     console.warn('CAUGHT: [AuthServ::login] ~ token try...catch \n')
@@ -157,20 +132,32 @@ export default class AuthenticatorService {
     }
 
     /**
-     * The 'logout' method will attempt to find the id of a user from a provided token
-     * and subsequently delete the record (id as key) from redis.
+     * The 'logout' method will attempt to verify a user token and then append the current token
+     * to the blacklist of tokens, subsequently removing the whitelisted token.
      * 
      * @param ctx Apollo context object
      */
-    public static async logout(ctx: any): Promise<Boolean> {
-        // TODO: Currently, all token's are still 'valid' and thus using an old one is fine. Need to fix that.
-        return new Promise<boolean>(async (resolve: Function, reject: Function): Promise<void> => {
+    public static async logout(ctx: any): Promise<Boolean | Error> {
+        return new Promise<Boolean | Error>(async (resolve: Function, reject: Function): Promise<void> => {
             try {
+
+                // If there's no token in context, throw ERR_NO_TOKEN (maybe better to use ERR_NOT_LOGGED_IN)
+                console.log(ctx)
                 if (!('token' in ctx)) throw ERR_NO_TOKEN;
+                // Decode the token using the local static decode (verify) method.
                 await this.decode(ctx.token).then(
                     (token) => {
-                        redis.del(token.id, (err: Error) => {
-                            err ? reject(false) : resolve(true)
+                        // Check whether token is an instance of an Error
+                        if (token instanceof GraphQLError || token instanceof Error) reject(false);
+
+                        // Remove the current user from redis (using token)
+                        redis.del(token.id.toString(), (err: Error) => {
+
+                            // Reject on redis error.
+                            if (err) reject(false);
+
+                            // Resolve otherwise
+                            resolve(true)
                         })
                     }
                 ).catch(
@@ -212,5 +199,59 @@ export default class AuthenticatorService {
                 return new GraphQLError(err.message);
             }
         )
+    }
+
+    public static async context(Request: any): Promise<any> {
+        return new Promise<any>(async (resolve: Function, reject: Function): Promise<void> => {
+            try {
+
+                // Check whether there is an authorization token in the headers.
+                if ("authorization" in Request.headers && Request.headers.authorization.length > 1) {
+
+                    // If there's a token, decode it.
+                    return this.decode(Request.headers.authorization).then(
+                        (decToken: any) => {
+
+                            // AuthService.decode can return an error, if so, reject.
+                            if (decToken instanceof Error || decToken instanceof GraphQLError) reject(decToken);
+
+                            // Check redis for the user object in this token.
+                            client.get(String(decToken.id), (err: Error, res: any) => {
+
+                                // Reject on error.
+                                if (err) { reject(err); return };
+
+                                // Resolve empty context object if no key is found with provided id.
+                                if (res == null) { resolve({}); return }
+
+                                // Parse the user object from stringified JSON.
+                                const user = JSON.parse(res)
+
+                                // Check whether the token matches the current token, if not, reject.
+                                user.token !== Request.headers.authorization ? reject(ERR_UNAUTHORISED) : resolve(user);
+
+                                // Default, resolve empty context.
+                                resolve({})
+                                return
+                            });
+                        }
+                    ).catch(
+                        (err) => {
+                            console.warn("CAUGHT: [context] ~ then...catch [2]\n", err.message)
+                            reject(err);
+                        }
+                    );
+                } else {
+                    // Resolve empty context.
+                    resolve({});
+                }
+            } catch (err) {
+                console.warn("CAUGHT: [context] ~ try...catch \n", err.message)
+                reject(err);
+            }
+        }).catch((err) => {
+            console.warn("CAUGHT: [context] ~ then...catch [1]\n", err.message)
+            throw new GraphQLError(err.message)
+        });
     }
 }

@@ -88,20 +88,19 @@ export default class UserService implements CRUDBaseService {
 
     public static async login(email: User["email"], password: User["password"], ctx: Ctx): Promise<User | Error> {
         try {
-            if (Object.keys(ctx).length > 0 && 'id' in ctx) throw ERR_LOGGED_IN;
-            return AuthenticationService.login(email, password);
+            return AuthenticationService.login(email, password, ctx);
         } catch (err) {
             console.log("CAUGHT: [UserServ::login] ~ try...catch\n", err);
             return err;
         }
     }
 
-    public static async logout(ctx: any): Promise<Boolean> {
+    public static async logout(ctx: any): Promise<Boolean | Error> {
         try {
             return AuthenticationService.logout(ctx)
         } catch (err) {
             console.log("CAUGHT: [UserServ::logout] ~ try...catch\n", err);
-            return err;
+            return new GraphQLError(err.message);
         }
     }
 

@@ -9,7 +9,8 @@ import {
 } from "type-graphql";
 import {
     LOGGED_IN_USER,
-    LOGGED_IN_ADMIN
+    LOGGED_IN_ADMIN,
+    PUBLIC
 } from "../../Common/Constants";
 import {
     ERR_UNAUTHORISED
@@ -40,6 +41,7 @@ export class UserResolver {
         return UserService.find(args, ctx)
     }
 
+    @Authorized(PUBLIC)
     @Mutation(returns => User)
     async addUser(user: NewUserInput, @Ctx() ctx: Context): Promise<User | Error> {
         return UserService.add(user, ctx)
@@ -58,6 +60,7 @@ export class UserResolver {
         return UserService.delete(email, ctx)
     }
 
+    @Authorized(PUBLIC)
     @Mutation(returns => User)
     async login(
         @Arg("email", type => String) email: User["email"],
@@ -66,9 +69,9 @@ export class UserResolver {
         return UserService.login(email, password, ctx);
     }
 
-    @Authorized(LOGGED_IN_ADMIN)
-    @Mutation(returns => Boolean)
-    async logout(@Ctx() ctx: any): Promise<any> {
+    @Authorized(PUBLIC)
+    @Mutation(returns => Boolean || Error)
+    async logout(@Ctx() ctx: any): Promise<Boolean | Error> {
         return UserService.logout(ctx)
     }
 

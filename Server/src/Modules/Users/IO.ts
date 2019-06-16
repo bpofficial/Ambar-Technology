@@ -5,7 +5,7 @@ import {
 } from "type-graphql";
 
 @InputType()
-export class NewUserInput implements Partial<User> {
+export class NewUserInput extends User {
 
     @Field({ description: "User's first name." })
     first: string;

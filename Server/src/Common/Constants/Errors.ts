@@ -10,3 +10,5 @@ export const ERR_LOGGED_IN: Error = new Error("Already logged in.");
 export const ERR_USR_NOT_FOUND = (ID: string): Error => { return new Error(`User with identifier ${ID} not found`) }
 
 export const ERR_UNAUTHORISED: Error = new Error("Unauthorised to perform this action.")
+
+export const ERR_INVALID_DETAILS: Error = new Error("Invalid details provided.")

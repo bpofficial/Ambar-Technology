@@ -7,7 +7,7 @@ import {
 import { AuthChecker } from "type-graphql";
 import { Context } from "apollo-server-core";
 
-const auth: AuthChecker<Context> = ({ root, args, context, info }: any, role): boolean => {
+const auth: AuthChecker<Context> = ({ context }: any, role): boolean => {
     switch (role[0]) {
         case LOGGED_IN_USER:
             // If there's a user currently logged in (in context = verified) then return true.
@@ -28,7 +28,6 @@ const auth: AuthChecker<Context> = ({ root, args, context, info }: any, role): b
             // Publically veiwable field.
             return true;
         default:
-            console.log('defaulting')
             // Default to true otherwise.
             return true;
     }

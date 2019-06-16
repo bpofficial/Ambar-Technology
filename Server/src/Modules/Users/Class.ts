@@ -5,7 +5,8 @@ import {
 } from "type-graphql";
 import { prop, Typegoose, pre, plugin } from "typegoose";
 import * as UniqueValidator from "mongoose-unique-validator";
-import { LOGGED_IN_USER, HIDDEN } from "../../Common/Constants/index";
+import { LOGGED_IN_USER, HIDDEN, PUBLIC } from "../../Common/Constants/index";
+import { Types } from "mongoose";
 
 @pre<User>('save', (next) => {
     // Pre-save hook
@@ -21,6 +22,10 @@ import { LOGGED_IN_USER, HIDDEN } from "../../Common/Constants/index";
 @ObjectType({ description: "Class object representing a User." })
 @plugin(UniqueValidator)
 export default class User extends Typegoose {
+
+    @Authorized(HIDDEN)
+    @prop()
+    _id?: Types.ObjectId;
 
     @Authorized(LOGGED_IN_USER)
     @Field({ description: "User's first name." })
@@ -67,7 +72,7 @@ export default class User extends Typegoose {
     @prop({ required: false })
     bill_address?: string;
 
-    @Authorized(HIDDEN)
+    @Authorized(PUBLIC)
     @Field({ description: "User's current token" })
     token?: string;
 
