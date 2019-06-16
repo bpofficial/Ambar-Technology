@@ -55,13 +55,13 @@ export const ORDER_STATUS_OK = { complete: true }
 export const ORDER_STATUS_BAD = { complete: false }
 
 export interface Order {
-    id: String;
-    number: String;
-    creator: String;
-    date: String;
-    items: Array<any>;
-    shipping: Number;
-    gtotal: Number;
-    status: String;
-    payment: String;
+    id: string;
+    number: string;
+    creator: string;
+    date: string;
+    items: [];
+    shipping: number;
+    gtotal: number;
+    status: string;
+    payment: string;
 }

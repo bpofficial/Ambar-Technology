@@ -6,13 +6,15 @@
         "allowJs": false,
         "moduleResolution": "node",
         "module": "commonjs",
-        "target": "es6",
+        "target": "es2016",
         "allowSyntheticDefaultImports": true,
         "lib": [
             "es5",
             "es6",
             "es7",
-            "es2017"
+            "es2017",
+            "es2016",
+            "esnext.asynciterable"
         ],
         "declaration": true,
         "declarationDir": "../../../Build/Development/Types",
@@ -25,7 +27,9 @@
         "noUnusedLocals": true,
         "rootDirs": [
             "../../src"
-        ]
+        ],
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
     },
     "include": [
         "../../src/**/*"

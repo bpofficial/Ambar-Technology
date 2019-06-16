@@ -64,7 +64,7 @@ const defaultNav = ( classes: any ) => {
 
 export default function NavBar() {
     //const theme = useTheme();
-    const classes = useStyles();
+    const classes = useStyles({});
     const media = {
         mobile: {
             portrait: useMediaQuery('only screen and (min-width: 320px) and (max-width: 767px) and ( orientation: portrait )'),

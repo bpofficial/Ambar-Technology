@@ -34,11 +34,11 @@ export default `
 `;
 
 export interface Post {
-    id: string
-    title: string
-    editor_content?: string
-    markup_content?: string
-    status?: string
-    public: boolean
-    password?: string
+    id: string;
+    title: string;
+    editor_content?: string;
+    markup_content?: string;
+    status?: string;
+    public: boolean;
+    password?: string;
 }

@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "target": "es2016",
+        "lib": [
+            "es2016",
+            "esnext.asynciterable"
+        ],
+        "rootDirs": [
+            "./Server/src"
+        ],
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
+    },
+    "exclude": [
+        "./Server/node_modules/",
+        "./Server/config/",
+        "./Admin/",
+        "./Client/",
+        "./Build/"
+    ]
+}

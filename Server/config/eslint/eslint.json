@@ -1,0 +1,36 @@
+{
+    "env": {
+        "es6": true
+    },
+    "extends": [
+        "standard",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./Server/config/ts/tsconfig.json",
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-console": 0,
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-parameter-properties": "off",
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "@typescript-eslint/no-unused-vars": [
+            1,
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^ignored?$"
+            }
+        ]
+    }
+}

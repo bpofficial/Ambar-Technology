@@ -58,16 +58,16 @@ export default {
         },
         products: ( _root: string, args: any, context: any ): Promise<any[]> | Error => {
             let filter: any = {
-                $or: []
-            }, sort: any = {};
+                    $or: []
+                }, sort: any = {};
             if ( 'orderBy' in args) {
-                let subject: Array<string> = args.orderBy.split('_');
+                let subject: string[] = args.orderBy.split('_');
                 sort = {
                     [subject[0]]: subject[1].toLowerCase() == 'asc' ? 1 : -1
                 }
             }
             if ( 'search' in args ) {
-                let string: Array<string> = args.search.replace('-','').split(' ');
+                let string: string[] = args.search.replace('-','').split(' ');
                 let searchKeys = ['details', 'short', 'name', 'sku', 'category']
                 for( let keyword of string ) {
                     for ( let key of searchKeys ) {
@@ -89,36 +89,36 @@ export default {
                     if ( err ) reject( err ); else resolve( res );
                 });
             })
-            .then(
-                ( data: Array<any> ) => {
-                    var newData: Array<any> = [];
-                    try {
-                        for( let product of data ) {
-                            if ( '_doc' in product) product = product._doc;
-                            product.stock = product.stock.available;
-                            let filteredProduct = {}
-                            Object.keys( product ).map( ( val ) => {
-                                if ( val == '_id' ) filteredProduct['id'] = product._id;
-                                if ( context._id || !context._id && !LoggedInOnly.includes( val ) ) {
-                                    filteredProduct[val] = product[val]
-                                } else {
-                                    filteredProduct[val] = `Please login to see ${val}.`
-                                }
-                            });
-                            newData.push(filteredProduct)
+                .then(
+                    ( data: any[] ) => {
+                        var newData: any[] = [];
+                        try {
+                            for( let product of data ) {
+                                if ( '_doc' in product) product = product._doc;
+                                product.stock = product.stock.available;
+                                let filteredProduct = {}
+                                Object.keys( product ).map( ( val ) => {
+                                    if ( val == '_id' ) filteredProduct['id'] = product._id;
+                                    if ( context._id || !context._id && !LoggedInOnly.includes( val ) ) {
+                                        filteredProduct[val] = product[val]
+                                    } else {
+                                        filteredProduct[val] = `Please login to see ${val}.`
+                                    }
+                                });
+                                newData.push(filteredProduct)
+                            }
+                            return newData
+                        } catch ( err ) {
+                            console.warn('CAUGHT: [products] ~ try...catch \n', err)
+                            return []
                         }
-                        return newData
-                    } catch ( err ) {
-                        console.warn('CAUGHT: [products] ~ try...catch \n', err)
-                        return []
                     }
-                }
-            ).catch( 
-                ( err ) => {
-                    console.warn('CAUGHT: [products] ~ then...catch \n', err)
-                    return err;
-                }
-            )
+                ).catch( 
+                    ( err ) => {
+                        console.warn('CAUGHT: [products] ~ then...catch \n', err)
+                        return err;
+                    }
+                )
         },
         productCategories: ( _root: string, args: any, context: any ): Promise<any> | Error => {
             return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
