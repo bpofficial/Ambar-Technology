@@ -10,7 +10,7 @@ import {
     LOGGED_IN_USER,
     LOGGED_IN_ADMIN,
     PUBLIC
-} from "../../Common/Constants";
+} from "../../Common/Constants/index";
 import User from "./Class";
 import UserService from "./Service";
 import { Context } from "apollo-server-core";
@@ -34,20 +34,20 @@ export class UserResolver {
         @Arg("search", type => String, { nullable: true }) search?: string,
         @Ctx() ctx?: Context): Promise<User[] | Error> {
         let args = orderBy !== undefined && search !== undefined ? { orderBy, search } : orderBy !== undefined ? { orderBy } : search !== undefined ? { search } : {}
-        return UserService.find(args, ctx)
+        return UserService.find(ctx, args)
     }
 
     // Untested
     @Authorized(PUBLIC)
     @Mutation(returns => User)
-    async addUser(user: NewUserInput, @Ctx() ctx: Context): Promise<User | Error> {
+    async addUser(user: NewUserInput, @Ctx() ctx: any): Promise<User | Error> {
         return UserService.add(user, ctx)
     }
 
     // Untested
     @Authorized(LOGGED_IN_USER)
     @Mutation(returns => User)
-    async editUser(@Arg("user") user: EditUserInput, @Ctx() ctx: Context): Promise<User | Error> {
+    async editUser(@Arg("user") user: EditUserInput, @Ctx() ctx: any): Promise<User | Error> {
         return UserService.edit(user, ctx)
     }
 
@@ -58,7 +58,7 @@ export class UserResolver {
         return UserService.delete(email, ctx)
     }
 
-    // Mostly works, run tests.
+    // Working (TODO: test)
     @Authorized(PUBLIC)
     @Mutation(returns => User)
     async login(
@@ -68,7 +68,7 @@ export class UserResolver {
         return UserService.login(email, password, ctx);
     }
 
-    // TODO: Doesn't authorise when logging out, as if the context is deleted before this is complete. Bloody annoying.
+    // Working (TODO: test)
     @Authorized(LOGGED_IN_USER)
     @Mutation(returns => Boolean || Error)
     async logout(@Ctx() ctx: any): Promise<Boolean | Error> {

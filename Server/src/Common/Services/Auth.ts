@@ -1,8 +1,10 @@
 import {
     LOGGED_IN_ADMIN,
     LOGGED_IN_USER,
+    PUBLIC,
+    HIDDEN,
     UNKNOWN
-} from "../Constants/";
+} from "../../Common/Constants/index";
 import {
     ERR_LOGGED_IN,
     ERR_NO_TOKEN,
@@ -15,7 +17,7 @@ import * as crypt from 'bcryptjs';
 import * as jwt from "jsonwebtoken";
 import { GraphQLError } from "graphql";
 import User from "../../Modules/Users/Class";
-import { client as redis, client } from "./Redis";
+import { client as redis } from "./Redis";
 const UserModel = new User().getModelForClass(User)
 
 export default class AuthenticatorService {
@@ -88,11 +90,11 @@ export default class AuthenticatorService {
                     if (err) reject(err);
 
                     // If context exists and is not empty, reject.
-                    if (ctx !== null && ctx !== {} && !('email' in ctx || '_id' in ctx)) reject(ERR_LOGGED_IN);
+                    if ('email' in ctx && ctx.email == email || '_id' in ctx) reject(ERR_LOGGED_IN);
 
                     // If there's no context and no instance of user in redis, resolve.
-                    redis.get(res._id.toString(), (er: Error, re: string) => {
-                        er ? reject(er) : !re ? reject(ERR_LOGGED_IN) : resolve(res);
+                    redis.get(res._id.toString(), (er: Error, re: any) => {
+                        er ? reject(er) : re ? reject(ERR_LOGGED_IN) : resolve(res);
                     })
                 });
             } catch (err) {
@@ -116,7 +118,7 @@ export default class AuthenticatorService {
                         { expiresIn: Math.floor(Date.now() / 1000) + (60 * 60 * 8) }
                     )
                     // Expires in 8 hours
-                    client.set(user._id.toString(), JSON.stringify(user), 'EX', 60 * 60 * 8, (err: Error) => {
+                    redis.set(user._id.toString(), JSON.stringify(user), 'EX', 60 * 60 * 8, (err: Error) => {
                         if (err) throw err;
                     });
                     return user;
@@ -142,11 +144,12 @@ export default class AuthenticatorService {
             try {
 
                 // If there's no token in context, throw ERR_NO_TOKEN (maybe better to use ERR_NOT_LOGGED_IN)
-                console.log(ctx)
                 if (!('token' in ctx)) throw ERR_NO_TOKEN;
+
                 // Decode the token using the local static decode (verify) method.
                 await this.decode(ctx.token).then(
                     (token) => {
+
                         // Check whether token is an instance of an Error
                         if (token instanceof GraphQLError || token instanceof Error) reject(false);
 
@@ -216,8 +219,8 @@ export default class AuthenticatorService {
                             if (decToken instanceof Error || decToken instanceof GraphQLError) reject(decToken);
 
                             // Check redis for the user object in this token.
-                            client.get(String(decToken.id), (err: Error, res: any) => {
-
+                            redis.get(String(decToken.id), (err: Error, res: any) => {
+                                console.log(err, res)
                                 // Reject on error.
                                 if (err) { reject(err); return };
 
@@ -253,5 +256,31 @@ export default class AuthenticatorService {
             console.warn("CAUGHT: [context] ~ then...catch [1]\n", err.message)
             throw new GraphQLError(err.message)
         });
+    }
+
+    public static check({ context }: any, role): boolean {
+        switch (role[0]) {
+            case LOGGED_IN_USER:
+                // If there's a user currently logged in (in context = verified) then return true.
+                if ('email' in context) {
+                    return true;
+                }
+                return false;
+            case LOGGED_IN_ADMIN:
+                // Check the user is an admin (_perm = 'all'), return true, else false.
+                if ('_perm' in context && typeof context._perm == "string" && context._perm == 'all') {
+                    return true;
+                }
+                return false;
+            case HIDDEN:
+                // Disable viewing of this field completely.
+                return false;
+            case PUBLIC:
+                // Publically veiwable field.
+                return true;
+            default:
+                // Default to true otherwise.
+                return true;
+        }
     }
 }

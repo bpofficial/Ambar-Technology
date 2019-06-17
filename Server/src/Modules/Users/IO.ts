@@ -51,9 +51,6 @@ export class EditUserInput implements Partial<User> {
     @Field(type => String, { description: "User's phone number.", nullable: true })
     phone?: string;
 
-    @Field(type => String, { description: "User's encrypted password.", nullable: true })
-    password?: string;
-
     @Field(type => String, { description: "User's company name.", nullable: true })
     company?: string;
 

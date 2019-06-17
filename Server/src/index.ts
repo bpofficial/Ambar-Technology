@@ -2,7 +2,7 @@ import * as express from "express";
 import Server from "./Common/Services/Express";
 import ApolloServer from "./Common/Services/Apollo";
 import Database from "./Common/Services/Mongoose";
-import Authenticator from "./Modules/Auth/Check";
+import Authenticator from "./Common/Services/Auth";
 import { buildSchema } from "type-graphql";
 import "reflect-metadata";
 
@@ -20,7 +20,7 @@ try {
          */
         const Schema = await buildSchema({
             resolvers: [__dirname + "/Modules/**/Resolver.ts"],
-            authChecker: Authenticator
+            authChecker: Authenticator.check
         });
         ApolloServer(Schema).applyMiddleware({
             app: Server,

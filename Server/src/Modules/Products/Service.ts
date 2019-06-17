@@ -1,5 +1,5 @@
 import Product from "./Class";
-import CRUDBaseService from "../Base/index";
+import CRUDBaseService from "../Base/CRUD";
 import { NewProductInput, EditProductInput } from "./IO";
 interface Ctx {
     [key: string]: any
