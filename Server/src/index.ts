@@ -8,7 +8,7 @@ import "reflect-metadata";
 
 try {
     require("dotenv").config({ path: "../.env" });
-    (async _ => {
+    (async () => {
         await Database({
             host: process.env.DB_HOST,
             port: process.env.DB_PORT,
@@ -25,8 +25,8 @@ try {
         ApolloServer(Schema).applyMiddleware({
             app: Server,
             path: "/api"
-        });
-    })()
+        })
+    })();
 
     /**
      * Respond with nothing to a direct uri connection
@@ -48,6 +48,3 @@ try {
 } catch (Err) {
     console.log("Failed to initialise server: " + Err.message)
 }
-
-
-

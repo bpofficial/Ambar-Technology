@@ -283,4 +283,8 @@ export default class AuthenticatorService {
                 return true;
         }
     }
+
+    public static async resetPass(ctx: any): Promise<boolean> {
+        return;
+    }
 }

@@ -5,6 +5,7 @@ import {
     Mutation,
     Ctx,
     Authorized,
+    InputType,
 } from "type-graphql";
 import {
     LOGGED_IN_USER,
@@ -26,6 +27,12 @@ export class UserResolver {
         return UserService.findOne(email, ctx)
     }
 
+    @Authorized(PUBLIC)
+    @Query(returns => Boolean)
+    async checkEmail(@Arg("email", type => String) email: string, @Ctx() ctx: any): Promise<Boolean | Error> {
+        return UserService.checkEmail(email, ctx)
+    }
+
     // Untested
     @Authorized(LOGGED_IN_ADMIN)
     @Query(returns => [User], { nullable: true })
@@ -40,14 +47,14 @@ export class UserResolver {
     // Untested
     @Authorized(PUBLIC)
     @Mutation(returns => User)
-    async addUser(user: NewUserInput, @Ctx() ctx: any): Promise<User | Error> {
+    async addUser(@Arg("User") user: NewUserInput, @Ctx() ctx: any): Promise<User | Error> {
         return UserService.add(user, ctx)
     }
 
     // Untested
     @Authorized(LOGGED_IN_USER)
     @Mutation(returns => User)
-    async editUser(@Arg("user") user: EditUserInput, @Ctx() ctx: any): Promise<User | Error> {
+    async editUser(@Arg("User") user: EditUserInput, @Ctx() ctx: any): Promise<User | Error> {
         return UserService.edit(user, ctx)
     }
 

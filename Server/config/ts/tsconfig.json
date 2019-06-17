@@ -3,7 +3,7 @@
         "outDir": "../../../Build/Development/Types",
         "sourceMap": true,
         "removeComments": true,
-        "allowJs": false,
+        "allowJs": true,
         "moduleResolution": "node",
         "module": "commonjs",
         "target": "es2016",

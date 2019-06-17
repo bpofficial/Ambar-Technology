@@ -5,6 +5,7 @@ import {
     ERR_NOTHING_FOUND,
     ERR_EMAIL_TAKEN
 } from "../../Common/Constants/Errors";
+import * as crypt from "bcryptjs";
 import { GraphQLError } from "graphql";
 import CRUDBaseService from "../Base/CRUD";
 import { NewUserInput, EditUserInput } from "./IO";
@@ -107,10 +108,47 @@ export default class UserService implements CRUDBaseService {
         )
     }
 
+    /**
+     * The 'add' method will save a new user to the database (Mongo).
+     * 
+     * @param args User object.
+     * @param ctx Custom GraphQL context object of user (derived from token).
+     */
     public static async add(args: NewUserInput, ctx: any): Promise<User | Error> {
-        return
+        return new Promise<User | Error>(async (resolve: Function, reject: Function): Promise<User | Error> => {
+            try {
+
+                // Generate a password and overrite the current password property on the args object.
+                args.password = crypt.hashSync(args.password, crypt.genSaltSync(8));
+
+                // Save the new user to the DB.
+                return await UserModel.create(args, (err: Error, user: User): void => {
+
+                    // Assuming the most likely instance of an error occuring is an identical email.
+                    if (err) reject(ERR_EMAIL_TAKEN);
+
+                    // Resolve otherwise.
+                    resolve(user);
+                });
+            } catch (err) {
+                console.warn('CAUGHT: [addUser] ~ try...catch \n', err.message)
+                reject(err);
+            }
+        }).catch(
+            (err) => {
+                console.warn('CAUGHT: [addUser] ~ then...catch \n', err.message)
+                throw new GraphQLError(err.message)
+            }
+        )
     }
 
+    /**
+     * The 'edit' method will update the current logged-in user's details with the
+     * provided changes.
+     * 
+     * @param args Partial User object.
+     * @param ctx Custom GraphQL context object of user (derived from token).
+     */
     public static async edit(args: EditUserInput, ctx: any): Promise<User | Error> {
         return new Promise<User | Error>((resolve: Function, reject: Function): void => {
             try {
@@ -168,6 +206,13 @@ export default class UserService implements CRUDBaseService {
         )
     }
 
+    /**
+     * The 'delete' method will delete the user matching the provided email if the email matches
+     * the current user's (in context) or if the user is an admin (User._perm == 'all'). 
+     * 
+     * @param args User email address.
+     * @param ctx Custom GraphQL context object of user (derived from token).
+     */
     public static async delete(args: User["email"], ctx: any): Promise<Boolean | Error> {
         return
     }
@@ -188,6 +233,10 @@ export default class UserService implements CRUDBaseService {
             console.log("CAUGHT: [UserServ::logout] ~ try...catch\n", err);
             return new GraphQLError(err.message);
         }
+    }
+
+    public static async checkEmail(email: string, ctx: any): Promise<Boolean | Error> {
+        return
     }
 
 }

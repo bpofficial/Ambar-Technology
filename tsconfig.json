@@ -10,6 +10,10 @@
         "rootDirs": [
             "./Server/src"
         ],
+        "types": [
+            "./Server/node_modules/@types/jest",
+            "./Server/node_modules/@types/node/ts3.2/"
+        ],
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true
     },
