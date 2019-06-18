@@ -18,6 +18,8 @@ import * as jwt from "jsonwebtoken";
 import { GraphQLError } from "graphql";
 import User from "../../Modules/Users/Class";
 import { client as redis } from "./Redis";
+require("dotenv").config("../.env")
+
 const UserModel = new User().getModelForClass(User)
 
 export default class AuthenticatorService {
@@ -85,21 +87,26 @@ export default class AuthenticatorService {
         return new Promise<User | Error>((resolve: Function, reject: Function): void => {
             try {
                 UserModel.findOne({ email }).exec((err: Error, res: any): void => {
+                    try {
+                        // If there's an error with query, reject.
+                        if (err) throw err;
+                        if (!res) throw ERR_USR_NOT_FOUND;
+                        if (!('_id' in res)) throw ERR_USR_NOT_FOUND;
 
-                    // If there's an error with query, reject.
-                    if (err) reject(err);
+                        // If context exists and is not empty, reject.
+                        if ('email' in ctx && ctx.email == email || '_id' in ctx) throw ERR_LOGGED_IN;
 
-                    // If context exists and is not empty, reject.
-                    if ('email' in ctx && ctx.email == email || '_id' in ctx) reject(ERR_LOGGED_IN);
-
-                    // If there's no context and no instance of user in redis, resolve.
-                    redis.get(res._id.toString(), (er: Error, re: any) => {
-                        er ? reject(er) : re ? reject(ERR_LOGGED_IN) : resolve(res);
-                    })
+                        // If there's no context and no instance of user in redis, resolve.
+                        redis.get(res._id.toString(), (er: Error, re: any) => {
+                            er ? reject(er) : re ? reject(ERR_LOGGED_IN) : resolve(res);
+                        })
+                    } catch (err) {
+                        reject(err);
+                    }
                 });
             } catch (err) {
                 console.warn('CAUGHT: [AuthServ::login] ~ try...catch \n')
-                throw err;
+                reject(err);
             }
         }).then(
             async ({ _doc }: any): Promise<any> => {
@@ -107,7 +114,7 @@ export default class AuthenticatorService {
                     let user: User = _doc;
                     const match: boolean = crypt.compareSync(password, user.password)
                     delete user.password;
-                    if (!match) throw ERR_INVALID_DETAILS
+                    if (!match) throw ERR_INVALID_DETAILS;
                     user.token = <string>await jwt.sign({
                         id: user._id,
                         // E.g. John D
@@ -124,12 +131,12 @@ export default class AuthenticatorService {
                     return user;
                 } catch (err) {
                     console.warn('CAUGHT: [AuthServ::login] ~ token try...catch \n')
-                    throw err;
+                    return new GraphQLError(err.message);
                 }
             }
         ).catch((err) => {
             console.warn('CAUGHT: [AuthServ::login] ~ then...catch \n')
-            throw new GraphQLError(err.message)
+            return new GraphQLError(err.message)
         })
     }
 
@@ -163,11 +170,9 @@ export default class AuthenticatorService {
                             resolve(true)
                         })
                     }
-                ).catch(
-                    (err) => {
-                        throw err;
-                    }
-                );
+                ).catch((err) => {
+                    throw err;
+                });
             } catch (err) {
                 reject(err);
             }
@@ -190,26 +195,24 @@ export default class AuthenticatorService {
         return new Promise<any>((resolve: Function, reject: Function): void => {
             try {
                 return jwt.verify(token, process.env.JWT_SECRET, (err: Error, res: any) => {
-                    if (err) reject(err);
+                    if (err) throw err;
                     if (!('id' in res)) throw ERR_TOKEN_EMPTY;
-                    resolve(res)
+                    resolve(res);
                 })
             } catch (err) {
-                throw err;
+                reject(err);
             }
-        }).catch(
-            (err) => {
-                return new GraphQLError(err.message);
-            }
-        )
+        }).catch((err) => {
+            return new GraphQLError(err.message);
+        })
     }
 
     public static async context(Request: any): Promise<any> {
+        if (!Request || Request == undefined || Request == null) return {};
         return new Promise<any>(async (resolve: Function, reject: Function): Promise<void> => {
             try {
-
                 // Check whether there is an authorization token in the headers.
-                if ("authorization" in Request.headers && Request.headers.authorization.length > 1) {
+                if ("headers" in Request && "authorization" in Request.headers && Request.headers.authorization.length > 1) {
 
                     // If there's a token, decode it.
                     return this.decode(Request.headers.authorization).then(
@@ -220,7 +223,7 @@ export default class AuthenticatorService {
 
                             // Check redis for the user object in this token.
                             redis.get(String(decToken.id), (err: Error, res: any) => {
-                                console.log(err, res)
+
                                 // Reject on error.
                                 if (err) { reject(err); return };
 
@@ -231,11 +234,8 @@ export default class AuthenticatorService {
                                 const user = JSON.parse(res)
 
                                 // Check whether the token matches the current token, if not, reject.
-                                user.token !== Request.headers.authorization ? reject(ERR_UNAUTHORISED) : resolve(user);
+                                return user && "token" in user && user.token !== Request.headers.authorization ? reject(ERR_UNAUTHORISED) : resolve(user);
 
-                                // Default, resolve empty context.
-                                resolve({})
-                                return
                             });
                         }
                     ).catch(
@@ -245,16 +245,15 @@ export default class AuthenticatorService {
                         }
                     );
                 } else {
-                    // Resolve empty context.
                     resolve({});
                 }
             } catch (err) {
-                console.warn("CAUGHT: [context] ~ try...catch \n", err.message)
+                console.warn("CAUGHT: [context] ~ try...catch \n", err)
                 reject(err);
             }
         }).catch((err) => {
             console.warn("CAUGHT: [context] ~ then...catch [1]\n", err.message)
-            throw new GraphQLError(err.message)
+            return new GraphQLError(err.message)
         });
     }
 

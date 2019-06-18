@@ -10,8 +10,14 @@ export default (Schema: GraphQLSchema) => {
         formatError: (err): GraphQLError => {
             return new GraphQLError(err.message);
         },
-        context: ({ req }) => {
-            return AuthenticationService.context(req);
+        context: async ({ req }) => {
+            if (!(req || "headers" in req)) return {};
+            const context = await AuthenticationService.context(req);
+            if (context instanceof Error || context instanceof GraphQLError) {
+                return {}
+            } else {
+                return context;
+            }
         }
     })
 }

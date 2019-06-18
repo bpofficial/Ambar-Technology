@@ -1,13 +1,41 @@
 // Need to use the ApolloServerBase from Apollo-server-testing module to eliminate type issues.
 import { ApolloServerBase } from "apollo-server-testing/node_modules/apollo-server-core/";
-import { GraphQLError } from "graphql";
+import { GraphQLError, GraphQLSchema } from "graphql";
 import { buildSchema } from "type-graphql";
 import AuthenticationService from "../Auth";
-import * as path from "path";
+
+import UserResolver from "../../../Modules/Users/Resolver";
+
+const resolvers = [
+    UserResolver
+]
+
+describe('Mock Apollo Server', () => {
+    var schema;
+    it('Should create a GraphQLSchema schema', async () => {
+        schema = await buildSchema({
+            resolvers: resolvers,
+            authChecker: AuthenticationService.check
+        });
+        expect(schema).toBeInstanceOf(GraphQLSchema);
+    })
+    it('should create an ApolloBaseServer instance', () => {
+        const server = new ApolloServerBase({
+            schema: schema,
+            formatError: (err): GraphQLError => {
+                return new GraphQLError(err.message);
+            },
+            context: ({ req }) => {
+                return AuthenticationService.context(req);
+            }
+        })
+        expect(server).toBeInstanceOf(ApolloServerBase);
+    })
+})
 
 export default async (auth?: boolean) => {
     const Schema = await buildSchema({
-        resolvers: [path.resolve(__dirname + "../../../Modules/**/Resolver.ts")],
+        resolvers: resolvers,
         authChecker: auth ? AuthenticationService.check : () => true
     });
     return new ApolloServerBase({

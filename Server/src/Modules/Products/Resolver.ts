@@ -12,7 +12,7 @@ import { NewProductInput, EditProductInput } from "./IO";
 import { Context } from "apollo-server-core";
 
 @Resolver(Product)
-export class ProductResolver {
+export default class ProductResolver {
 
     @Query(returns => Product, { nullable: true })
     async product(@Arg("sku", type => String, { description: "SKU of product." }) sku: Product["sku"], @Ctx() ctx: Context): Promise<Product | Error> {

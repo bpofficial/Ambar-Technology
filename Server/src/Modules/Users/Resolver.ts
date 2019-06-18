@@ -18,7 +18,7 @@ import { Context } from "apollo-server-core";
 import { NewUserInput, EditUserInput } from "./IO";
 
 @Resolver(User)
-export class UserResolver {
+export default class UserResolver {
 
     // Untested
     @Authorized(LOGGED_IN_USER)

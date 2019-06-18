@@ -10,7 +10,7 @@
         "lint": "eslint -c ./config/eslint/eslint.js src/** --ignore-path ./config/eslint/eslint.ignore --fix",
         "start": "node -r ts-node/register ./src/index.ts | pino-colada",
         "start:watch": "nodemon",
-        "test": "jest --config=./config/jest/config.js"
+        "test": "node ./node_modules/jest/bin/jest --config=./config/jest/config.js"
     },
     "keywords": [],
     "author": "",
