@@ -5,8 +5,8 @@
     "main": "index.js",
     "scripts": {
         "build": "cd ./Server && npm i && cd ../Client && npm i && cd .. && npm run deploy:nostart",
-        "deploy:nostart": "npm run :server && npm run :client",
-        "start": "cd ./Server && npm start && cd ..",
+        "deploy:nostart": "npm run :server && npm run :client ",
+        "start": "node ./Build/server.bundled.js",
         "client": "cd ./Client && npm start && cd ..",
         "server": "cd ./Server && npm run build && cd .."
     },
