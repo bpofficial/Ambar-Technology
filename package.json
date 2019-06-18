@@ -5,11 +5,13 @@
     "main": "index.js",
     "scripts": {
         "deploy": "npm run build:server && npm run build:client && npm run start",
+        "deploy:nostart": "npm run build:server && npm run build:client",
         "start": "cd ./Server && npm start && cd ..",
         "start:dev": "cd ./Server && npm run start:dev && cd ..",
         "build": "npm run build:client && npm run build:server && npm run start",
         "build:client": "cd ./Client && npm start && cd ..",
-        "build:server": "cd ./Server && npm run build && cd .."
+        "build:server": "cd ./Server && npm run build && cd ..",
+        "docked": "cd ./Server && npm i && cd ../Client && npm i && cd .. && npm run deploy:nostart"
     },
     "keywords": [],
     "author": "",

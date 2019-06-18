@@ -1,15 +1,17 @@
-version: '2'
+version: '3'
 services:
-  base:
-    image: node:11
-    volumes:
-      - .:/usr/src/service/
-    working_dir: /usr/src/service/
-  install:
-    extends:
-      service: base
-    command: npm i
-  build:
-    extends:
-      service: base
-    command: npm run start:watch
+  server:
+    container_name: ambar-prod-server
+    restart: always
+    build: .
+    ports:
+      - '8080:8080'
+    links:
+      - redis
+      - mongo
+  mongo:
+    container_name: ambar-mongo
+    image: 'mongo:4'
+  redis:
+    container_name: ambar-redis
+    image: 'redis:4.0.11'
