@@ -1,5 +1,5 @@
 import Order from "./OrderModel";
-import Product from "../../Products/Products/ProductModel";
+import Product from "../../../Products/__tests__/Products/ProductModel";
 import { ORDER_STATUS_OK } from "./OrderGraph";
 import { GraphQLError } from "graphql";
 

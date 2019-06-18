@@ -9,7 +9,7 @@ import News from "./News";
 import Shop from "./Shop";
 //import Footer from "../Footer/Footer";
 
-const containerStyles = makeStyles( theme => {
+const containerStyles = makeStyles(theme => {
     return {
         root: {
             display: 'flex',
@@ -49,24 +49,24 @@ export default function PageContainer() {
             portrait: useMediaQuery('only screen and ( min-width: 1200px ) and ( orientation: portrait )'),
             landscape: useMediaQuery('only screen and ( min-width: 1200px ) and ( orientation: landscape )')
         }
-    }    
-    const classes = containerStyles({theme, media});
-    return(
+    }
+    const classes = containerStyles({ theme, media });
+    return (
         <div className={classes.root} >
             {   // Show side padding only if the device is a desktop in landscape mode.
                 media.desktop.landscape && <div className={classes.padder} />
             }
 
-            { /* If the device isn't landscape-desktop view, use full-flex (100% / 1), otherwise use 75% / 0.75. */ }
+            { /* If the device isn't landscape-desktop view, use full-flex (100% / 1), otherwise use 75% / 0.75. */}
             <Paper elevation={1} className={classes.container} style={{ flex: !media.desktop.landscape ? 1 : 0.75 }}>
                 <Navbar />
                 <Switch>
-                    <Route    exact    path="/"        component={ Home } />
-                    <Route             path="/news"    component={ News } />
-                    <Route             path="/shop"    component={ Shop } />
-                    <Route             path="/account" component={ Home } />
+                    <Route exact path="/" component={Home} />
+                    <Route path="/news" component={News} />
+                    <Route path="/shop" component={Shop} />
+                    <Route path="/account" component={Home} />
                 </Switch>
-                <br /><br/><br /><br/><br /><br/>
+                <br /><br /><br /><br /><br /><br />
                 {/*<Footer />*/}
             </Paper>
             {   // Show side padding only if the device is a desktop in landscape mode.

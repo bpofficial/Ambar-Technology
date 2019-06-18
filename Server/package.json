@@ -5,11 +5,10 @@
     "main": "index.js",
     "scripts": {
         "build": "webpack --config ./config/webpack.config.js --env.",
-        "start:prod": "node ../Build/Production/server.bundled.js | pino-colada",
-        "start:dev": "node ../Build/Development/server.bundled.js | pino-colada",
+        "start": "node ../Build/server.bundled.js | pino-colada",
         "lint": "eslint -c ./config/eslint/eslint.js src/** --ignore-path ./config/eslint/eslint.ignore --fix",
-        "start": "node -r ts-node/register ./src/index.ts | pino-colada",
         "start:watch": "nodemon",
+        "monitor": "node -r ts-node/register ./src/index.ts | pino-colada",
         "test": "node ./node_modules/jest/bin/jest --config=./config/jest/config.js"
     },
     "keywords": [],
@@ -54,7 +53,6 @@
         "@types/html-minifier": "^3.5.3",
         "@types/jest": "^24.0.15",
         "@types/jsonwebtoken": "^8.3.2",
-        "@types/mocha": "^5.2.7",
         "@types/mongoose": "^5.5.6",
         "@types/mongoose-sequence": "^3.0.3",
         "@types/mongoose-unique-validator": "^1.0.1",
@@ -95,15 +93,14 @@
     },
     "nodemonConfig": {
         "ignore": [
-            "**/*.test.ts",
-            "**/*.spec.ts",
+            "**/__tests__/*",
             ".git",
             "node_modules"
         ],
         "watch": [
             "src"
         ],
-        "exec": "npm start",
+        "exec": "npm monitor",
         "ext": "ts"
     }
 }

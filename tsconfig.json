@@ -17,6 +17,9 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true
     },
+    "include": [
+        "./Server/src/**"
+    ],
     "exclude": [
         "./Server/node_modules/",
         "./Server/config/",

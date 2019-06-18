@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
 import { useMediaQuery } from "@material-ui/core";
 
-const useStyles = makeStyles( theme => ({
+const useStyles = makeStyles(theme => ({
     root: {
         backgroundColor: 'red',
         display: 'flex',
@@ -21,20 +21,20 @@ const useStyles = makeStyles( theme => ({
         width: '20%'
     },
     link: {
-        color: 'inherit', 
+        color: 'inherit',
         textDecoration: 'inherit'
     }
 }));
 
-const mobileNav = ( classes: any ) => {
-    return( 
+const mobileNav = (classes: any) => {
+    return (
         <div className={classes.root} >
-            
+
         </div>
     )
 }
 
-const defaultNav = ( classes: any ) => {
+const defaultNav = (classes: any) => {
     return (
         <div className={classes.root} >
             <Link to="/" className={classes.link}>
@@ -57,8 +57,8 @@ const defaultNav = ( classes: any ) => {
                     Account
                 </button>
             </Link>
-            <input className={classes.search} /> 
-        </div>   
+            <input className={classes.search} />
+        </div>
     )
 }
 
@@ -79,10 +79,10 @@ export default function NavBar() {
             landscape: useMediaQuery('only screen and ( min-width: 1200px ) and ( orientation: landscape )')
         }
     }
-    return(
+    return (
         <>
-            { !( media.desktop.portrait || media.desktop.landscape || media.tablet.landscape ) && mobileNav( classes ) }
-            {  ( media.desktop.portrait || media.desktop.landscape || media.tablet.landscape ) && defaultNav( classes ) }
+            {!(media.desktop.portrait || media.desktop.landscape || media.tablet.landscape) && mobileNav(classes)}
+            {(media.desktop.portrait || media.desktop.landscape || media.tablet.landscape) && defaultNav(classes)}
         </>
     )
 }

@@ -31,12 +31,12 @@ const useStyles = makeStyles({
     name: {}
 })
 
-export default function Product( props: any ) {
-    if( !props || !props.details ) {
+export default function Product(props: any) {
+    if (!props || !props.details) {
         // 404?? Or redirect back to shop?
     }
     const classes = useStyles({})
-    return(
+    return (
         <div className={classes.root}>
             <Paper className={classes.container}>
                 <Grid container>
@@ -52,10 +52,10 @@ export default function Product( props: any ) {
                             </Grid>
                             <Grid item xs={12} sm={12} md={4} lg={4} >
                                 <Typography variant="subtitle1" align="left" gutterBottom className={classes.name}>
-                                    {props.details.price}    
+                                    {props.details.price}
                                 </Typography>
                             </Grid>
-                        </Grid><br/>
+                        </Grid><br />
                         <Typography variant="body1" align="left" gutterBottom>
                             {props.details.details}
                         </Typography>

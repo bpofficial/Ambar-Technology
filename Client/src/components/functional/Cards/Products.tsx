@@ -26,25 +26,25 @@ const useStyles = makeStyles({
     },
     card: {},
     link: {
-        color: 'inherit', 
+        color: 'inherit',
         textDecoration: 'inherit',
         width: '100%'
     }
 })
 
-export default function Products( props: any, state: any ) {
+export default function Products(props: any, state: any) {
     const classes = useStyles({});
     const PRODUCT_ATTRIBS = 'id, name, details, short, sku, stock, price';
     let query: any;
-    if ( props.default ) {
+    if (props.default) {
         query = gql` { productCategories }`
-    } else if ( props.search) {
+    } else if (props.search) {
         query = gql` { products( search:"${props.search}" ) { ${PRODUCT_ATTRIBS} } }`
-    } else if ( props.item ) {
+    } else if (props.item) {
         return (
             <Product details={props.item} />
         )
-    } else if ( props.info && !props.itemId ) {
+    } else if (props.info && !props.itemId) {
         query = gql` { products( search:"${props.info}" ) { ${PRODUCT_ATTRIBS} } }`
     } else {
         query = gql` { productCategories }`
@@ -52,12 +52,12 @@ export default function Products( props: any, state: any ) {
 
     return (
         <Query query={query} errorPolicy="all">
-            {({ loading, error, data }: any ) => {
-                if ( props.default && data && !(error || loading) ) {
-                    data = data.productCategories.sort(( a: string, b: string ) => {
+            {({ loading, error, data }: any) => {
+                if (props.default && data && !(error || loading)) {
+                    data = data.productCategories.sort((a: string, b: string) => {
                         return a.toLowerCase().localeCompare(b.toLowerCase());
                     });
-                } else if ( data && !(error || loading || props.default) ) {
+                } else if (data && !(error || loading || props.default)) {
                     data = data.products;
                 }
                 return (
@@ -66,40 +66,40 @@ export default function Products( props: any, state: any ) {
                             <button>
                                 Sort by... (dropdown)
                             </button>
-                            <input placeholder="search for shit"/>
+                            <input placeholder="search for shit" />
                         </div><br />
                         <div className={classes.itemsContainer}>
                             <Grid container justify="center" spacing={8} className={classes.itemGrid}>
-                            { loading && <div>Loading products.</div> }
-                            { error && !(data || loading) && <div>Unable to retrieve products.</div> }
-                            { data && !(loading || error) && data.map( ( product: any, index: number ) => {
-                                let name = !props.default ? product.name : product
-                                let state = typeof product !== 'string' && 'id' in product ? { state: { product: product } } : {}
-                                return (
-                                    <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                                        <Card className={classes.card}>
-                                            <CardContent>
-                                                <Typography gutterBottom variant="h5" align="center" component="h2">
-                                                    {name}
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Link 
-                                                    className={classes.link}
-                                                    to={{
-                                                        pathname: `/shop/${name.replace(" ", "-").replace(" ","-")}`,
-                                                        ...state
-                                                    }}
-                                                >
-                                                    <Button size="small" color="secondary" style={{width:'100%'}}>
-                                                        Shop now
+                                {loading && <div>Loading products.</div>}
+                                {error && !(data || loading) && <div>Unable to retrieve products.</div>}
+                                {data && !(loading || error) && data.map((product: any, index: number) => {
+                                    let name = !props.default ? product.name : product
+                                    let state = typeof product !== 'string' && 'id' in product ? { state: { product: product } } : {}
+                                    return (
+                                        <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
+                                            <Card className={classes.card}>
+                                                <CardContent>
+                                                    <Typography gutterBottom variant="h5" align="center" component="h2">
+                                                        {name}
+                                                    </Typography>
+                                                </CardContent>
+                                                <CardActions>
+                                                    <Link
+                                                        className={classes.link}
+                                                        to={{
+                                                            pathname: `/shop/${name.replace(" ", "-").replace(" ", "-")}`,
+                                                            ...state
+                                                        }}
+                                                    >
+                                                        <Button size="small" color="secondary" style={{ width: '100%' }}>
+                                                            Shop now
                                                     </Button>
-                                                </Link>
-                                            </CardActions>
-                                        </Card>
-                                    </Grid>
-                                )
-                            })}
+                                                    </Link>
+                                                </CardActions>
+                                            </Card>
+                                        </Grid>
+                                    )
+                                })}
                             </Grid>
                         </div>
                     </>

@@ -1,9 +1,11 @@
 import * as express from "express";
+import * as path from "path";
 import Server from "./Common/Services/Express";
 import ApolloServer from "./Common/Services/Apollo";
 import Database from "./Common/Services/Mongoose";
 import Authenticator from "./Common/Services/Auth";
 import { buildSchema } from "type-graphql";
+import { Resolvers } from "./Modules";
 import "reflect-metadata";
 
 try {
@@ -19,7 +21,7 @@ try {
          * Intialiase Apollo GraphQL Service
          */
         const Schema = await buildSchema({
-            resolvers: [__dirname + "/Modules/**/Resolver.ts"],
+            resolvers: Resolvers,
             authChecker: Authenticator.check
         });
         ApolloServer(Schema).applyMiddleware({
@@ -32,8 +34,11 @@ try {
      * Respond with nothing to a direct uri connection
      * TODO: respond with actual client 
      */
-    Server.get("/", (_req: express.Request, res: express.Response): void => {
-        res.status(200).send().end();
+
+    Server.use(express.static(path.resolve(__dirname, 'Public/')));
+
+    Server.get("*", (_req: express.Request, res: express.Response): void => {
+        res.status(200).sendFile(path.resolve(__dirname, 'Public/index.html'));
     });
 
     // Server rendered for browsers with js disabled.

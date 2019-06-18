@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "deploy": "npm run build:server && npm run build:client && npm run start",
-        "start": "cd ./Server && npm run start:prod && cd ..",
+        "start": "cd ./Server && npm start && cd ..",
         "start:dev": "cd ./Server && npm run start:dev && cd ..",
         "build": "npm run build:client && npm run build:server && npm run start",
         "build:client": "cd ./Client && npm start && cd ..",

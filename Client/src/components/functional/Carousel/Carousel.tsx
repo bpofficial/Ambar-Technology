@@ -10,9 +10,9 @@ const useStyles = makeStyles({
     }
 })
 
-export default function Carousel( props: any, state: any ) {
-    const classes = useStyles();
-    return(
+export default function Carousel(props: any, state: any) {
+    const classes = useStyles({});
+    return (
         <Paper elevation={1} className={classes.root} >
             Carousel
         </Paper>

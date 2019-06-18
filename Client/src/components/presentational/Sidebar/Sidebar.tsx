@@ -18,14 +18,15 @@ const useStyles = makeStyles({
 
 export default function PSidebar() {
     const classes = useStyles({});
-    return(
+    console.log('has been mounted')
+    return (
         <Paper className={classes.root} >
             <div className={classes.container}>
                 <Typography variant="h5" gutterBottom>
                     Product Categories
                 </Typography>
                 <List dense>
-                    <ListItem divider/>
+                    <ListItem divider />
                     <SidebarContent />
                 </List>
             </div>

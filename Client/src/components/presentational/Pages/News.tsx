@@ -9,7 +9,7 @@ const useStyles = makeStyles({
 
 export default function NewsContainer() {
     const classes = useStyles({});
-    return(
+    return (
         <div className={classes.root}>
             News
         </div>

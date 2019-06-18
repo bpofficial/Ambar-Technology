@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 import Theme from './themes/';
-import PageContainer from './components/presentational/Pages';
+import PageContainer from './Components/Presentational/Pages';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import ApolloClient from "apollo-client";
 import { ApolloProvider } from "react-apollo";
@@ -18,10 +18,10 @@ const client = new ApolloClient({
 
 export default class App extends React.Component {
     public render(): React.ReactElement {
-        return(
+        return (
             <Router>
                 <ApolloProvider client={client}>
-                    <MuiThemeProvider theme = { Theme.one }>
+                    <MuiThemeProvider theme={Theme.one}>
                         <PageContainer />
                     </MuiThemeProvider>
                 </ApolloProvider>
@@ -30,4 +30,4 @@ export default class App extends React.Component {
     }
 }
 
-ReactDOM.render( <App />, document.getElementById('app-root') );
+ReactDOM.render(<App />, document.getElementById('app-root'));

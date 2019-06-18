@@ -1,5 +1,6 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 const fs = require('fs');
 
 require('dotenv').config({ path: '../.env' });
@@ -7,53 +8,47 @@ const dev = true;//process.env.MODE == 'development' || process.env.MODE == 'dev
 
 const tsConfig = {
     "compilerOptions": {
-        "outDir": "../../../Build/" + ( dev ? 'Development/Types' : 'Production/Types'),
         "sourceMap": true,
         "removeComments": true,
-        "allowJs": false,
+        "allowJs": true,
         "moduleResolution": "node",
         "module": "commonjs",
         "target": "es6",
+        "types": ["jest"],
         "allowSyntheticDefaultImports": true,
-        "lib": ["es5", "es6", "es7", "es2017"],
-        "declaration": true,
-        "declarationDir": "../../../Build/" + ( dev ? 'Development/Types' : 'Production/Types'),
-        "forceConsistentCasingInFileNames": true,
-        "noImplicitReturns": true,
-        "noImplicitThis": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "suppressImplicitAnyIndexErrors": true,
-        "noUnusedLocals": true,
-        "rootDirs": ["../../src"]
+        "lib": ["es5", "es6", "es7", "es2017", "es2016", "es2015"],
+        "rootDirs": ["../../src"],
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
     },
     "include": [
         "../../src/**/*"
     ],
     "exclude": [
         "../../node_modules/",
-        "../../config/"
+        "../../config/",
+        "../../src/**/__tests__/*"
     ]
 }
 
 module.exports = () => {
-    
+
     /**
      * Pretty-print tsConfig to the tsconfig.json file.. This minimises amount of files needed for 
      *  different envs as it's not permitted to save tsconfig as a module.
-     */    
-    fs.writeFileSync('./config/ts/tsconfig.json', JSON.stringify( tsConfig, null, 4 ) );
+     */
+    fs.writeFileSync('./config/ts/webpack.tsconfig.json', JSON.stringify(tsConfig, null, 4));
 
     return {
         // Enable defaults for each build setting.
         mode: dev ? 'development' : 'production',
 
         // Project entry points (chunks)
-        entry: { 
+        entry: {
             // Server entry path, intialisation is in index.ts of src.
-            server: path.join( __dirname, '../src/index.ts' ) 
-        }, 
-        
+            server: path.join(__dirname, '../src/index.ts')
+        },
+
         // Resolutions, extensions, aliases etc.
         resolve: {
             // Resolve all the extensions used in the project, mjs is a mongoosejs file.
@@ -61,31 +56,31 @@ module.exports = () => {
         },
 
         // Bundled output config.
-        output: { 
-            // Set output path to the build dir relative to the current build setting (e.g development).
-            path: path.resolve( __dirname + '/../../Build/' + ( dev ? 'Development/' : 'Production/' ) ),
+        output: {
+            // Set output path to the build dir
+            path: path.resolve(__dirname + '/../../Build/'),
 
             // Although there are chunks, it's best to save them all into a single file on the server side as there's no need to lazy load or code split.
             filename: '[name].bundled.js',
-        }, 
+        },
         // Set the bundle target to node. Alternative is 'web', which is intended for browsers only.
-        target: 'node', 
-        node: { 
+        target: 'node',
+        node: {
             __dirname: false,
             __filename: false,
         },
-        module: { 
-            rules: [ 
-                { 
+        module: {
+            rules: [
+                {
                     // Look for all typescript files to process.
                     test: /\.(ts|tsx)$/,
 
                     // Exclude searching node_modules folder.
-                    exclude: /node_modules/, 
-                    use: { 
+                    exclude: /node_modules/,
+                    use: {
                         // Define the desired loader to process any found typescript files.
-                        loader: "awesome-typescript-loader?configFileName=./config/ts/tsconfig.json"
-                    } 
+                        loader: "awesome-typescript-loader?configFileName=./config/ts/webpack.tsconfig.json"
+                    }
                 },
                 {
                     // Fix: Scans for MongooseJS files and compiles them to native javascript.
@@ -93,13 +88,14 @@ module.exports = () => {
                     include: /node_modules/,
                     type: 'javascript/auto'
                 }
-            ] 
+            ]
         },
         plugins: [
             // Copy from parent project's dir to the corresponding build dir.
             new CopyPlugin([
                 { from: '../.env', to: './' }
-            ])
+            ]),
+            new webpack.IgnorePlugin(/^hiredis$/)
         ]
     }
 } 

@@ -7,14 +7,14 @@ require('dotenv').config({ path: '../.env' });
 module.exports = () => {
     const dev = true;//process.env.MODE == 'development' || process.env.MODE == 'dev' ? true : false;
     const build = {
-        out: path.resolve( __dirname + '/../../Build/' + ( dev ? 'Development/Public/' : 'Production/Public/' ) ),
-        public: path.resolve( __dirname + '/../../Build/' + ( dev ? 'Development/Public/' : 'Production/Public/' ) )
+        out: path.resolve(__dirname + '/../../Build/Public/'),
+        public: path.resolve(__dirname + '/../../Build//Public/')
     }
 
     var config = {
         mode: dev ? 'development' : 'production',
         entry: {
-            client: path.join( __dirname, '../src/index.tsx' ) 
+            client: path.join(__dirname, '../src/index.tsx')
         },
         devtool: 'source-map',
         devServer: {
@@ -26,34 +26,34 @@ module.exports = () => {
         resolve: {
             extensions: ['.ts', '.tsx', '.js', '.jsx']
         },
-        output: { 
+        output: {
             path: build.out,
             publicPath: '/',
             filename: '[name].bundled.js',
             chunkFilename: '[name].chunk.js',
             sourceMapFilename: '[name].js.map'
-        }, 
-        module: { 
+        },
+        module: {
             rules: [
                 {
                     test: /\.(ts|tsx)$/,
-                    exclude: /node_modules/, 
+                    exclude: /node_modules/,
                     use: [
-                        { loader: "awesome-typescript-loader?configFileName=./config/ts/tsconfig" + ( dev ? ".dev.json" : ".prod.json" ) },
+                        { loader: "awesome-typescript-loader?configFileName=./config/ts/tsconfig" + (dev ? ".dev.json" : ".prod.json") },
                         { loader: require.resolve('react-docgen-typescript-loader') },
                     ]
-                }, 
-                { 
+                },
+                {
                     test: /\.css$/,
                     exclude: /node_modules/,
-                    use: ["style-loader", "css-loader"] 
-                }, 
-                { 
-                    enforce: "pre", 
-                    test: /\.(js|jsx)$/, 
-                    loader: "source-map-loader" 
+                    use: ["style-loader", "css-loader"]
+                },
+                {
+                    enforce: "pre",
+                    test: /\.(js|jsx)$/,
+                    loader: "source-map-loader"
                 }
-            ] 
+            ]
         },/*
         optimization: {
             runtimeChunk: 'single',
@@ -73,7 +73,7 @@ module.exports = () => {
             }
         }*/
     }
-    if ( dev ) {
+    if (dev) {
         config.plugins = [
             new webpack.HotModuleReplacementPlugin(),
             new HtmlWebpackPlugin({

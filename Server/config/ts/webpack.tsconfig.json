@@ -1,21 +1,23 @@
 {
     "compilerOptions": {
-        "outDir": "../../../Build/Development/Types",
         "sourceMap": true,
         "removeComments": true,
         "allowJs": true,
         "moduleResolution": "node",
         "module": "commonjs",
         "target": "es6",
+        "types": [
+            "jest"
+        ],
         "allowSyntheticDefaultImports": true,
         "lib": [
             "es5",
             "es6",
             "es7",
-            "es2017"
+            "es2017",
+            "es2016",
+            "es2015"
         ],
-        "declaration": true,
-        "declarationDir": "../../../Build/Development/Types",
         "rootDirs": [
             "../../src"
         ],
@@ -27,6 +29,7 @@
     ],
     "exclude": [
         "../../node_modules/",
-        "../../config/"
+        "../../config/",
+        "../../src/**/__tests__/*"
     ]
 }

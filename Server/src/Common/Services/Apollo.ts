@@ -5,8 +5,8 @@ import { GraphQLError, GraphQLSchema } from "graphql";
 export default (Schema: GraphQLSchema) => {
     return new ApolloServer({
         schema: Schema,
-        playground: process.env.MODE == "development",
-        tracing: process.env.MODE == "development",
+        playground: process.env.MODE == "development" || false,
+        tracing: process.env.MODE == "development" || false,
         formatError: (err): GraphQLError => {
             return new GraphQLError(err.message);
         },

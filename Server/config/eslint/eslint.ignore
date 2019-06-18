@@ -1,4 +1,4 @@
-./node_modules/**
+**
 ./config/**
 eslint.js
 ./eslint.js
