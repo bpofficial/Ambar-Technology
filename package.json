@@ -6,13 +6,15 @@
     "scripts": {
         "build": "cd ./Server && npm i && cd ../Client && npm i && cd .. && npm run deploy:nostart",
         "deploy:nostart": "npm run :server && npm run :client ",
-        "start": "node ./Build/server.bundled.js",
-        "client": "cd ./Client && npm start && cd ..",
-        "server": "cd ./Server && npm run build && cd .."
+        "start": "pm2 start ./Build/server.bundled.js",
+        ":client": "cd ./Client && npm start && cd ..",
+        ":server": "cd ./Server && npm run build && cd .."
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "dependencies": {},
+    "dependencies": {
+        "pm2": "^3.5.1"
+    },
     "devDependencies": {}
 }

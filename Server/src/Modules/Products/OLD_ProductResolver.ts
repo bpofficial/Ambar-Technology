@@ -1,5 +1,5 @@
-import Product from "./ProductModel";
-import { LoggedInOnly } from './ProductGraph';
+import Product from "./OLD_ProductModel";
+import { LoggedInOnly } from './OLD_ProductGraph';
 import { GraphQLError } from "graphql";
 //const converter = new (require('showdown').Converter())
 
@@ -9,33 +9,33 @@ export interface IO {
 
 export default {
     Query: {
-        product: ( _root: string, args: IO, context: any ): Promise<object> | Error => {
-            return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
+        product: (_root: string, args: IO, context: any): Promise<object> | Error => {
+            return new Promise<object>(async (resolve: Function, reject: Function): Promise<any> => {
 
                 // Change 'id' to '_id' for compatability with MongoDB indexing.
-                if ( 'id' in args ) args._id = args.id; delete args.id;
+                if ('id' in args) args._id = args.id; delete args.id;
 
                 // Execute query based on arguments provided.
-                return await Product.findOne( args ).exec( ( err: Error, res: IO ): void => {
+                return await Product.findOne(args).exec((err: Error, res: IO): void => {
 
                     // Reject on error, else resolve document found.
-                    if ( err ) reject( err ); else resolve( res );
+                    if (err) reject(err); else resolve(res);
                 });
             }).then(
-                ( product: any ) => {
-                    
+                (product: any) => {
+
                     // Define new product object
                     let newData = {};
 
                     try {
                         // Loop through keys of the product document
-                        Object.keys( product._doc ).map( ( val ) => {
-                            
+                        Object.keys(product._doc).map((val) => {
+
                             // Check whether a key is '_id' (mongo) and change it to 'id' (defined)
-                            if ( val == '_id' ) newData['id'] = product._doc._id; delete product._doc._id;
+                            if (val == '_id') newData['id'] = product._doc._id; delete product._doc._id;
 
                             // Check whether the user is logged in, or whether not logged in but the key isn't in a 'logged in only' array.
-                            if ( context.logged || !context.logged && !LoggedInOnly.includes( val ) ) {
+                            if (context.logged || !context.logged && !LoggedInOnly.includes(val)) {
                                 // Append the corresponding key from the returned document to the new product object.
                                 newData[val] = product._doc[val]
                             } else {
@@ -43,34 +43,34 @@ export default {
                                 newData[val] = `Please login to see ${val}.`
                             }
                         });
-                    } catch( err ) {
+                    } catch (err) {
                         console.warn('CAUGHT: [product] ~ try...catch \n', err)
                     }
                     newData['stock'] = newData['stock'].available;
                     return newData
                 }
             ).catch(
-                ( err ) => {
+                (err) => {
                     console.warn('CAUGHT: [product] ~ then...catch \n', err)
                     return err;
                 }
             )
         },
-        products: ( _root: string, args: any, context: any ): Promise<any[]> | Error => {
+        products: (_root: string, args: any, context: any): Promise<any[]> | Error => {
             let filter: any = {
-                    $or: []
-                }, sort: any = {};
-            if ( 'orderBy' in args) {
+                $or: []
+            }, sort: any = {};
+            if ('orderBy' in args) {
                 let subject: string[] = args.orderBy.split('_');
                 sort = {
                     [subject[0]]: subject[1].toLowerCase() == 'asc' ? 1 : -1
                 }
             }
-            if ( 'search' in args ) {
-                let string: string[] = args.search.replace('-','').split(' ');
+            if ('search' in args) {
+                let string: string[] = args.search.replace('-', '').split(' ');
                 let searchKeys = ['details', 'short', 'name', 'sku', 'category']
-                for( let keyword of string ) {
-                    for ( let key of searchKeys ) {
+                for (let keyword of string) {
+                    for (let key of searchKeys) {
                         filter.$or.push({
                             [key]: {
                                 $regex: keyword,
@@ -80,26 +80,26 @@ export default {
                     }
                 }
             }
-            return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
+            return new Promise<object>(async (resolve: Function, reject: Function): Promise<any> => {
                 return await Product.find(
                     args ? filter : {},
-                    null, 
+                    null,
                     args ? Object.keys(sort).length > 0 ? { sort: sort } : {} : {}
-                ).exec( ( err: Error, res: any ): void => {
-                    if ( err ) reject( err ); else resolve( res );
+                ).exec((err: Error, res: any): void => {
+                    if (err) reject(err); else resolve(res);
                 });
             })
                 .then(
-                    ( data: any[] ) => {
+                    (data: any[]) => {
                         var newData: any[] = [];
                         try {
-                            for( let product of data ) {
-                                if ( '_doc' in product) product = product._doc;
+                            for (let product of data) {
+                                if ('_doc' in product) product = product._doc;
                                 product.stock = product.stock.available;
                                 let filteredProduct = {}
-                                Object.keys( product ).map( ( val ) => {
-                                    if ( val == '_id' ) filteredProduct['id'] = product._id;
-                                    if ( context._id || !context._id && !LoggedInOnly.includes( val ) ) {
+                                Object.keys(product).map((val) => {
+                                    if (val == '_id') filteredProduct['id'] = product._id;
+                                    if (context._id || !context._id && !LoggedInOnly.includes(val)) {
                                         filteredProduct[val] = product[val]
                                     } else {
                                         filteredProduct[val] = `Please login to see ${val}.`
@@ -108,124 +108,124 @@ export default {
                                 newData.push(filteredProduct)
                             }
                             return newData
-                        } catch ( err ) {
+                        } catch (err) {
                             console.warn('CAUGHT: [products] ~ try...catch \n', err)
                             return []
                         }
                     }
-                ).catch( 
-                    ( err ) => {
+                ).catch(
+                    (err) => {
                         console.warn('CAUGHT: [products] ~ then...catch \n', err)
                         return err;
                     }
                 )
         },
-        productCategories: ( _root: string, args: any, context: any ): Promise<any> | Error => {
-            return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
-                return await Product.distinct('category').exec( ( err: Error, res: any ): void => {
-                    if ( err ) reject( err ); else resolve( res );
+        productCategories: (_root: string, args: any, context: any): Promise<any> | Error => {
+            return new Promise<object>(async (resolve: Function, reject: Function): Promise<any> => {
+                return await Product.distinct('category').exec((err: Error, res: any): void => {
+                    if (err) reject(err); else resolve(res);
                 });
             }).then(
-                ( result ) => {
+                (result) => {
                     return result
                 }
             )
         }
     },
     Mutation: {
-        addProduct: ( _root: string, args: IO, context: any ): Promise<object> | Error => {
-            return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
+        addProduct: (_root: string, args: IO, context: any): Promise<object> | Error => {
+            return new Promise<object>(async (resolve: Function, reject: Function): Promise<any> => {
 
                 // Check whether user is logged in (context._id not null) or whether they are logged in but unauthorized to create products.
-                if ( !context._id || !context._perm.product.canCreate ) reject(new Error('Unauthorized to create products.'));
+                if (!context._id || !context._perm.product.canCreate) reject(new Error('Unauthorized to create products.'));
 
                 try {
                     // Open details and convert from markdown to html.
                     //args.details = converter.makeHtml(args.details)
-                    const newProduct = new Product( args )
-                    return await newProduct.save( ( err: Error, product: any ): void => {
-                        if ( err ) reject( err ); else resolve( product );
+                    const newProduct = new Product(args)
+                    return await newProduct.save((err: Error, product: any): void => {
+                        if (err) reject(err); else resolve(product);
                     });
-                } catch ( err ) {
+                } catch (err) {
                     console.warn('CAUGHT: [addProduct] ~ try...catch \n', err.message)
                     throw err;
                 }
             }).then(
-                ( confirmation: any ) => {
+                (confirmation: any) => {
                     return confirmation
                 }
             ).catch(
-                ( err ) => {
+                (err) => {
                     console.warn('CAUGHT: [addProduct] ~ then...catch \n', err.message)
                     throw new GraphQLError(err.message)
                 }
             )
         },
-        editProduct: ( _root: string, args: IO, context: any ): Promise<object> | Error =>{
-            return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
+        editProduct: (_root: string, args: IO, context: any): Promise<object> | Error => {
+            return new Promise<object>(async (resolve: Function, reject: Function): Promise<any> => {
 
                 // Check whether user is logged in (context._id not null) or whether they are logged in but unauthorized to edit products.
-                if ( !context._id || !context._perm.product.canEdit ) reject(new Error('Unauthorized to edit products.'));
+                if (!context._id || !context._perm.product.canEdit) reject(new Error('Unauthorized to edit products.'));
 
                 try {
                     let index: any;
-                    if ( 'id' in args ) {
-                        index = { _id: args.id }; 
+                    if ('id' in args) {
+                        index = { _id: args.id };
                         delete args.id;
-                    } else if ( 'sku' in args ) {
+                    } else if ('sku' in args) {
                         index = { sku: args.sku };
                     } else {
-                        if ( !( 'id' in args || 'sku' in args ) ) throw new Error('No identifier provided. Use \'id\' or \'sku\'.');
+                        if (!('id' in args || 'sku' in args)) throw new Error('No identifier provided. Use \'id\' or \'sku\'.');
                     }
-                    return await Product.findOneAndUpdate( {...index}, { $set: {...args} }).exec(
-                        ( err: Error, res: any ): void => {
-                            err ? reject( err ) : resolve( res );
+                    return await Product.findOneAndUpdate({ ...index }, { $set: { ...args } }).exec(
+                        (err: Error, res: any): void => {
+                            err ? reject(err) : resolve(res);
                         }
                     );
-                } catch ( err ) {
+                } catch (err) {
                     console.warn('CAUGHT: [addProduct] ~ try...catch \n', err.message)
                     throw err;
                 }
             }).then(
-                ( confirmation: any ) => {
+                (confirmation: any) => {
                     return confirmation
                 }
             ).catch(
-                ( err ) => {
+                (err) => {
                     console.warn('CAUGHT: [addProduct] ~ then...catch \n', err.message)
                     throw new GraphQLError(err.message)
                 }
             )
         },
-        deleteProduct: ( _root: string, args: IO, context: any ): Promise<object> | Error => {
-            return new Promise<object>( async ( resolve: Function, reject: Function ): Promise<any> => {
+        deleteProduct: (_root: string, args: IO, context: any): Promise<object> | Error => {
+            return new Promise<object>(async (resolve: Function, reject: Function): Promise<any> => {
 
                 // Check whether user is logged in (context._id not null) or whether they are logged in but unauthorized to delete products.
-                if ( !context._id || !context._perm.product.canDestroy ) reject(new Error('Unauthorized to remove products.'));
+                if (!context._id || !context._perm.product.canDestroy) reject(new Error('Unauthorized to remove products.'));
 
                 try {
                     let index: any;
-                    if ( 'id' in args ) {
-                        index = { _id: args.id }; 
+                    if ('id' in args) {
+                        index = { _id: args.id };
                         delete args.id;
-                    } else if ( 'sku' in args ) {
+                    } else if ('sku' in args) {
                         index = { sku: args.sku };
                     } else {
-                        if ( !( 'id' in args || 'sku' in args ) ) throw new Error('No identifier provided. Use \'id\' or \'sku\'.');
+                        if (!('id' in args || 'sku' in args)) throw new Error('No identifier provided. Use \'id\' or \'sku\'.');
                     }
-                    return await Product.findOneAndRemove( {...index} ).exec( ( err: Error, res: IO ): void => {
-                        err ? reject( err ) : resolve( res );
+                    return await Product.findOneAndRemove({ ...index }).exec((err: Error, res: IO): void => {
+                        err ? reject(err) : resolve(res);
                     });
-                } catch ( err ) {
+                } catch (err) {
                     console.warn('CAUGHT: [addProduct] ~ try...catch \n', err.message)
                     throw err;
                 }
             }).then(
-                ( confirmation: any ) => {
+                (confirmation: any) => {
                     return confirmation
                 }
             ).catch(
-                ( err ) => {
+                (err) => {
                     console.warn('CAUGHT: [addProduct] ~ then...catch \n', err.message)
                     throw new GraphQLError(err.message)
                 }
