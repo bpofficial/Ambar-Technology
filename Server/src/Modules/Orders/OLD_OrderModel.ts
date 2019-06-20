@@ -38,6 +38,17 @@ interface TOrder {
     number: number;
     creator: string;
     date: string;
+    items: any[];
+    shipping: {
+        cost: number;
+        courier: string;
+        method: string;
+        details: string;
+    }
+    gtotal: number;
+    gst: number;
+    status: string;
+    payment: string;
 }
 
 /*

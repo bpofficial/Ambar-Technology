@@ -1,10 +1,10 @@
 // Need to use the ApolloServerBase from Apollo-server-testing module to eliminate type issues.
-import { ApolloServerBase } from "apollo-server-testing/node_modules/apollo-server-core/";
+import { ApolloServerBase } from "apollo-server-core";
 import { GraphQLError, GraphQLSchema } from "graphql";
 import { buildSchema } from "type-graphql";
 import AuthenticationService from "../Auth";
-
 import UserResolver from "../../../Modules/Users/Resolver";
+import "reflect-metadata";
 
 const resolvers = [
     UserResolver
@@ -23,7 +23,7 @@ describe('Mock Apollo Server', () => {
         const server = new ApolloServerBase({
             schema: schema,
             formatError: (err): GraphQLError => {
-                return new GraphQLError(err.message);
+                return err;
             },
             context: ({ req }) => {
                 return AuthenticationService.context(req);
@@ -33,18 +33,18 @@ describe('Mock Apollo Server', () => {
     })
 })
 
-export default async (auth?: boolean) => {
+export default async (auth?: boolean, req?: any) => {
     const Schema = await buildSchema({
         resolvers: resolvers,
         authChecker: auth ? AuthenticationService.check : () => true
     });
-    return new ApolloServerBase({
+    return await new ApolloServerBase({
         schema: Schema,
         formatError: (err): GraphQLError => {
-            return new GraphQLError(err.message);
+            return err;
         },
-        context: ({ req }) => {
-            return AuthenticationService.context(req);
+        context: async () => {
+            return await AuthenticationService.context(req)
         }
     })
 }

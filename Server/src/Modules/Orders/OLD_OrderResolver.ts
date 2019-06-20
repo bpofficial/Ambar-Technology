@@ -1,6 +1,6 @@
-import Order from "./OrderModel";
-import Product from "../../../Products/__tests__/Products/ProductModel";
-import { ORDER_STATUS_OK } from "./OrderGraph";
+import Order from "./OLD_OrderModel";
+import Product from "../Products/OLD_ProductModel";
+import { ORDER_STATUS_OK } from "./OLD_OrderGraph";
 import { GraphQLError } from "graphql";
 
 export interface IO {

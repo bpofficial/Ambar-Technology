@@ -8,7 +8,7 @@ export const ERR_TOKEN_EMPTY: Error = new Error("Token is empty.");
 export const ERR_LOGGED_IN: Error = new Error("Already logged in.");
 
 // Error for attempting to access user that doesnt exist.
-export const ERR_USR_NOT_FOUND = (ID: string): Error => { return new Error(`User with identifier ${ID} not found`) }
+export const ERR_USR_NOT_FOUND: (ID: string) => Error = (ID: string): Error => { return new Error(`User with identifier '${ID}' not found.`) }
 
 // Error for attempting to access restricted resource without authorisation.
 export const ERR_UNAUTHORISED: Error = new Error("Unauthorised to perform this action.")

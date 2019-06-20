@@ -20,11 +20,11 @@ import { NewUserInput, EditUserInput } from "./IO";
 @Resolver(User)
 export default class UserResolver {
 
-    // Untested
+    // Testing
     @Authorized(LOGGED_IN_USER)
     @Query(returns => User, { nullable: true })
-    async user(@Arg("email", type => String, { description: "Email of user." }) email: string, @Ctx() ctx: any): Promise<User | Error> {
-        return UserService.findOne(email, ctx)
+    async user(@Ctx() ctx: any): Promise<User | Error> {
+        return UserService.findOne(ctx)
     }
 
     @Authorized(PUBLIC)
@@ -46,12 +46,14 @@ export default class UserResolver {
 
     // Untested
     @Authorized(PUBLIC)
-    @Mutation(returns => User)
-    async addUser(@Arg("User") user: NewUserInput, @Ctx() ctx: any): Promise<User | Error> {
-        return UserService.add(user, ctx)
+    @Mutation(returns => Boolean || Error)
+    async addUser(@Arg("User") user: NewUserInput, @Ctx() ctx: any): Promise<Boolean | Error> {
+        const res = UserService.add(user, ctx)
+        if (res instanceof Error) return new Error(res.message);
+        return !!res;
     }
 
-    // Untested
+    // Working / Tested
     @Authorized(LOGGED_IN_USER)
     @Mutation(returns => User)
     async editUser(@Arg("User") user: EditUserInput, @Ctx() ctx: any): Promise<User | Error> {
@@ -61,11 +63,11 @@ export default class UserResolver {
     // Untested
     @Authorized(LOGGED_IN_USER)
     @Mutation(returns => Boolean)
-    async removeUser(@Arg("email", type => String) email: string, @Ctx() ctx: any): Promise<Boolean | Error> {
-        return UserService.delete(email, ctx)
+    async delUser(@Ctx() ctx: any, @Arg("email", type => String, { nullable: true }) email?: string): Promise<Boolean | Error> {
+        return UserService.delete(ctx, email)
     }
 
-    // Working (TODO: test)
+    // Working / Tested
     @Authorized(PUBLIC)
     @Mutation(returns => User)
     async login(

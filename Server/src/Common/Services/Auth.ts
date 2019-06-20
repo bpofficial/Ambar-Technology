@@ -89,9 +89,7 @@ export default class AuthenticatorService {
                 UserModel.findOne({ email }).exec((err: Error, res: any): void => {
                     try {
                         // If there's an error with query, reject.
-                        if (err) throw err;
-                        if (!res) throw ERR_USR_NOT_FOUND;
-                        if (!('_id' in res)) throw ERR_USR_NOT_FOUND;
+                        if (err || !res || !('_id' in res)) throw ERR_USR_NOT_FOUND(email);
 
                         // If context exists and is not empty, reject.
                         if ('email' in ctx && ctx.email == email || '_id' in ctx) throw ERR_LOGGED_IN;
@@ -111,8 +109,8 @@ export default class AuthenticatorService {
         }).then(
             async ({ _doc }: any): Promise<any> => {
                 try {
-                    let user: User = _doc;
-                    const match: boolean = crypt.compareSync(password, user.password)
+                    let user: any = _doc;
+                    const match: boolean = crypt.compareSync(password, user.password);
                     delete user.password;
                     if (!match) throw ERR_INVALID_DETAILS;
                     user.token = <string>await jwt.sign({
@@ -136,6 +134,7 @@ export default class AuthenticatorService {
             }
         ).catch((err) => {
             console.warn('CAUGHT: [AuthServ::login] ~ then...catch \n')
+            //console.log(err)
             return new GraphQLError(err.message)
         })
     }
@@ -151,20 +150,20 @@ export default class AuthenticatorService {
             try {
 
                 // If there's no token in context, throw ERR_NO_TOKEN (maybe better to use ERR_NOT_LOGGED_IN)
-                if (!('token' in ctx)) throw ERR_NO_TOKEN;
+                if (!('token' in ctx)) { reject(ERR_NO_TOKEN); return; }
 
                 // Decode the token using the local static decode (verify) method.
                 await this.decode(ctx.token).then(
                     (token) => {
 
                         // Check whether token is an instance of an Error
-                        if (token instanceof GraphQLError || token instanceof Error) reject(false);
+                        if (token instanceof GraphQLError || token instanceof Error) { reject(token); return; }
 
                         // Remove the current user from redis (using token)
                         redis.del(token.id.toString(), (err: Error) => {
 
                             // Reject on redis error.
-                            if (err) reject(false);
+                            if (err) { reject(err); return; }
 
                             // Resolve otherwise
                             resolve(true)
@@ -178,8 +177,8 @@ export default class AuthenticatorService {
             }
         }).catch(
             (err) => {
-                console.warn("CAUGHT: [AuthServ::logout] ~ then...catch\n", err.stack.split("\n", 2).join(""))
-                return false;
+                console.warn("CAUGHT: [AuthServ::logout] ~ then...catch\n")
+                return new GraphQLError(err.message);
             }
         )
     }

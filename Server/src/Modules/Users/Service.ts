@@ -11,23 +11,30 @@ import CRUDBaseService from "../Base/CRUD";
 import { NewUserInput, EditUserInput } from "./IO";
 import { client as redis } from "../../Common/Services/Redis";
 import AuthenticationService from "../../Common/Services/Auth";
+import { ObjectID } from "bson";
 
 export const UserModel = new User().getModelForClass(User)
 
 export default class UserService implements CRUDBaseService {
 
-    public static async findOne(args: string, ctx: any): Promise<User | Error> {
+    public static async findOne(ctx: any): Promise<User | Error> {
         return new Promise<User | Error>(async (resolve: Function, reject: Function): Promise<void> => {
+            try {
+                if (!('email' in ctx || 'token' in ctx)) { reject(ERR_UNAUTHORISED); return; }
 
-            // Execute query based on sku provided, if not logged in, hide the price.
-            await UserModel.findOne({ email: args }).exec((err, res): void => {
-                // Reject on error, else resolve document found.
-                if (err) reject(err); else resolve(res);
-            });
+                // Execute query based on sku provided, if not logged in, hide the price.
+                await UserModel.findOne({ email: ctx.email }, '-password').exec((err, res): void => {
+                    // Reject on error, else resolve document found.
+                    err ? reject(err) : resolve(res);
+                });
+            } catch (err) {
+                console.warn('CAUGHT: [User] ~ try...catch \n', err.message)
+                throw err;
+            }
         }).catch(
             (err) => {
-                console.warn('CAUGHT: [User] ~ then...catch \n', err)
-                return err;
+                console.warn('CAUGHT: [User] ~ then...catch \n')
+                return new GraphQLError(err.message);
             }
         )
     }
@@ -125,7 +132,7 @@ export default class UserService implements CRUDBaseService {
                 return await UserModel.create(args, (err: Error, user: User): void => {
 
                     // Assuming the most likely instance of an error occuring is an identical email.
-                    if (err) reject(ERR_EMAIL_TAKEN);
+                    if (err) { console.log(err); reject(ERR_EMAIL_TAKEN); return }
 
                     // Resolve otherwise.
                     resolve(user);
@@ -152,55 +159,62 @@ export default class UserService implements CRUDBaseService {
     public static async edit(args: EditUserInput, ctx: any): Promise<User | Error> {
         return new Promise<User | Error>((resolve: Function, reject: Function): void => {
             try {
-
                 /* 
                  * Password changes are done in the editPass method and require a special token 
                  * to be authenticated (this will be done via 2FA - email or mobile codes in browser).
                 */
 
                 // Reject with unauthorised if the user is not logged in.
-                if (!(ctx || 'email' in ctx)) reject(ERR_UNAUTHORISED);
+                if (!('email' in ctx || 'token' in ctx)) { reject(ERR_UNAUTHORISED); return; }
 
                 // check whether there is a new email, and whether anyone else has this email.
                 if ('email' in args && args.email !== ctx.email) {
                     UserModel.findOne({ email: args.email }).exec((err: Error, res: User) => {
 
                         // Not sure if we really care about an error here?
-                        if (err) reject(err);
+                        if (err) { reject(err); return; }
 
                         // Reject if the email the user is changing to is already taken.
-                        if (res) reject(ERR_EMAIL_TAKEN);
+                        if (res) { reject(ERR_EMAIL_TAKEN); return; }
                     })
                 }
 
                 // Find the current user (by email in context) and use the provided details for updating.
-                UserModel.findOneAndUpdate({ email: ctx.email }, { $set: { ...args } }).exec(
-                    (err: Error, res: InstanceType<typeof User>): void => {
+                UserModel.findOneAndUpdate({ email: ctx.email }, { $set: { ...args } }, { new: true }).exec(
+                    (err: Error, res: any): void => {
 
                         // Reject on error;
-                        if (err) reject(err);
+                        if (err) { reject(err); return };
+                        if (!res) { console.log(res); reject(new Error('unknown')); return };
+                        resolve(res);
 
-                        /*
-                         * Update redis with the new user doc. Use spread of ctx then res to ensure the user doc 
-                         * overrites matching properties whilst keeping properties such as ctx.token intact.
-                        */
-                        redis.getset(res._id.toString(), JSON.stringify({ ...ctx, ...res }), (er: Error, re: any): void => {
-
-                            // Reject on error.
-                            if (er) reject(er);
-
-                            // Resolve user doc otherwise.
-                            resolve(res);
-                        });
                     }
                 );
             } catch (err) {
                 console.warn('CAUGHT: [editUser] ~ try...catch \n', err.message)
                 throw err;
             }
-        }).catch(
+        }).then(
+            ({ _doc }: any): Promise<User | Error> => {
+
+                /*
+                 * Update redis with the new user doc. Use spread of ctx then res to ensure the user doc 
+                 * overrites matching properties whilst keeping properties such as ctx.token intact.
+                 */
+                const user = _doc;
+                const updated = redis.getset(user._id.toString(), JSON.stringify({ ...ctx, ...user }), (err: Error, res: any): Boolean => {
+                    if (err) {
+                        throw err;
+                    } else {
+                        return !!res
+                    }
+                });
+                if (updated) return user;
+            }
+        ).catch(
             (err) => {
                 console.warn('CAUGHT: [editUser] ~ then...catch \n', err.message)
+                //console.log(err)
                 throw new GraphQLError(err.message)
             }
         )
@@ -213,8 +227,39 @@ export default class UserService implements CRUDBaseService {
      * @param args User email address.
      * @param ctx Custom GraphQL context object of user (derived from token).
      */
-    public static async delete(args: User["email"], ctx: any): Promise<Boolean | Error> {
-        return
+    public static async delete(ctx: any, email?: string): Promise<Boolean | Error> {
+        return new Promise<Boolean | Error>((resolve: Function, reject: Function): void => {
+            try {
+                /* 
+                 * Password changes are done in the editPass method and require a special token 
+                 * to be authenticated (this will be done via 2FA - email or mobile codes in browser).
+                */
+
+                // Reject with unauthorised if the user is not logged in.
+                if (!('email' in ctx || 'token' in ctx)) { reject(ERR_UNAUTHORISED); return; }
+
+                // If the user isn't an admin, use their own email address to delete.
+                if (!('_perm' in ctx || ctx._perm == 'all')) email = ctx.email;
+
+                // Find the current user (by email in context) and use the provided details for updating.
+                UserModel.findOneAndDelete({ email: email }).exec(
+                    (err: Error, res: any): void => {
+
+                        // Reject on error, resolve if the document is returned, reject if neither.
+                        console.log(err, res);
+                        err ? reject(err) : res ? resolve(true) : reject(new Error('Something went wrong.'));
+                    }
+                );
+            } catch (err) {
+                console.warn('CAUGHT: [delUser] ~ try...catch \n', err.message)
+                throw err;
+            }
+        }).catch(
+            (err) => {
+                console.warn('CAUGHT: [delUser] ~ then...catch \n', err.message)
+                return new GraphQLError(err.message);
+            }
+        )
     }
 
     public static async login(email: User["email"], password: User["password"], ctx: any): Promise<User | Error> {
@@ -228,7 +273,9 @@ export default class UserService implements CRUDBaseService {
 
     public static async logout(ctx: any): Promise<Boolean | Error> {
         try {
-            return AuthenticationService.logout(ctx) ? true : false;
+            const logout = await AuthenticationService.logout(ctx);
+            if (logout instanceof Error) throw logout;
+            return !!logout;
         } catch (err) {
             console.log("CAUGHT: [UserServ::logout] ~ try...catch\n", err);
             return new GraphQLError(err.message);
