@@ -1,17 +1,23 @@
 import * as mongoose from "mongoose";
-var db: any;
 
-export default function ({ host, port, table }) {
-    db = { host, port, table };
-    return mongoose.connect("mongodb://" + host + ":" + port + "/" + table, {
-        useFindAndModify: false,
-        useCreateIndex: true,
-        useNewUrlParser: true
-    });
+export default function (args: { host: string, port: string, table: string } | string) {
+    if (typeof args !== 'string') {
+        return mongoose.connect("mongodb://" + args.host + ":" + args.port + "/" + args.table, {
+            useFindAndModify: false,
+            useCreateIndex: true,
+            useNewUrlParser: true
+        });
+    } else {
+        return mongoose.connect(args, {
+            useFindAndModify: false,
+            useCreateIndex: true,
+            useNewUrlParser: true
+        });
+    }
 }
 
 mongoose.connection.on("connected", () => {
-    console.log(`Connection to database ${db.table} at ${db.host}:${db.port} established.`)
+    console.log(`Connection to database established.`)
 });
 
 mongoose.connection.on("error", (err) => {

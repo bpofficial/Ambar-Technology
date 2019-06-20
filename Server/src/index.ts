@@ -11,11 +11,15 @@ import "reflect-metadata";
 try {
     require("dotenv").config({ path: "../.env" });
     (async () => {
-        await Database({
-            host: process.env.DB_HOST,
-            port: process.env.DB_PORT,
-            table: process.env.DB_TABLE
-        });
+        (process.env.MODE == 'development') ?
+            await Database({
+                host: process.env.DB_HOST,
+                port: process.env.DB_PORT,
+                table: process.env.DB_TABLE
+            }) :
+            (process.env.MONGODB_URI) ?
+                await Database(process.env.MONGODB_URI) :
+                'Bit of an error D:';
 
         /**
          * Intialiase Apollo GraphQL Service
@@ -46,8 +50,8 @@ try {
         res.status(403).send().end();
     })
 
-    Server.listen(process.env.SERVER_PORT, (svrErr: Error): void => {
-        if (svrErr) throw svrErr; else console.log("Server is running at " + process.env.SERVER_HOST + ":" + process.env.SERVER_PORT)
+    Server.listen(process.env.PORT || process.env.SERVER_PORT, (svrErr: Error): void => {
+        if (svrErr) throw svrErr; else console.log("Server is running at " + process.env.SERVER_HOST + ":" + process.env.PORT || process.env.SERVER_PORT)
     });
 
 } catch (Err) {
