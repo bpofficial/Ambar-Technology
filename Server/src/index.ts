@@ -9,17 +9,21 @@ import { Resolvers } from "./Modules";
 import "reflect-metadata";
 
 try {
-    require("dotenv").config({ path: "../.env" });
+    var dev;
+    if (!('MONGODB_URI' in process.env)) {
+        require("dotenv").config({ path: "../.env" });
+        dev = true;
+    } else {
+        dev = false;
+    }
     (async () => {
-        (process.env.MODE == 'development' && !('MONGODB_URI' in process.env)) ?
+        dev ?
             await Database({
                 host: process.env.DB_HOST,
                 port: process.env.DB_PORT,
                 table: process.env.DB_TABLE
             }) :
-            (process.env.MONGODB_URI) ?
-                await Database(process.env.MONGODB_URI) :
-                'Bit of an error D:';
+            await Database(process.env.MONGODB_URI)
 
         /**
          * Intialiase Apollo GraphQL Service
@@ -28,7 +32,7 @@ try {
             resolvers: Resolvers,
             authChecker: Authenticator.check
         });
-        ApolloServer(Schema, 'SERVER_PORT' in process.env ? true : false).applyMiddleware({
+        ApolloServer(Schema, dev).applyMiddleware({
             app: Server,
             path: "/api"
         })
