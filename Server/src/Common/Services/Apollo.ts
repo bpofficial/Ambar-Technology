@@ -2,11 +2,11 @@ import AuthenticationService from "./Auth";
 import { ApolloServer } from "apollo-server-express";
 import { GraphQLError, GraphQLSchema } from "graphql";
 
-export default (Schema: GraphQLSchema) => {
+export default (Schema: GraphQLSchema, dev: any) => {
     return new ApolloServer({
         schema: Schema,
-        playground: process.env.MODE == "development" || false,
-        tracing: process.env.MODE == "development" || false,
+        playground: dev || false,
+        tracing: dev || false,
         formatError: (err): GraphQLError => {
             return new GraphQLError(err.message);
         },

@@ -11,7 +11,7 @@ import "reflect-metadata";
 try {
     require("dotenv").config({ path: "../.env" });
     (async () => {
-        (process.env.MODE == 'development') ?
+        (process.env.MODE == 'development' && !('MONGODB_URI' in process.env)) ?
             await Database({
                 host: process.env.DB_HOST,
                 port: process.env.DB_PORT,
@@ -28,27 +28,24 @@ try {
             resolvers: Resolvers,
             authChecker: Authenticator.check
         });
-        ApolloServer(Schema).applyMiddleware({
+        ApolloServer(Schema, 'SERVER_PORT' in process.env ? true : false).applyMiddleware({
             app: Server,
             path: "/api"
         })
     })();
 
-    /**
-     * Respond with nothing to a direct uri connection
-     * TODO: respond with actual client 
-     */
-
+    // Set static files (&client) to Public/
     Server.use(express.static(path.resolve(__dirname, 'Public/')));
 
-    Server.get("*", (_req: express.Request, res: express.Response): void => {
+    // Server endpoint matches anything but api or nojs
+    Server.get(/\/(?!.*(api|nojs)).*/g, (_req: express.Request, res: express.Response): void => {
         res.status(200).sendFile(path.resolve(__dirname, 'Public/index.html'));
     });
 
     // Server rendered for browsers with js disabled.
     Server.get("/nojs", (_req: express.Request, res: express.Response): void => {
         res.status(403).send().end();
-    })
+    });
 
     Server.listen(process.env.PORT || process.env.SERVER_PORT, (svrErr: Error): void => {
         if (svrErr) throw svrErr; else console.log("Server is running at " + process.env.SERVER_HOST + ":" + process.env.PORT || process.env.SERVER_PORT)

@@ -12,7 +12,7 @@ import { createHttpLink } from 'apollo-link-http';
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({
-    link: createHttpLink({ uri: "http://localhost:8080/api" }),
+    link: createHttpLink({ uri: window.location.href + "api" }),
     cache
 });
 
