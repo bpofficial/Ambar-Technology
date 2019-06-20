@@ -4,11 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "cd ./app/Server && npm i && cd ../Client && npm i && cd ../../ && npm run deploy:nostart",
+        "build": "cd ./Server && npm i && cd ../Client && npm i && cd ../../ && npm run deploy:nostart",
         "deploy:nostart": "npm run :server && npm run :client",
-        "start": "pm2 start ./app/Build/server.bundled.js",
-        ":client": "cd ./app/Client && npm start && cd ../../",
-        ":server": "cd ./app/Server && npm run build && cd ../../"
+        "start": "pm2 start ./Build/server.bundled.js",
+        ":client": "cd ./Client && npm start && cd ..",
+        ":server": "cd ./Server && npm run build && cd .."
     },
     "keywords": [],
     "author": "",
