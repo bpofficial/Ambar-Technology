@@ -4,11 +4,15 @@
     "description": "",
     "main": "server.build.js",
     "scripts": {
-        "start": "node ./server.bundled.js"
+        "build": "npm --install --save",
+        "start": "pm2 start ./server.bundled.js --watch"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "dependencies": {},
+    "dependencies": {
+        "pino-colada": "^1.4.4",
+        "pm2": "^3.5.1"
+    },
     "devDependencies": {}
 }
