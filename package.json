@@ -4,7 +4,7 @@
     "description": "",
     "main": "server.build.js",
     "scripts": {
-        "start": "node start ./server.bundled.js"
+        "start": "node ./server.bundled.js"
     },
     "keywords": [],
     "author": "",
