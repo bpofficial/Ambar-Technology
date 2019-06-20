@@ -1,0 +1,17 @@
+{
+    "name": "ambar-build",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.build.js",
+    "scripts": {
+        "start": "pm2 start ./server.bundled.js | pino-colada"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "pino-colada": "^1.4.4",
+        "pm2": "^3.5.1"
+    },
+    "devDependencies": {}
+}
