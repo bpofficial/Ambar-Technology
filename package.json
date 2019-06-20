@@ -4,14 +4,11 @@
     "description": "",
     "main": "server.build.js",
     "scripts": {
-        "start": "pm2 start ./server.bundled.js"
+        "start": "node start ./server.bundled.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "dependencies": {
-        "pino-colada": "^1.4.4",
-        "pm2": "^3.5.1"
-    },
+    "dependencies": {},
     "devDependencies": {}
 }
