@@ -4,7 +4,7 @@
     "description": "",
     "main": "server.build.js",
     "scripts": {
-        "build": "npm --install --save",
+        "build": "npm install --save",
         "start": "pm2 start ./server.bundled.js --watch"
     },
     "keywords": [],
