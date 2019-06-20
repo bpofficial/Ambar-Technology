@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "0df256f494e61b46a9f7";
+/******/ 	var hotCurrentHash = "def26804703cbc68efea";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -93456,7 +93456,7 @@ const apollo_cache_inmemory_1 = __webpack_require__(/*! apollo-cache-inmemory */
 const apollo_link_http_1 = __webpack_require__(/*! apollo-link-http */ "./node_modules/apollo-link-http/lib/bundle.esm.js");
 const cache = new apollo_cache_inmemory_1.InMemoryCache();
 const client = new apollo_client_1.default({
-    link: apollo_link_http_1.createHttpLink({ uri: "http://localhost:8080/api" }),
+    link: apollo_link_http_1.createHttpLink({ uri: window.location.href + "/api" }),
     cache
 });
 class App extends React.Component {
