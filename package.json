@@ -4,7 +4,7 @@
     "description": "",
     "main": "server.build.js",
     "scripts": {
-        "start": "pm2 start ./server.bundled.js | pino-colada"
+        "start": "pm2 start ./server.bundled.js"
     },
     "keywords": [],
     "author": "",
