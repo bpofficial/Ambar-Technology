@@ -8,7 +8,8 @@
         "deploy:nostart": "npm run :server && npm run :client",
         "start": "pm2 start ./Build/server.bundled.js",
         ":client": "cd ./Client && npm start && cd ..",
-        ":server": "cd ./Server && npm run build && cd .."
+        ":server": "cd ./Server && npm run build && cd ..",
+        "server:watch": "cd ./Server && npm run start:watch"
     },
     "keywords": [],
     "author": "",

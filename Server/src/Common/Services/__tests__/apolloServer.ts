@@ -3,25 +3,21 @@ import { ApolloServerBase } from "apollo-server-core";
 import { GraphQLError, GraphQLSchema } from "graphql";
 import { buildSchema } from "type-graphql";
 import AuthenticationService from "../Auth";
-import UserResolver from "../../../Modules/Users/Resolver";
+import { Resolvers as resolvers } from "../../../Modules";
 import "reflect-metadata";
-
-const resolvers = [
-    UserResolver
-]
 
 describe('Mock Apollo Server', () => {
     var schema;
-    it('Should create a GraphQLSchema schema', async () => {
+    xit('Should create a GraphQLSchema schema', async () => {
         schema = await buildSchema({
-            resolvers: resolvers,
+            resolvers,
             authChecker: AuthenticationService.check
         });
         expect(schema).toBeInstanceOf(GraphQLSchema);
     })
-    it('should create an ApolloBaseServer instance', () => {
+    xit('should create an ApolloBaseServer instance', () => {
         const server = new ApolloServerBase({
-            schema: schema,
+            schema,
             formatError: (err): GraphQLError => {
                 return err;
             },

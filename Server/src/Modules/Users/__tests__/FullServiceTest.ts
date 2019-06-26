@@ -40,7 +40,7 @@ var state = {
     }
 }
 
-describe('User service', () => {
+xdescribe('User service', () => {
     let connection;
 
     beforeAll(async () => {

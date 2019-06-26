@@ -11,7 +11,7 @@ import {
     LOGGED_IN_USER,
     LOGGED_IN_ADMIN,
     PUBLIC
-} from "../../Common/Constants/index";
+} from "../../Common/Constants";
 import User from "./Class";
 import UserService from "./Service";
 import { Context } from "apollo-server-core";
