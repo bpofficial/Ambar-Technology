@@ -32,6 +32,7 @@ class LeftSideBar extends Component {
 
 
     componentDidMount() {
+
         this.setState({
             nav1: this.slider1,
             nav2: this.slider2

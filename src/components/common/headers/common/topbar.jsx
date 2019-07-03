@@ -13,7 +13,7 @@ class TopBar extends Component {
                         <div className="col-lg-6">
                             <div className="header-contact">
                                 <ul>
-                                    <li>{translate('topbar_title', { theme_name: ' Multikart' })}</li>
+                                    <li>{translate('topbar_title')}</li>
                                     <li><i className="fa fa-phone" aria-hidden="true"></i>{translate('call_us')}:  +61 437 932 890</li>
                                 </ul>
                             </div>

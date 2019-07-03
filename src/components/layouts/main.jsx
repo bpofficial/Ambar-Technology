@@ -11,10 +11,6 @@ import ThemeSettings from "../common/theme-settings"
 
 class Electronic extends Component {
 
-    componentDidMount() {
-        document.getElementById("color").setAttribute("href", `${process.env.PUBLIC_URL}/assets/css/color3.css` );
-    }
-
     render(){
 
         return (

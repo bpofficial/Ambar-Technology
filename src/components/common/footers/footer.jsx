@@ -60,9 +60,9 @@ class FooterOne extends Component {
                                     </div>
                                     <div className="footer-contant">
                                         <ul>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >Cart</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >Orders</Link></li>
-                                            <li><Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} >Settings</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/product/collection`} >Cart</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/product/collection`} >Orders</Link></li>
+                                            <li><Link to={`${process.env.PUBLIC_URL}/product/collection`} >Settings</Link></li>
                                         </ul>
                                     </div>
                                 </div>
