@@ -11,7 +11,7 @@ class DetailsWithPrice extends Component {
         this.state = {
             open:false,
             quantity:1,
-            stock: 'InStock',
+            stock: 'In Stock',
             nav3: null
         }
     }
@@ -32,7 +32,7 @@ class DetailsWithPrice extends Component {
 
     minusQty = () => {
         if(this.state.quantity > 1) {
-            this.setState({stock: 'InStock'})
+            this.setState({stock: 'In Stock'})
             this.setState({quantity: this.state.quantity - 1})
         }
     }
@@ -41,7 +41,7 @@ class DetailsWithPrice extends Component {
         if(this.props.item.stock >= this.state.quantity) {
             this.setState({quantity: this.state.quantity+1})
         }else{
-            this.setState({stock: 'Out of Stock !'})
+            this.setState({stock: 'Out of Stock'})
         }
     }
     changeQty = (e) => {
@@ -137,40 +137,11 @@ class DetailsWithPrice extends Component {
                         <p>{item.shortDetails}</p>
                     </div>
                     <div className="border-product">
-                        <h6 className="product-title">share it</h6>
                         <div className="product-icon">
-                            <ul className="product-social">
-                                <li><a href="https://www.facebook.com/" target="_blank"><i className="fa fa-facebook"></i></a></li>
-                                <li><a href="https://plus.google.com/discover" target="_blank"><i className="fa fa-google-plus"></i></a></li>
-                                <li><a href="https://twitter.com/" target="_blank"><i className="fa fa-twitter"></i></a></li>
-                                <li><a href="https://www.instagram.com/" target="_blank"><i className="fa fa-instagram"></i></a></li>
-                            </ul>
-                                <button className="wishlist-btn" onClick={() => addToWishlistClicked(item)}><i
-                                    className="fa fa-heart"></i><span
-                                    className="title-font">Add To WishList</span>
-                                </button>
-                        </div>
-                    </div>
-                    <div className="border-product">
-                        <h6 className="product-title">Time Reminder</h6>
-                        <div className="timer">
-                            <p id="demo">
-                                <span>25
-                                    <span className="padding-l">:</span>
-                                    <span className="timer-cal">Days</span>
-                                </span>
-                                <span>22
-                                    <span className="padding-l">:</span>
-                                    <span className="timer-cal">Hrs</span>
-                                </span>
-                                <span>13
-                                    <span className="padding-l">:</span>
-                                    <span className="timer-cal">Min</span>
-                                </span>
-                                <span>57
-                                    <span className="timer-cal">Sec</span>
-                                </span>
-                            </p>
+                            <button className="wishlist-btn" onClick={() => addToWishlistClicked(item)}><i
+                                className="fa fa-heart" style={{borderLeft:'none'}}></i><span
+                                className="title-font">Add To WishList</span>
+                            </button>
                         </div>
                     </div>
                 </div>

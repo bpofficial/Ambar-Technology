@@ -7,7 +7,7 @@ import Pace from 'react-pace-progress'
 import store from '../../../store';
 import NavBar from "./common/navbar";
 import SideBar from "./common/sidebar";
-import CartContainer from "./../../../containers/CartContainer";
+import CartContainer from "../../../containers/CartContainer";
 import TopBarWhite from "./common/topbar-white";
 import {changeCurrency} from '../../../actions'
 import {connect} from "react-redux";
@@ -73,13 +73,6 @@ class HeaderFour extends Component {
 							<div className="col-sm-12">
 								<div className="main-menu">
 									<div className="menu-left">
-										<div className="navbar">
-											<a href="javascript:void(0)" onClick={this.openNav}>
-												<div className="bar-style"> <i className="fa fa-bars sidebar-bar" aria-hidden="true"></i></div>
-											</a>
-											{/*SideBar Navigation Component*/}
-											<SideBar/>
-										</div>
 										<div className="brand-logo">
                                             <LogoImage logo={this.props.logoName} />
 										</div>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {connect} from 'react-redux'
 
-import {getBestSeller, getBestSellerProducts, getMensWear, getNewProducts, getWomensWear} from '../../../services/index'
-import {addToCart, addToWishlist, addToCompare} from "../../../actions/index";
+import {getBestSeller, getBestSellerProducts, getMensWear, getNewProducts, getWomensWear} from '../../services/index'
+import {addToCart, addToWishlist, addToCompare} from "../../actions/index";
 import ProductItem from './product-item';
 
 class SpecialProducts extends Component {

@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import { withTranslate } from 'react-redux-multilingual'
 
 // Custom Components
-import HeaderOne from './common/headers/header-one';
-import HeaderTwo from './common/headers/header-two';
-import HeaderThree from './common/headers/header-three';
+import HeaderOne from './common/headers/header';
+import HeaderTwo from './common/headers/header';
+import HeaderThree from './common/headers/header';
 
-import FooterOne from "./common/footers/footer-one";
-import FooterTwo from "./common/footers/footer-two";
-import FooterThree from "./common/footers/footer-three";
+import FooterOne from "./common/footers/footer";
+import FooterTwo from "./common/footers/footer";
+import FooterThree from "./common/footers/footer";
 
 // ThemeSettings
 import ThemeSettings from "./common/theme-settings"
@@ -25,7 +25,7 @@ class App extends Component {
                 {this.props.children}
                 <FooterOne logoName={'logo.png'}/>
 
-                <ThemeSettings />
+                {/*<ThemeSettings />*/}
 
             </div>
         );

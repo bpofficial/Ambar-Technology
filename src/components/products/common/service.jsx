@@ -9,7 +9,8 @@ import {
 
 class Service extends Component {
     render (){
-
+        // if there's specific options for an item, show them here
+        return(<></>);
         return (
             <div className="collection-filter-block ">
                 <div className="product-service">

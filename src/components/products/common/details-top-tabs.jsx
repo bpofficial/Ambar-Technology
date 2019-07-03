@@ -4,6 +4,11 @@ import 'react-tabs/style/react-tabs.scss';
 import {Link} from 'react-router-dom'
 
 class DetailsTopTabs extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render (){
 
         return (
@@ -12,26 +17,32 @@ class DetailsTopTabs extends Component {
                     <div className="col-sm-12 col-lg-12">
                         <Tabs className="tab-content nav-material">
                             <TabList className="nav nav-tabs nav-material">
-                                <Tab className="nav-item">
-                                    <span className="nav-link active">
-                                        <i className="icofont icofont-ui-home"></i>Description</span>
-                                    <div className="material-border"></div>
-                                </Tab>
-                                <Tab className="nav-item">
-                                    <span className="nav-link" ><i className="icofont icofont-man-in-glasses"></i>Details</span>
-                                    <div className="material-border"></div>
-                                </Tab>
-                                <Tab className="nav-item">
-                                    <span className="nav-link" >
-                                        <i className="icofont icofont-contacts"></i>Video</span>
-                                    <div className="material-border"></div>
-                                </Tab>
+                                {/*this.props.item.tabs.map((title, id) => {
+                                    return (
+                                        <Tab className="nav-item" key={id}>
+                                            <span className="nav-link active">
+                                                <i className="icofont icofont-ui-home"></i>{title}</span>
+                                            <div className="material-border"></div>
+                                        </Tab>
+                                    )
+                                })*/}
                                 <Tab className="nav-item">
                                     <span className="nav-link" >
                                         <i className="icofont icofont-contacts"></i>Write Review</span>
                                     <div className="material-border"></div>
                                 </Tab>
                             </TabList>
+                            {/*this.props.item.tabChildren.map((child, id) => {
+                                return (
+                                    <TabPanel className="tab-pane fade mt-4 show active" key={id}>
+                                        {
+                                            // Decode the child from Base64 (could be html)
+                                            atob(child)
+                                        }
+                                    </TabPanel>
+                                )
+                            })*/}
+                            {/*
                             <TabPanel className="tab-pane fade mt-4 show active">
                                 <table className="table table-striped mb-0">
                                     <tbody>
@@ -91,6 +102,7 @@ class DetailsTopTabs extends Component {
                                     </div>
                                 </div>
                             </TabPanel>
+                            */}
                             <TabPanel>
                                 <form className="theme-form mt-4">
                                     <div className="form-row">

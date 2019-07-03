@@ -10,7 +10,7 @@ class ProductItem extends Component {
 
         this.state = {
             open: false,
-            stock: 'InStock',
+            stock: 'In Stock',
             quantity: 1,
             image: ''
         }
@@ -38,7 +38,7 @@ class ProductItem extends Component {
         if(this.props.product.stock >= this.state.quantity) {
             this.setState({quantity: this.state.quantity+1})
         }else{
-            this.setState({stock: 'Out of Stock !'})
+            this.setState({stock: 'Out of Stock'})
         }
     }
     changeQty = (e) => {
@@ -81,8 +81,6 @@ class ProductItem extends Component {
                                data-target="#quick-view"
                                title="Quick View"
                                onClick={this.onOpenModal}><i className="fa fa-search" aria-hidden="true"></i></a>
-                            <Link to={`${process.env.PUBLIC_URL}/compare`} title="Compare" onClick={onAddToCompareClicked}>
-                                <i className="fa fa-refresh" aria-hidden="true"></i></Link>
                         </div>
                         <div className="details-product">
                                 <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`}>

@@ -11,7 +11,7 @@ class Price extends Component {
         super (props)
         this.state = {
             quantity:1,
-            stock: 'InStock',
+            stock: 'In Stock',
             nav3: null
         }
     }
@@ -24,7 +24,7 @@ class Price extends Component {
 
     minusQty = () => {
         if(this.state.quantity > 1) {
-            this.setState({stock: 'InStock'})
+            this.setState({stock: 'In Stock'})
             this.setState({quantity: this.state.quantity - 1})
         }
     }
@@ -33,7 +33,7 @@ class Price extends Component {
         if(this.props.item.stock >= this.state.quantity) {
             this.setState({quantity: this.state.quantity+1})
         }else{
-            this.setState({stock: 'Out of Stock !'})
+            this.setState({stock: 'Out of Stock'})
         }
     }
     changeQty = (e) => {

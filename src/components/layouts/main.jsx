@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import {Helmet} from 'react-helmet'
-import '../../common/index.scss';
+import '../common/index.scss';
 import Slider from 'react-slick';
 
 // Import custom components
-import HeaderFour from "../../common/headers/header-four"
+import HeaderFour from "../common/headers/header"
 import SpecialProducts from "./special-products"
-import FooterOne from "../../common/footers/footer-one";
-import ThemeSettings from "../../common/theme-settings"
+import FooterOne from "../common/footers/footer";
+import ThemeSettings from "../common/theme-settings"
 
 class Electronic extends Component {
 
     componentDidMount() {
-        document.getElementById("color").setAttribute("href", `${process.env.PUBLIC_URL}/assets/css/color7.css` );
+        document.getElementById("color").setAttribute("href", `${process.env.PUBLIC_URL}/assets/css/color3.css` );
     }
 
     render(){
@@ -20,7 +20,7 @@ class Electronic extends Component {
         return (
             <div className="container-fluid layout-8">
                 <Helmet>
-                    <title>MultiKart | Electronic Store</title>
+                    <title>Ambar Technology</title>
                 </Helmet>
                 <HeaderFour logoName={'logo/3.png'} />
                 <section className="p-0 padding-bottom-cls">
@@ -126,7 +126,7 @@ class Electronic extends Component {
                     <FooterOne logoName={'logo/3.png'} />
                 </div>
 
-                <ThemeSettings />
+                {/*<ThemeSettings />*/}
             </div>
         )
     }
