@@ -8,7 +8,7 @@ import {
 } from "../../../services/script"
 
 class Service extends Component {
-    render (){
+    render() {
         // if there's specific options for an item, show them here
         return(<></>);
         return (

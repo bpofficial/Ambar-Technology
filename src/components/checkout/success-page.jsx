@@ -8,7 +8,7 @@ class orderSuccess extends Component {
 
     }
 
-    render (){
+    render() {
 
         const {payment, items, symbol, orderTotal} = this.props.location.state;
         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };

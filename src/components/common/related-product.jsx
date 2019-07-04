@@ -9,7 +9,7 @@ import ProductItem from '../layouts/common/product-item';
 
 
 class RelatedProduct extends Component {
-    render (){
+    render() {
         const {items, symbol, addToCart, addToWishlist, addToCompare} = this.props;
 
 

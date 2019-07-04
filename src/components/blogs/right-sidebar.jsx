@@ -8,7 +8,7 @@ class RightSidebar extends Component {
         super (props)
     }
 
-    render (){
+    render() {
 
 
         return (

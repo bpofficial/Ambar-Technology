@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 
 class Details extends Component {
 
-    render (){
+    render() {
         const {item, addToWishlistClicked} = this.props
 
         return (

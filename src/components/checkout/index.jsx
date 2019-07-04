@@ -82,7 +82,7 @@ class checkOut extends Component {
         }
     }
 
-    render (){
+    render() {
         const {cartItems, symbol, total} = this.props;
 
         // Paypal Integration

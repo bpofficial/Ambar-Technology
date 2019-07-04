@@ -10,7 +10,7 @@ class PageNotFound extends Component {
 
     }
 
-    render (){
+    render() {
 
         return (
             <div>

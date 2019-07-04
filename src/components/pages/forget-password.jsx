@@ -7,7 +7,7 @@ class ForgetPassword extends Component {
         super (props)
     }
 
-    render (){
+    render() {
 
 
         return (

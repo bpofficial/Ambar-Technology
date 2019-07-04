@@ -9,7 +9,7 @@ class Login extends Component {
 
     }
 
-    render (){
+    render() {
 
 
         return (

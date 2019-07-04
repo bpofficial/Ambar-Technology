@@ -8,7 +8,7 @@ class BlogPage extends Component {
         super (props)
     }
 
-    render (){
+    render() {
 
         return (
             <div>

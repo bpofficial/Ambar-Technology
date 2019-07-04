@@ -42,7 +42,7 @@ class Filter extends Component {
         this.props.filterColor(color)
     }
 
-    render (){
+    render() {
         const filteredBrands = this.props.filters.brand;
         //console.log(this.props.brands);
         return (

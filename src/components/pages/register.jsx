@@ -9,7 +9,7 @@ class Register extends Component {
 
     }
 
-    render (){
+    render() {
 
 
         return (

@@ -12,7 +12,7 @@ import {Product4} from "../../../services/script";
 class ElementProductNoSlider extends Component {
 
 
-    render (){
+    render() {
         const {products, addToCart, symbol, addToWishlist, addToCompare} = this.props;
         return (
             <div>

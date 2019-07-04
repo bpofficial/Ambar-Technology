@@ -6,11 +6,9 @@ import Slider from 'react-slick';
 // Import custom components
 import HeaderFour from "../common/headers/header"
 import SpecialProducts from "./special-products"
-import FooterOne from "../common/footers/footer";
-import ThemeSettings from "../common/theme-settings"
+import Footer from "../common/footers/footer";
 
-class Electronic extends Component {
-
+class Products extends Component {
     render(){
 
         return (
@@ -119,7 +117,7 @@ class Electronic extends Component {
                     {/*Product slider End*/}
                 </div>
                 <div className="footer-white">
-                    <FooterOne logoName={'logo/3.png'} />
+                    <Footer logoName={'logo/3.png'} />
                 </div>
 
                 {/*<ThemeSettings />*/}
@@ -129,4 +127,4 @@ class Electronic extends Component {
 }
 
 
-export default Electronic;
+export default Products;

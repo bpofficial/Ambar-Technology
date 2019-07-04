@@ -1,23 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { ScrollContext } from 'react-router-scroll-4';
 import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import './index.scss';
 
 // Import custom components
 import store from './store';
-import translations from './constants/translations'
 import { getAllProducts } from './actions'
 import Main from './components/layouts/main';
 
 
 //Collection Pages
-import CollectionLeftSidebar from "./components/collection/collection-left-sidebar";
+import Store from "./components/collection/store";
 
 // Product Pages
-import LeftSideBar from "./components/products/product";
+import ProductPage from "./components/products/product";
 
 // Features
 import Layout from './components/app'
@@ -48,47 +47,43 @@ class Root extends React.Component {
 
         return(
         	<Provider store={store}>
-                <IntlProvider translations={translations} locale='en'>
 				<BrowserRouter basename={'/'} >
 					<ScrollContext>
 						<Switch>
                             <Route exact path={`${process.env.PUBLIC_URL}/`} component={Main}/>
                             <Layout>
 
-								{/*Routes For Features (Product Collection) */}
-								<Route path={`${process.env.PUBLIC_URL}/collection`} component={CollectionLeftSidebar}/>
-
-								{/*Routes For Single Product*/}
-								<Route path={`${process.env.PUBLIC_URL}/product/:id`} component={LeftSideBar}/>
-								
+								<Route path={`${process.env.PUBLIC_URL}/store/:category/:id`} component={ProductPage}/>
+                                <Route path={`${process.env.PUBLIC_URL}/store/:category`} component={Store} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/store`} component={Store}/>
 
 								{/*Routes For custom Features*/}
-								<Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
-								<Route path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut}/>
-								<Route path={`${process.env.PUBLIC_URL}/order-success`} component={orderSuccess}/>
+								<Route exact path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
+								<Route exact path={`${process.env.PUBLIC_URL}/checkout`} component={checkOut}/>
+								<Route exact path={`${process.env.PUBLIC_URL}/order-success`} component={orderSuccess}/>
 
 								{/*Routes For Extra Pages*/}
-                                <Route path={`${process.env.PUBLIC_URL}/about-us`} component={aboutUs}/>
-                                <Route path={`${process.env.PUBLIC_URL}/404`} component={PageNotFound}/>
-                                <Route path={`${process.env.PUBLIC_URL}/login`} component={Login}/>
-                                <Route path={`${process.env.PUBLIC_URL}/register`} component={Register}/>
-                                <Route path={`${process.env.PUBLIC_URL}/search`} component={Search}/>
-                                <Route path={`${process.env.PUBLIC_URL}/forget-password`} component={ForgetPassword}/>
-                                <Route path={`${process.env.PUBLIC_URL}/contact`} component={Contact}/>
-                                <Route path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard}/>
-                                <Route path={`${process.env.PUBLIC_URL}/faq`} component={Faq}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/about-us`} component={aboutUs}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/404`} component={PageNotFound}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/login`} component={Login}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/register`} component={Register}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/search`} component={Search}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/forget-password`} component={ForgetPassword}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/contact`} component={Contact}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/faq`} component={Faq}/>
 
 								{/*Blog Pages*/}
-                                <Route path={`${process.env.PUBLIC_URL}/blog/right-sidebar`} component={RightSide}/>
-                                <Route path={`${process.env.PUBLIC_URL}/blog/details`} component={Details}/>
-                                <Route path={`${process.env.PUBLIC_URL}/blog/blog-page`} component={BlogPage}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/blog/right-sidebar`} component={RightSide}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/blog/details`} component={Details}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/blog/blog-page`} component={BlogPage}/>
 
                             </Layout>
                             <Route exact component={PageNotFound} />
+                            <Redirect from='*' to='/404' />
                          </Switch>
 					  </ScrollContext>
-					</BrowserRouter>
-                </IntlProvider>
+				</BrowserRouter>
 			</Provider>
     	);
     }

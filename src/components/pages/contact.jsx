@@ -7,7 +7,7 @@ class Contact extends Component {
         super (props)
     }
 
-    render (){
+    render() {
 
 
         return (

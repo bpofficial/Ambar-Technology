@@ -22,6 +22,15 @@ export const getAllProducts = () => dispatch => {
         return products;
     })
 }
+
+//TODO: Complete this => Category collection
+export const getAllCategories= () => dispatch => {
+    shop.getCategories(products => {
+        dispatch(receiveProducts(products));
+        return products;
+    })
+}
+
 export const fetchSingleProduct = productId => ({
     type: types.FETCH_SINGLE_PRODUCT,
     productId

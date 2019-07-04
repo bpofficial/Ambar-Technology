@@ -7,7 +7,7 @@ class Collection extends Component {
         super (props)
     }
 
-    render (){
+    render() {
 
 
         return (
@@ -21,7 +21,7 @@ class Collection extends Component {
                         <div className="row partition-collection">
                             <div className="col-lg-3 col-md-6">
                                 <div className="collection-block">
-                                    <img src={`${process.env.PUBLIC_URL}/assets/images/collection/1.jpg`} className="img-fluid" alt="" />
+                                    <img src={`${process.env.PUBLIC_URL}/assets/images/store/1.jpg`} className="img-fluid" alt="" />
                                         <div className="collection-content">
                                             <h4>(20 products)</h4>
                                             <h3>fashion</h3>
@@ -33,7 +33,7 @@ class Collection extends Component {
                             </div>
                             <div className="col-lg-3 col-md-6">
                                 <div className="collection-block">
-                                    <img src={`${process.env.PUBLIC_URL}/assets/images/collection/3.jpg`} className="img-fluid" alt="" />
+                                    <img src={`${process.env.PUBLIC_URL}/assets/images/store/3.jpg`} className="img-fluid" alt="" />
                                         <div className="collection-content">
                                             <h4>(20 products)</h4>
                                             <h3>fashion</h3>
@@ -45,7 +45,7 @@ class Collection extends Component {
                             </div>
                             <div className="col-lg-3 col-md-6">
                                 <div className="collection-block">
-                                    <img src={`${process.env.PUBLIC_URL}/assets/images/collection/5.jpg`} className="img-fluid" alt="" />
+                                    <img src={`${process.env.PUBLIC_URL}/assets/images/store/5.jpg`} className="img-fluid" alt="" />
                                         <div className="collection-content">
                                             <h4>(20 products)</h4>
                                             <h3>fashion</h3>
@@ -57,7 +57,7 @@ class Collection extends Component {
                             </div>
                             <div className="col-lg-3 col-md-6">
                                 <div className="collection-block">
-                                    <img src={`${process.env.PUBLIC_URL}/assets/images/collection/6.jpg`} className="img-fluid" alt="" />
+                                    <img src={`${process.env.PUBLIC_URL}/assets/images/store/6.jpg`} className="img-fluid" alt="" />
                                         <div className="collection-content">
                                             <h4>(20 products)</h4>
                                             <h3>fashion</h3>
@@ -71,7 +71,7 @@ class Collection extends Component {
                         <div className="row partition-collection section-t-space">
                             <div className="col-lg-3 col-md-6">
                                 <div className="collection-block">
-                                    <img src={`${process.env.PUBLIC_URL}/assets/images/collection/7.jpg`} className="img-fluid" alt="" />
+                                    <img src={`${process.env.PUBLIC_URL}/assets/images/store/7.jpg`} className="img-fluid" alt="" />
                                         <div className="collection-content">
                                             <h4>(20 products)</h4>
                                             <h3>fashion</h3>
@@ -83,7 +83,7 @@ class Collection extends Component {
                             </div>
                             <div className="col-lg-3 col-md-6">
                                 <div className="collection-block">
-                                    <img src={`${process.env.PUBLIC_URL}/assets/images/collection/8.jpg`} className="img-fluid" alt="" />
+                                    <img src={`${process.env.PUBLIC_URL}/assets/images/store/8.jpg`} className="img-fluid" alt="" />
                                         <div className="collection-content">
                                             <h4>(20 products)</h4>
                                             <h3>fashion</h3>
@@ -95,7 +95,7 @@ class Collection extends Component {
                             </div>
                             <div className="col-lg-3 col-md-6">
                                 <div className="collection-block">
-                                    <img src={`${process.env.PUBLIC_URL}/assets/images/collection/9.jpg`} className="img-fluid" alt="" />
+                                    <img src={`${process.env.PUBLIC_URL}/assets/images/store/9.jpg`} className="img-fluid" alt="" />
                                         <div className="collection-content">
                                             <h4>(20 products)</h4>
                                             <h3>fashion</h3>
@@ -107,7 +107,7 @@ class Collection extends Component {
                             </div>
                             <div className="col-lg-3 col-md-6">
                                 <div className="collection-block">
-                                    <img src={`${process.env.PUBLIC_URL}/assets/images/collection/11.jpg`} className="img-fluid" alt="" />
+                                    <img src={`${process.env.PUBLIC_URL}/assets/images/store/11.jpg`} className="img-fluid" alt="" />
                                         <div className="collection-content">
                                             <h4>(20 products)</h4>
                                             <h3>fashion</h3>

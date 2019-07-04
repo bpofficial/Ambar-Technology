@@ -25,7 +25,7 @@ class Instagram extends Component {
 
     }
 
-    render (){
+    render() {
 
         const {InstaData} = this.state;
         const {type} = this.props;

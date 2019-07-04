@@ -6,7 +6,7 @@ import { SlideToggle } from 'react-slide-toggle';
 class BrandBlock extends Component {
 
 
-    render (){
+    render() {
         return (
             <div className="collection-filter-block">
                 <div className="collection-mobile-back">

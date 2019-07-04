@@ -64,7 +64,7 @@ class ProductStyleFive extends Component {
                         {(product.sale == true)? <span className="lable4">on sale</span> : ''}
                     </div>
                     <div className="front">
-                        <Link to={`${process.env.PUBLIC_URL}/product/product/${product.id}`} ><img
+                        <Link to={`${process.env.PUBLIC_URL}/store/product/${product.id}`} ><img
                             src={product.variants?
                                 this.state.image?this.state.image:product.variants[0].images
                                 :product.pictures[0]}
@@ -72,7 +72,7 @@ class ProductStyleFive extends Component {
                             alt="" /></Link>
                     </div>
                     <div className="back">
-                        <Link to={`${process.env.PUBLIC_URL}/product/product/${product.id}`} ><img
+                        <Link to={`${process.env.PUBLIC_URL}/store/product/${product.id}`} ><img
                             src={
                                 product.variants?
                                     this.state.image?this.state.image:product.variants[0].images
@@ -101,7 +101,7 @@ class ProductStyleFive extends Component {
                         <div className="rating">
                             {RatingStars}
                         </div>
-                        <Link to={`${process.env.PUBLIC_URL}/product/product/${product.id}`}>
+                        <Link to={`${process.env.PUBLIC_URL}/store/product/${product.id}`}>
                             <h6>{product.name}</h6>
                         </Link>
                         <h4>{symbol}{product.price-(product.price*product.discount/100)}</h4>
@@ -170,7 +170,7 @@ class ProductStyleFive extends Component {
                                             </div>
                                             <div className="product-buttons">
                                                 <button  className="btn btn-solid" onClick={() => onAddToCartClicked(product, this.state.quantity)} >add to cart</button>
-                                                <Link to={`${process.env.PUBLIC_URL}/product/product/${product.id}`} className="btn btn-solid">view detail</Link>
+                                                <Link to={`${process.env.PUBLIC_URL}/store/product/${product.id}`} className="btn btn-solid">view detail</Link>
                                             </div>
                                         </div>
                                     </div>

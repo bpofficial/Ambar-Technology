@@ -37,7 +37,7 @@ class ProductListing extends Component {
 
     }
 
-    render (){
+    render() {
         const {products, addToCart, symbol, addToWishlist, addToCompare} = this.props;
         console.log(this.props.colSize)
         return (

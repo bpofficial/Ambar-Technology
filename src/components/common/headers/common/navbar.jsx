@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import $ from 'jquery';
 import 'smartmenus';
-import { withTranslate } from 'react-redux-multilingual'
 
-class NavBar extends Component {
+export default class NavBar extends Component {
     constructor(props){
         super(props);
 
@@ -32,6 +31,7 @@ class NavBar extends Component {
     openNav() {
         this.setState({navClose: {right:'0px'}})
     }
+
     closeNav() {
         this.setState({navClose: {right:'-410px'}})
     }
@@ -43,7 +43,6 @@ class NavBar extends Component {
     }
 
     render() {
-        const {translate} = this.props;
         return (
             <div>
                 <nav id="main-nav">
@@ -58,20 +57,20 @@ class NavBar extends Component {
                             </div>
                         </li>
                         <li >
-                            <a href="#">{translate('shop')}
-                            </a>
+                            <a href="/store">Shop</a>
                             <ul>
-                                <li><Link to={`${process.env.PUBLIC_URL}/collection`} >{translate('category_left_sidebar')}</Link></li>
+                                {//TODO: Complete this => Category collection
+                                }
+                                <li><Link to={`${process.env.PUBLIC_URL}/store`} >{'Category 1'}</Link></li>
                             </ul>
                         </li>
                         <li >
-                            <a href="#">{translate('blog')}
-                            </a>
+                            <a href="#">Blog</a>
                             <ul>
                                 {/*
-                                <li><Link to={`${process.env.PUBLIC_URL}/blog/blog-page`} >{translate('blog_left_sidebar')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/blog/right-sidebar`} >{translate('blog_right_sidebar')}</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/blog/details`} >{translate('blog_detail')}</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/blog/blog-page`} >Blog</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/blog/left-sidebar`}>Blog</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/blog/details`} >Details</Link></li>
                                 */}
                             </ul>
                         </li>
@@ -81,6 +80,3 @@ class NavBar extends Component {
         )
     }
 }
-
-
-export default withTranslate(NavBar);

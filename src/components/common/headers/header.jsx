@@ -8,7 +8,7 @@ import store from '../../../store';
 import NavBar from "./common/navbar";
 import SideBar from "./common/sidebar";
 import CartContainer from "../../../containers/CartContainer";
-import TopBarWhite from "./common/topbar-white";
+import TopBar from "./common/topbar";
 import {changeCurrency} from '../../../actions'
 import {connect} from "react-redux";
 import LogoImage from "./common/logo";
@@ -66,7 +66,7 @@ class HeaderFour extends Component {
 					{this.state.isLoading ? <Pace color="#27ae60"/> : null}
 					<div className="mobile-fix-option"></div>
 					{/*Top Header Component*/}
-					<TopBarWhite/>
+					<TopBar shade="light"/>
 
 					<div className="container-fluid">
 						<div className="row">

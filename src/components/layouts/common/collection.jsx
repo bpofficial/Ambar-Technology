@@ -9,7 +9,7 @@ import ProductItem from '../../features/product/common/product-style-five';
 
 class TopCollection extends Component {
 
-    render (){
+    render() {
 
         const {items, symbol, addToCart, addToWishlist, addToCompare, type} = this.props;
 

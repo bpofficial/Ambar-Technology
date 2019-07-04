@@ -9,7 +9,7 @@ class DetailsTopTabs extends Component {
         super(props);
     }
 
-    render (){
+    render() {
 
         return (
             <section className="tab-product m-0">

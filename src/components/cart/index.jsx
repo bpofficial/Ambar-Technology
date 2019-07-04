@@ -14,7 +14,7 @@ class cartComponent extends Component {
         super (props)
     }
 
-    render (){
+    render() {
 
         const {cartItems, symbol, total} = this.props;
         return (
@@ -49,13 +49,13 @@ class cartComponent extends Component {
                                         <tbody key={index}>
                                             <tr>
                                                 <td>
-                                                    <Link to={`${process.env.PUBLIC_URL}/product/product/${item.id}`}>
+                                                    <Link to={`${process.env.PUBLIC_URL}/store/product/${item.id}`}>
                                                         <img src={item.variants?
                                                                   item.variants[0].images
                                                                   :item.pictures[0]} alt="" />
                                                     </Link>
                                                 </td>
-                                                <td><Link to={`${process.env.PUBLIC_URL}/product/product/${item.id}`}>{item.name}</Link>
+                                                <td><Link to={`${process.env.PUBLIC_URL}/store/product/${item.id}`}>{item.name}</Link>
                                                     <div className="mobile-cart-content row">
                                                         <div className="col-xs-3">
                                                             <div className="qty-box">
@@ -118,7 +118,7 @@ class cartComponent extends Component {
                         </div>
                         <div className="row cart-buttons">
                             <div className="col-6">
-                                <Link to={`${process.env.PUBLIC_URL}/product/collection`} className="btn btn-solid">continue shopping</Link>
+                                <Link to={`${process.env.PUBLIC_URL}/store`} className="btn btn-solid">continue shopping</Link>
                             </div>
                             <div className="col-6">
                                 <Link to={`${process.env.PUBLIC_URL}/checkout`} className="btn btn-solid">check out</Link>

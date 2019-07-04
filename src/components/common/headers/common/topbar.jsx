@@ -1,38 +1,42 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import { withTranslate } from 'react-redux-multilingual'
+import { PAGE_CONSTANTS } from "../../../../constants/root"
 
-class TopBar extends Component {
+export default class TopBarWhite extends Component {
 
     render() {
-        const {translate} = this.props;
         return (
-            <div className="top-header">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <div className="header-contact">
-                                <ul>
-                                    <li>{translate('topbar_title')}</li>
-                                    <li><i className="fa fa-phone" aria-hidden="true"></i>{translate('call_us')}:  +61 437 932 890</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-lg-6 text-right">
-                            <ul className="header-dropdown">
-                                <li className="mobile-wishlist"></li>
-                                <li className="onhover-dropdown mobile-account">
-                                    <i className="fa fa-user" aria-hidden="true"></i> {translate('my_account')}
-                                    <ul className="onhover-show-div">
+            <div>
+                <div className={`top-header ${'shade' in this.props ? this.props.shade == 'light' ? "white-bg border-bottom-grey" : this.props.shade == 'dark' ? "top-header-dark3" : "": ""}`}>
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-lg-6">
+                                <div className="header-contact">
+                                    <ul>
+                                        <li>{PAGE_CONSTANTS.title}</li>
                                         <li>
-                                            <Link to={`${process.env.PUBLIC_URL}/pages/login`} data-lng="en">Login</Link>
-                                        </li>
-                                        <li>
-                                            <Link to={`${process.env.PUBLIC_URL}/pages/register`} data-lng="en">Register</Link>
+                                            <i className="fa fa-phone" aria-hidden="true"></i>
+                                            Call us:  {PAGE_CONSTANTS.phone}
                                         </li>
                                     </ul>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
+                            <div className="col-lg-6 text-right">
+                                <ul className="header-dropdown">
+                                    <li className="mobile-wishlist"></li>
+                                    <li className="onhover-dropdown mobile-account">
+                                        <i className="fa fa-user" aria-hidden="true"></i> My Account
+                                        <ul className="onhover-show-div">
+                                            <li>
+                                                <Link to={`${process.env.PUBLIC_URL}/login`} data-lng="en">Login</Link>
+                                            </li>
+                                            <li>
+                                                <Link to={`${process.env.PUBLIC_URL}/register`} data-lng="en">Register</Link>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -40,6 +44,3 @@ class TopBar extends Component {
         )
     }
 }
-
-
-export default withTranslate(TopBar);

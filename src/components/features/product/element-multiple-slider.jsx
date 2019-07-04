@@ -17,7 +17,7 @@ import ProductStyleTwo from "./common/product-style-two";
 class ElementMultipleSlider extends Component {
 
 
-    render (){
+    render() {
         const {newProducts, featureProducts, bestSeller, onSell, newWatches, bestSellerWatches, symbol} = this.props;
 
         return (

@@ -10,7 +10,7 @@ class aboutUs extends Component {
 
     }
 
-    render (){
+    render() {
 
 
         return (

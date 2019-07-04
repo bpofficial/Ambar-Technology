@@ -48,7 +48,7 @@ class DetailsWithPrice extends Component {
         this.setState({ quantity: parseInt(e.target.value) })
     }
 
-    render (){
+    render() {
         const {symbol, item, addToCartClicked, BuynowClicked, addToWishlistClicked} = this.props
 
         var colorsnav = {

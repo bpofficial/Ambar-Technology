@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Helmet} from 'react-helmet'
 import Breadcrumb from "../common/breadcrumb";
 import NewProduct from "../common/new-product";
 import Filter from "./common/filter";
@@ -6,8 +7,7 @@ import FilterBar from "./common/filter-bar";
 import ProductListing from "./common/product-listing";
 import StickyBox from "react-sticky-box";
 
-
-class CollectionRightSidebar extends Component {
+class CollectionLeftSidebar extends Component {
 
     state = {
         layoutColumns:3
@@ -23,18 +23,39 @@ class CollectionRightSidebar extends Component {
         document.querySelector(".collection-filter").style = "left: -15px";
     }
     
-    render (){
+    render() {
         return (
             <div>
+                {/*SEO Support*/}
+                <Helmet>
+                    <title>Ambar Technology | Store</title>
+                    <meta name="description" content="Multikart – Multipurpose eCommerce React Template is a multi-use React template. It is designed to go well with multi-purpose websites. Multikart Bootstrap 4 Template will help you run multiple businesses." />
+                </Helmet>
+                {/*SEO Support End */}
 
-                <Breadcrumb title={'Collection'}/>
+                <Breadcrumb title={'Store'}/>
 
                 <section className="section-b-space">
                     <div className="collection-wrapper">
                         <div className="container">
                             <div className="row">
+                                <div className="col-sm-3 collection-filter">
+
+                                    <StickyBox offsetTop={20} offsetBottom={20}>
+                                        <div>
+                                            <Filter/>
+                                            <NewProduct/>
+                                            <div className="collection-sidebar-banner">
+                                                <a href="#">
+                                                    <img src={`${process.env.PUBLIC_URL}/assets/images/side-banner.png`} className="img-fluid" alt="" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </StickyBox>
+                                    {/*side-bar banner end here*/}
+                                </div>
                                 <div className="collection-content col">
-                                    <div className="page-main-content">
+                                    <div className="page-main-content ">
                                         <div className="">
                                             <div className="row">
                                                 <div className="col-sm-12">
@@ -76,21 +97,6 @@ class CollectionRightSidebar extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-sm-3 collection-filter">
-
-                                    <StickyBox offsetTop={20} offsetBottom={20}>
-                                        <div>
-                                            <Filter/>
-                                            <NewProduct/>
-                                            <div className="collection-sidebar-banner">
-                                                <a href="#">
-                                                    <img src={`${process.env.PUBLIC_URL}/assets/images/side-banner.png`} className="img-fluid" alt="" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </StickyBox>
-                                    {/*side-bar banner end here*/}
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -101,4 +107,4 @@ class CollectionRightSidebar extends Component {
     }
 }
 
-export default CollectionRightSidebar;
+export default CollectionLeftSidebar;

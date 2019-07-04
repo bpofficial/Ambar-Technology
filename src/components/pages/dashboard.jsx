@@ -7,7 +7,7 @@ class Dashboard extends Component {
         super (props)
     }
 
-    render (){
+    render() {
 
 
         return (

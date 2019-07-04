@@ -21,7 +21,7 @@ import ProductStyleEleven from "./common/product-style-eleven";
 
 class ElementProductBox extends Component {
 
-    render (){
+    render() {
         const {products, addToCart, symbol, addToWishlist, addToCompare} = this.props;
         return (
             <div>

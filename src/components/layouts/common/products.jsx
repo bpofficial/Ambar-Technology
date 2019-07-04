@@ -7,7 +7,7 @@ import {addToCart, addToWishlist, addToCompare} from "../../../actions/index";
 import ProductItem from './product-item';
 
 class SpecialProducts extends Component {
-    render (){
+    render() {
 
         const {bestSeller,mensWear,womensWear, symbol, addToCart, addToWishlist, addToCompare} = this.props
         return (

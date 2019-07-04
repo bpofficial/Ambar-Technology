@@ -7,7 +7,7 @@ class Faq extends Component {
         super (props)
     }
 
-    render (){
+    render() {
 
 
         return (

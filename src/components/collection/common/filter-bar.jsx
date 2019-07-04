@@ -44,7 +44,7 @@ class FilterBar extends Component {
         this.props.onLayoutViewClicked(colSize);
     }
 
-    render (){
+    render() {
         return (
             <div className="product-filter-content">
                 <div className="search-count">

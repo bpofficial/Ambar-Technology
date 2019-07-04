@@ -5,7 +5,7 @@ import {Slider6} from "../../../services/script";
 
 class LogoBlock extends Component {
 
-    render (){
+    render() {
         return (
             <section className="section-b-space">
                 <div className="container">

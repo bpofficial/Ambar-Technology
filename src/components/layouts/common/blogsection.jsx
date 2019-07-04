@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {Slider3} from "../../../services/script"
 
 class BlogSection extends Component {
-    render (){
+    render() {
 
         return (
                 <div className="container">

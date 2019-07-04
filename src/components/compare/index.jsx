@@ -12,7 +12,7 @@ class Compare extends Component {
         this.setState({ quantity: parseInt(e.target.value) })
     }
 
-    render (){
+    render() {
         var settings = {
             infinite: false,
             speed: 300,
@@ -63,7 +63,7 @@ class Compare extends Component {
                                                     <span aria-hidden="true">×</span>
                                                 </button>
                                                 <div className="img-secton">
-                                                    <Link to={`${process.env.PUBLIC_URL}/product/product/${item.id}`}>
+                                                    <Link to={`${process.env.PUBLIC_URL}/store/product/${item.id}`}>
                                                     <img src={item.variants?
                                                                 item.variants[0].images
                                                                 :item.pictures[0]} className="img-fluid" alt="" />

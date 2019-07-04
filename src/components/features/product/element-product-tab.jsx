@@ -12,7 +12,7 @@ import SpecialProduct from "../../layouts/common/products";
 
 class ElementProductTab extends Component {
 
-    render (){
+    render() {
         const {products, addToCart, symbol, addToWishlist, addToCompare} = this.props;
         return (
             <div>

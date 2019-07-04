@@ -11,7 +11,7 @@ class aboutUs extends Component {
 
     }
 
-    render (){
+    render() {
 
         var svgFreeShipping = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -117 679.99892 679">\n' +
             '                                        <path\n' +
