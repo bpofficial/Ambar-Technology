@@ -49,7 +49,7 @@ export default class NavBar extends Component {
                     <div className="toggle-nav" onClick={this.openNav.bind(this)}>
                         <i className="fa fa-bars sidebar-bar" ></i>
                     </div>
-                    {/*Horizontal menu*/}
+                    {/*Horizontal menu TODO: Fix menu disappearing after zoom*/}
                     <ul id="main-menu" className="sm pixelstrap sm-horizontal" style={this.state.navClose}>
                         <li >
                             <div className="mobile-back text-right" onClick={this.closeNav.bind(this)}>
@@ -62,17 +62,25 @@ export default class NavBar extends Component {
                                 {//TODO: Complete this => Category collection
                                 }
                                 <li><Link to={`${process.env.PUBLIC_URL}/store`} >{'Category 1'}</Link></li>
+                                <a />
                             </ul>
                         </li>
                         <li >
-                            <a href="#">Blog</a>
+                            <a href="/blog">Blog</a>
                             <ul>
                                 {/*
                                 <li><Link to={`${process.env.PUBLIC_URL}/blog/blog-page`} >Blog</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/blog/left-sidebar`}>Blog</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/blog/details`} >Details</Link></li>
                                 */}
+                            <a />
                             </ul>
+                        </li>
+                        <li >
+                            <a href="/about">About Us</a>
+                        </li>
+                        <li >
+                            <a href="/contact">Contact</a>
                         </li>
                     </ul>
                 </nav>

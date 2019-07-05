@@ -19,13 +19,10 @@ class HeaderFour extends Component {
         super(props);
 
 		this.state = {
-			isLoading:false
+			isLoading: false
 		}
     }
 
-    /*=====================
-         Pre loader
-         ==========================*/
     componentDidMount() {
         setTimeout(function() {
             document.querySelector(".loader-wrapper").style = "display: none";
@@ -38,7 +35,7 @@ class HeaderFour extends Component {
 
     openNav() {
         var openmyslide = document.getElementById("mySidenav");
-        if(openmyslide){
+        if( openmyslide ){
             openmyslide.classList.add('open-side')
 		}
     }
@@ -51,10 +48,10 @@ class HeaderFour extends Component {
     }
 
 	load = ()=>{
-		this.setState({isLoading: true});
+		this.setState({ isLoading: true });
 		fetch().then(()=>{
 			// deal with data fetched
-			this.setState({isLoading: false})
+			this.setState({ isLoading: false })
 		})
 	};
 	
@@ -67,7 +64,6 @@ class HeaderFour extends Component {
 					<div className="mobile-fix-option"></div>
 					{/*Top Header Component*/}
 					<TopBar shade="light"/>
-
 					<div className="container-fluid">
 						<div className="row">
 							<div className="col-sm-12">
@@ -80,30 +76,13 @@ class HeaderFour extends Component {
 									<div className="menu-right pull-right">
 										{/*Top Navigation Bar Component*/}
 										<NavBar/>
-
 										<div>
 											<div className="icon-nav">
 												<ul>
 													<li className="onhover-div mobile-search">
-														<div><img src={`${process.env.PUBLIC_URL}/assets/images/icon/search.png`} onClick={this.openSearch} className="img-fluid" alt="" />
-															<i className="fa fa-search" onClick={this.openSearch}></i></div>
-													</li>
-													<li className="onhover-div mobile-setting">
-														<div><img src={`${process.env.PUBLIC_URL}/assets/images/icon/setting.png`} className="img-fluid" alt="" />
-															<i className="fa fa-cog"></i></div>
-														<div className="show-div setting">
-															<h6>language</h6>
-															<ul>
-																<li><a href={null} onClick={() => this.changeLanguage('en')}>English</a> </li>
-																<li><a href={null} onClick={() => this.changeLanguage('fn')}>French</a> </li>
-															</ul>
-															<h6>currency</h6>
-															<ul className="list-inline">
-																<li><a href={null} onClick={() => this.props.changeCurrency('€')}>euro</a> </li>
-																<li><a href={null} onClick={() => this.props.changeCurrency('₹')}>rupees</a> </li>
-																<li><a href={null} onClick={() => this.props.changeCurrency('£')}>pound</a> </li>
-																<li><a href={null} onClick={() => this.props.changeCurrency('$')}>doller</a> </li>
-															</ul>
+														<div>
+															<img src={`${process.env.PUBLIC_URL}/assets/images/icon/search.png`} onClick={this.openSearch} className="img-fluid" alt="" />
+															<i className="fa fa-search" onClick={this.openSearch} />
 														</div>
 													</li>
 													{/*Header Cart Component */}

@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
-import {Helmet} from 'react-helmet'
+import React, { Component } from 'react';
+import { Helmet } from 'react-helmet'
 import Breadcrumb from "../common/breadcrumb";
 import NewProduct from "../common/new-product";
 import Filter from "./common/filter";
 import FilterBar from "./common/filter-bar";
 import ProductListing from "./common/product-listing";
 import StickyBox from "react-sticky-box";
+import { PAGE_CONSTANTS } from '../../constants/root';
 
 class CollectionLeftSidebar extends Component {
 
@@ -28,8 +29,8 @@ class CollectionLeftSidebar extends Component {
             <div>
                 {/*SEO Support*/}
                 <Helmet>
-                    <title>Ambar Technology | Store</title>
-                    <meta name="description" content="Multikart – Multipurpose eCommerce React Template is a multi-use React template. It is designed to go well with multi-purpose websites. Multikart Bootstrap 4 Template will help you run multiple businesses." />
+                    <title>Store | {PAGE_CONSTANTS.title}</title>
+                    <meta name="description" content={PAGE_CONSTANTS.meta.description} />
                 </Helmet>
                 {/*SEO Support End */}
 

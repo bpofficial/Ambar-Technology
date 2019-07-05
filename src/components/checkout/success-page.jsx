@@ -28,7 +28,7 @@ class orderSuccess extends Component {
                                     <i className="fa fa-check-circle" aria-hidden="true"></i>
                                     <h2>thank you</h2>
                                     <p>Payment Is Has Been Received Order Placed Successfully</p>
-                                    <p>Transaction ID: {(payment.paymentID)?payment.paymentID:payment.id}</p>
+                                    <p>Transaction ID: { payment.paymentID ? payment.paymentID : payment.id }</p>
                                 </div>
                             </div>
                         </div>

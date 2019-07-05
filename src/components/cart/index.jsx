@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 import Breadcrumb from "../common/breadcrumb";
 import {getCartTotal} from "../../services";
 import {removeFromCart, incrementQty, decrementQty} from '../../actions'
+import { PAGE_CONSTANTS } from '../../constants/root';
 
 class cartComponent extends Component {
 
@@ -21,12 +22,12 @@ class cartComponent extends Component {
             <div>
                 {/*SEO Support*/}
                 <Helmet>
-                    <title>MultiKart | Cart List Page</title>
-                    <meta name="description" content="Multikart – Multipurpose eCommerce React Template is a multi-use React template. It is designed to go well with multi-purpose websites. Multikart Bootstrap 4 Template will help you run multiple businesses." />
+                    <title>Cart | {PAGE_CONSTANTS.title}</title>
+                    <meta name="description" content={PAGE_CONSTANTS.meta.description} />
                 </Helmet>
                 {/*SEO Support End */}
 
-                <Breadcrumb title={'Cart Page'}/>
+                <Breadcrumb title='Cart'/>
 
                 {cartItems.length>0 ?
                 <section className="cart-section section-b-space">
