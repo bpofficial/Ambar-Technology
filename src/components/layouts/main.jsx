@@ -118,8 +118,6 @@ class Products extends Component {
                 <div className="footer-white">
                     <Footer logoName={'logo/3.png'} />
                 </div>
-
-                {/*<ThemeSettings />*/}
             </div>
         )
     }
