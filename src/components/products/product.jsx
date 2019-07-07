@@ -6,7 +6,6 @@ import {connect} from "react-redux";
 
 // import custom Components
 import Service from "./common/service";
-import BrandBlock from "./common/brand-block";
 import NewProduct from "../common/new-product";
 import Breadcrumb from "../common/breadcrumb";
 import DetailsWithPrice from "./common/product/details-price";
@@ -15,9 +14,7 @@ import { addToCart, addToCartUnsafe, addToWishlist } from '../../actions'
 import ImageZoom from './common/product/image-zoom'
 import SmallImages from './common/product/small-image'
 
-
-
-class LeftSideBar extends Component {
+class Product extends Component {
 
     constructor() {
         super();
@@ -46,7 +43,7 @@ class LeftSideBar extends Component {
     }
 
     render(){
-        const {symbol, item, addToCart, addToCartUnsafe, addToWishlist} = this.props
+        const { item, addToCart, addToCartUnsafe, addToWishlist } = this.props
         console.log(this.props, item)
         var products = {
             slidesToShow: 1,
@@ -137,11 +134,11 @@ class LeftSideBar extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    console.log(state)
     let productId = ownProps.match.params.id;
     return {
-        item: state.data.products.find(el => el.id == productId),
-        symbol: state.data.symbol
+        item: state.data.products.find(el => el.id == productId)
     }
 }
 
-export default connect(mapStateToProps, {addToCart, addToCartUnsafe, addToWishlist}) (LeftSideBar);
+export default connect(mapStateToProps, {addToCart, addToCartUnsafe, addToWishlist}) (Product);

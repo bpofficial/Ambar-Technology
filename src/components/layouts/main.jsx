@@ -5,7 +5,6 @@ import Slider from 'react-slick';
 
 // Import custom components
 import Header from "../common/headers/header"
-import SpecialProducts from "./special-products"
 import Footer from "../common/footers/footer";
 
 class Products extends Component {
@@ -26,9 +25,9 @@ class Products extends Component {
                                         <div className="col">
                                             <div className="slider-contain">
                                                 <div>
-                                                    <h4>save 30%</h4>
-                                                    <h1>electronic</h1>
-                                                    <a href="#" className="btn btn-outline btn-classic">shop now</a></div>
+                                                    <h4>$10 July</h4>
+                                                    <h1>shipping</h1>
+                                                    <a href="/store" className="btn btn-outline btn-classic">shop now</a></div>
                                             </div>
                                         </div>
                                     </div>
@@ -42,9 +41,9 @@ class Products extends Component {
                                         <div className="col">
                                             <div className="slider-contain">
                                                 <div>
-                                                    <h4>save upto 30%</h4>
-                                                    <h1>headphone</h1>
-                                                    <a href="#" className="btn btn-outline btn-classic">shop now</a></div>
+                                                    <h4>free per $50 spent</h4>
+                                                    <h1>5-in-1 wrench</h1>
+                                                    <a href="/store" className="btn btn-outline btn-classic">shop now</a></div>
                                             </div>
                                         </div>
                                     </div>
@@ -60,7 +59,7 @@ class Products extends Component {
                         <div className="container-fluid">
                             <div className="row partition3">
                                 <div className="col-md-4">
-                                    <a href="#">
+                                    <a href="/">
                                         <div className="collection-banner">
                                             <div className="img-part">
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/electronics/sub1.jpg`}
@@ -76,7 +75,7 @@ class Products extends Component {
                                     </a>
                                 </div>
                                 <div className="col-md-4">
-                                    <a href="#">
+                                    <a href="/">
                                         <div className="collection-banner">
                                             <div className="img-part">
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/electronics/sub2.jpg`}
@@ -92,7 +91,7 @@ class Products extends Component {
                                     </a>
                                 </div>
                                 <div className="col-md-4">
-                                    <a href="#">
+                                    <a href="/">
                                         <div className="collection-banner">
                                             <div className="img-part">
                                                 <img src={`${process.env.PUBLIC_URL}/assets/images/electronics/sub3.jpg`}

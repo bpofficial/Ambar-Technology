@@ -3,20 +3,10 @@ import React, {Component} from 'react';
 import Breadcrumb from "../common/breadcrumb";
 
 class Search extends Component {
-
-    constructor (props) {
-        super (props)
-
-    }
-
     render() {
-
-
         return (
             <div>
                 <Breadcrumb title={'Search'}/>
-                
-                
                 {/*Search section*/}
                 <section className="authentication-page section-b-space">
                     <div className="container">
@@ -30,8 +20,9 @@ class Search extends Component {
                                                        aria-label="Amount (to the nearest dollar)"
                                                        placeholder="Search Products......" />
                                                     <div className="input-group-append">
-                                                        <button className="btn btn-solid"><i
-                                                            className="fa fa-search"></i>Search
+                                                        <button className="btn btn-solid">
+                                                            <i className="fa fa-search"></i>
+                                                            Search
                                                         </button>
                                                     </div>
                                             </div>
@@ -42,7 +33,6 @@ class Search extends Component {
                         </section>
                     </div>
                 </section>
-
             </div>
         )
     }

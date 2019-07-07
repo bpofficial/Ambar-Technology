@@ -52,10 +52,10 @@ class Root extends React.Component {
 						<Switch>
                             <Route exact path={`${process.env.PUBLIC_URL}/`} component={Main}/>
                             <Layout>
-
-								<Route path={`${process.env.PUBLIC_URL}/store/:category/:id`} component={ProductPage}/>
-                                <Route path={`${process.env.PUBLIC_URL}/store/:category`} component={Store} />
+                                
                                 <Route exact path={`${process.env.PUBLIC_URL}/store`} component={Store}/>
+                                <Route exact path={`${process.env.PUBLIC_URL}/store/:category`} component={Store} />
+								<Route exact path={`${process.env.PUBLIC_URL}/store/:category/:id`} component={ProductPage} />
 
 								{/*Routes For custom Features*/}
 								<Route exact path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>

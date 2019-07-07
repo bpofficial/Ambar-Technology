@@ -13,8 +13,10 @@ const initialState = {
 const productReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_PRODUCTS:
-            return { ...state,
-                products: action.products };
+            return { 
+                ...state,
+                products: action.products 
+            };
         case FETCH_SINGLE_PRODUCT:
             if (state.products.findIndex(product => product.id === action.productId) !== -1) {
                 const singleItem = state.products.reduce((itemAcc, product) => {

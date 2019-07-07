@@ -58,7 +58,7 @@ export default class NavBar extends Component {
                             <a href="/">Home</a>
                         </li>
                         <li>
-                            <a  style={{paddingRight:'75px'}} href="/store">Shop</a>
+                            <a  style={{paddingRight:'75px'}} href="/store">Store</a>
                             <ul>
                                 {/* TODO: Complete this => Category collection */}
                                 <li><Link to={`${process.env.PUBLIC_URL}/store`} >{'Category 1'}</Link></li>
