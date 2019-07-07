@@ -63,20 +63,20 @@ class orderSuccess extends Component {
                                                 <div className="col-3 order_detail">
                                                     <div>
                                                         <h4>price</h4>
-                                                        <h5>{symbol}{item.sum}</h5>
+                                                        <h5>{'$' /*Symbol*/}{item.sum}</h5>
                                                     </div>
                                                 </div>
                                             </div>
                                     })}
                                     <div className="total-sec">
                                         <ul>
-                                            <li>subtotal <span>{symbol}{orderTotal}</span></li>
+                                            <li>subtotal <span>{'$' /*Symbol*/}{orderTotal}</span></li>
                                             <li>shipping <span>$0</span></li>
                                             <li>tax(GST) <span>$0</span></li>
                                         </ul>
                                     </div>
                                     <div className="final-total">
-                                        <h3>total <span>{symbol}{orderTotal}</span></h3>
+                                        <h3>total <span>{'$' /*Symbol*/}{orderTotal}</span></h3>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@ class orderSuccess extends Component {
                                             <li>Order ID: {payment.id}</li> }
 
                                             <li>Order Date: {CheckDate}</li>
-                                            <li>Order Total: {symbol}{orderTotal}</li>
+                                            <li>Order Total: {'$' /*Symbol*/}{orderTotal}</li>
                                         </ul>
                                     </div>
                                     <div className="col-sm-6">

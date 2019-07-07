@@ -19,7 +19,7 @@ class ElementCategory extends Component {
                                     <div className="category-block">
                                         <a href="#">
                                             <div className="category-image">
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/icon/cat1.png`} alt="" /></div>
+                                                <img src={`${process.env.PUBLIC_URL}/assets/images/icon/catlogo.png`} alt="" /></div>
                                         </a>
                                         <div className="category-details">
                                             <a href="#">
@@ -117,7 +117,7 @@ class ElementCategory extends Component {
                             <div className="col-sm-4 border-padding">
                                 <div className="category-banner">
                                     <div>
-                                        <img src={`${process.env.PUBLIC_URL}/assets/images/cat1.png`} className="img-fluid blur-up lazyload bg-img"
+                                        <img src={`${process.env.PUBLIC_URL}/assets/images/catlogo.png`} className="img-fluid blur-up lazyload bg-img"
                                              alt="" />
                                     </div>
                                     <div className="category-box">
@@ -241,7 +241,7 @@ class ElementCategory extends Component {
                                         <div className="category-wrapper">
                                             <div>
                                                 <div>
-                                                    <img src={`${process.env.PUBLIC_URL}/assets/images/watch/cat1.png`}
+                                                    <img src={`${process.env.PUBLIC_URL}/assets/images/watch/catlogo.png`}
                                                          className="img-fluid blur-up lazyload bg-img" alt="" />
                                                 </div>
                                                 <h4>watch models</h4>
@@ -304,7 +304,7 @@ class ElementCategory extends Component {
                                     <div className="category-wrapper">
                                         <div>
                                             <div>
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/watch/cat1.png`}
+                                                <img src={`${process.env.PUBLIC_URL}/assets/images/watch/catlogo.png`}
                                                      className="img-fluid blur-up lazyload bg-img" alt="" />
                                             </div>
                                             <h4>watch models</h4>

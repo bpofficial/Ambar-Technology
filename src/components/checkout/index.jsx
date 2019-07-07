@@ -197,11 +197,11 @@ class checkOut extends Component {
                                                     </div>
                                                     <ul className="qty">
                                                         {cartItems.map((item, index) => {
-                                                            return <li key={index}>{item.name} × {item.qty} <span>{symbol} {item.sum}</span></li> })
+                                                            return <li key={index}>{item.name} × {item.qty} <span>{'$' /*Symbol*/} {item.sum}</span></li> })
                                                         }
                                                     </ul>
                                                     <ul className="sub-total">
-                                                        <li>Subtotal <span className="count">{symbol}{total}</span></li>
+                                                        <li>Subtotal <span className="count">{'$' /*Symbol*/}{total}</span></li>
                                                         <li>Shipping <div className="shipping">
                                                             <div className="shopping-option">
                                                                 <input type="checkbox" name="free-shipping" id="free-shipping" />
@@ -216,7 +216,7 @@ class checkOut extends Component {
                                                     </ul>
 
                                                     <ul className="total">
-                                                        <li>Total <span className="count">{symbol}{total}</span></li>
+                                                        <li>Total <span className="count">{'$' /*Symbol*/}{total}</span></li>
                                                     </ul>
                                                 </div>
 
@@ -242,7 +242,7 @@ class checkOut extends Component {
                                                     {(total !== 0)?
                                                     <div className="text-right">
                                                         {(this.state.payment === 'stripe')? <button type="button" className="btn-solid btn" onClick={() => this.StripeClick()} >Place Order</button>:
-                                                         <PaypalExpressBtn env={'sandbox'} client={client} currency={'USD'} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
+                                                         <PaypalExpressBtn env={'sandbox'} client={client} currency={'AUD'} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />}
                                                     </div>
                                                     : ''}
                                                 </div>

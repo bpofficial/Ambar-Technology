@@ -4388,14 +4388,9 @@ r
   padding: 0 80px;
 }
 .layout-8 .layout-8-bg {
-  background-image: url("/assets/images/electronics/bg.jpg");
-  background-size: cover;
-  background-attachment: fixed;
   height: 100%;
   width: 100%;
   padding: 0 15px;
-  -webkit-animation: 10s linear 0s normal none infinite animate;
-          animation: 10s linear 0s normal none infinite animate;
 }
 .layout-8 .layout-8-bg .layout7-product .product-box .details-product {
   opacity: 1;
@@ -4893,9 +4888,6 @@ footer.pet-layout-footer .social-white {
   color: #ffffff;
 }
 
-.bg-img-gym {
-  background-image: url("/assets/images/gym/bg.jpg");
-}
 .bg-img-gym .dark-layout {
   background-color: transparent;
 }
@@ -5818,10 +5810,6 @@ footer.pet-layout-footer .social-white {
 }
 .tab-left .theme-tab .tab-content-cls {
   width: 70%;
-}
-
-.product_section {
-  background-image: url("/assets/images/marijuana/leaf-bg.jpg");
 }
 
 .border-box.tools-grey .ribbon span {
@@ -12449,7 +12437,7 @@ body.dark {
   top: 50%;
   margin-top: -17px;
   left: auto;
-  right: 15px;
+  right: 45px;
   width: 34px;
   height: 34px;
   overflow: hidden;

@@ -24,7 +24,7 @@ class ElementProductNoSlider extends Component {
                             <div className="col">
                                 <div className="no-slider row">
                                 { products.slice(2, 10).map((product, index) =>
-                                    <ProductStyleOne product={product} symbol={symbol}
+                                    <ProductStyleOne product={product} symbol={'$' /*Symbol*/}
                                          onAddToCompareClicked={() => addToCompare(product)}
                                          onAddToWishlistClicked={() => addToWishlist(product)}
                                          onAddToCartClicked={addToCart} key={index}/>

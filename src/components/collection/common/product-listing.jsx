@@ -59,7 +59,7 @@ class ProductListing extends Component {
                                 <div className="row">
                                     { products.slice(0, this.state.limit).map((product, index) =>
                                         <div className={`${this.props.colSize===3?'col-xl-3 col-md-6 col-grid-box':'col-lg-'+this.props.colSize}`} key={index}>
-                                        <ProductListItem product={product} symbol={symbol}
+                                        <ProductListItem product={product} symbol={'$' /*Symbol*/}
                                                          onAddToCompareClicked={() => addToCompare(product)}
                                                          onAddToWishlistClicked={() => addToWishlist(product)}
                                                          onAddToCartClicked={addToCart} key={index}/>

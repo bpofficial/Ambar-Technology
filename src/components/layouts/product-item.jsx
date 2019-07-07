@@ -29,7 +29,7 @@ class ProductItem extends Component {
 
     minusQty = () => {
         if(this.state.quantity > 1) {
-            this.setState({stock: 'InStock'})
+            this.setState({stock: 'In Stock'})
             this.setState({quantity: this.state.quantity - 1})
         }
     }
@@ -86,8 +86,8 @@ class ProductItem extends Component {
                                 <Link to={`${process.env.PUBLIC_URL}/store/product/${product.id}`}>
                                     <h6>{product.name}</h6>
                                 </Link>
-                                <h4>{symbol}{product.price-(product.price*product.discount/100)}
-                                    <del><span className="money">{symbol}{product.price}</span></del>
+                                <h4>{'$' /*Symbol*/}{product.price-(product.price*product.discount/100)}
+                                    <del><span className="money">{'$' /*Symbol*/}{product.price}</span></del>
                                 </h4>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ class ProductItem extends Component {
                                         <div className="col-lg-6 rtl-text">
                                             <div className="product-right">
                                                 <h2> {product.name} </h2>
-                                                <h3>{symbol}{product.price}</h3>
+                                                <h3>{'$' /*Symbol*/}{product.price}</h3>
                                                 <div className="border-product">
                                                     <h6 className="product-title">product details</h6>
                                                     <p>{product.shortDetails}</p>

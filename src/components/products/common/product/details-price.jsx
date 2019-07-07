@@ -64,9 +64,9 @@ class DetailsWithPrice extends Component {
                 <div className="product-right">
                     <h2> {item.name} </h2>
                     <h4>
-                        <del>{symbol}{item.price}</del>
+                        <del>{'$' /*Symbol*/}{item.price}</del>
                         <span>{item.discount}% off</span></h4>
-                    <h3>{symbol}{item.price-(item.price*item.discount/100)} </h3>
+                    <h3>{'$' /*Symbol*/}{item.price-(item.price*item.discount/100)} </h3>
                     {item.variants?
                     <ul >
                         <Slider {...colorsnav} asNavFor={this.props.navOne} ref={slider => (this.slider1 = slider)} className="color-variant">

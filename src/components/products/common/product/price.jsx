@@ -55,10 +55,10 @@ class Price extends Component {
             <div className="col-lg-4">
                 <div className="product-right product-form-box">
                     <h4>
-                        <del>{symbol}{item.price}</del>
+                        <del>{'$' /*Symbol*/}{item.price}</del>
                         <span>{item.discount}% off</span>
                     </h4>
-                    <h3>{symbol}{(item.price*item.discount/100)} </h3>
+                    <h3>{'$' /*Symbol*/}{(item.price*item.discount/100)} </h3>
                     <ul className="color-variant">
                         <Slider {...colorsnav} asNavFor={this.props.navOne} ref={slider => (this.slider1 = slider)} className="color-variant">
                             {item.variants.map((vari, i) => {

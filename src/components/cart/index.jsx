@@ -67,7 +67,7 @@ class cartComponent extends Component {
                                                             </div>
                                                         </div>
                                                         <div className="col-xs-3">
-                                                            <h2 className="td-color">{symbol}{item.price-(item.price*item.discount/100)}</h2>
+                                                            <h2 className="td-color">{'$' /*Symbol*/}{item.price-(item.price*item.discount/100)}</h2>
                                                         </div>
                                                         <div className="col-xs-3">
                                                             <h2 className="td-color">
@@ -78,7 +78,7 @@ class cartComponent extends Component {
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td><h2>{symbol}{item.price-(item.price*item.discount/100)}</h2></td>
+                                                <td><h2>{'$' /*Symbol*/}{item.price-(item.price*item.discount/100)}</h2></td>
                                                 <td>
                                                     <div className="qty-box">
                                                         <div className="input-group">
@@ -102,7 +102,7 @@ class cartComponent extends Component {
                                                         <i className="fa fa-times"></i>
                                                     </a>
                                                 </td>
-                                                <td><h2 className="td-color">{symbol}{item.sum}</h2></td>
+                                                <td><h2 className="td-color">{'$' /*Symbol*/}{item.sum}</h2></td>
                                             </tr>
                                         </tbody> )
                                     })}
@@ -111,7 +111,7 @@ class cartComponent extends Component {
                                     <tfoot>
                                     <tr>
                                         <td>total price :</td>
-                                        <td><h2>{symbol} {total} </h2></td>
+                                        <td><h2>{'$' /*Symbol*/} {total} </h2></td>
                                     </tr>
                                     </tfoot>
                                 </table>

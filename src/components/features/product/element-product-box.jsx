@@ -37,7 +37,7 @@ class ElementProductBox extends Component {
                                 <Slider {...Product4} className="product-4 product-m no-arrow">
                                 { products.slice(0, 4).map((product, index) =>
                                     <div className="col-xl-3 col-md-6 col-grid-box">
-                                    <ProductStyleOne product={product} symbol={symbol}
+                                    <ProductStyleOne product={product} symbol={'$' /*Symbol*/}
                                                      onAddToCompareClicked={() => addToCompare(product)}
                                                      onAddToWishlistClicked={() => addToWishlist(product)}
                                                      onAddToCartClicked={addToCart} key={index}/>
@@ -58,7 +58,7 @@ class ElementProductBox extends Component {
                                 <Slider {...Product4} className="product-4 product-m no-arrow">
                                     { products.slice(5, 9).map((product, index) =>
                                         <div className="col-xl-3 col-md-6 col-grid-box">
-                                            <ProductStyleTwo product={product} symbol={symbol}
+                                            <ProductStyleTwo product={product} symbol={'$' /*Symbol*/}
                                                              onAddToCompareClicked={() => addToCompare(product)}
                                                              onAddToWishlistClicked={() => addToWishlist(product)}
                                                              onAddToCartClicked={addToCart} key={index}/>
@@ -79,7 +79,7 @@ class ElementProductBox extends Component {
                                 <Slider {...Product4} className="product-4 product-m no-arrow">
                                     { products.slice(16, 20).map((product, index) =>
                                         <div className="col-xl-3 col-md-6 col-grid-box">
-                                            <ProductStyleThree product={product} symbol={symbol}
+                                            <ProductStyleThree product={product} symbol={'$' /*Symbol*/}
                                                              onAddToCompareClicked={() => addToCompare(product)}
                                                              onAddToWishlistClicked={() => addToWishlist(product)}
                                                              onAddToCartClicked={addToCart} key={index}/>
@@ -100,7 +100,7 @@ class ElementProductBox extends Component {
                                 <Slider {...Product4} className="product-4 product-m no-arrow">
                                     { products.slice(10, 15).map((product, index) =>
                                         <div className="col-xl-3 col-md-6 col-grid-box">
-                                            <ProductStyleFour product={product} symbol={symbol}
+                                            <ProductStyleFour product={product} symbol={'$' /*Symbol*/}
                                                                onAddToCompareClicked={() => addToCompare(product)}
                                                                onAddToWishlistClicked={() => addToWishlist(product)}
                                                                onAddToCartClicked={addToCart} key={index}/>
@@ -121,7 +121,7 @@ class ElementProductBox extends Component {
                                 <Slider {...Product4} className="product-4 product-m no-arrow">
                                     { products.slice(20, 25).map((product, index) =>
                                         <div className="col-xl-3 col-md-6 col-grid-box">
-                                            <ProductStyleFive product={product} symbol={symbol}
+                                            <ProductStyleFive product={product} symbol={'$' /*Symbol*/}
                                                               onAddToCompareClicked={() => addToCompare(product)}
                                                               onAddToWishlistClicked={() => addToWishlist(product)}
                                                               onAddToCartClicked={addToCart} key={index}/>
@@ -142,7 +142,7 @@ class ElementProductBox extends Component {
                                 <Slider {...Product5} className="product-5 product-m no-arrow">
                                     { products.slice(25, 30).map((product, index) =>
                                         <div className="col-xl-3 col-md-6 col-grid-box">
-                                            <ProductStyleSix product={product} symbol={symbol}
+                                            <ProductStyleSix product={product} symbol={'$' /*Symbol*/}
                                                               onAddToCompareClicked={() => addToCompare(product)}
                                                               onAddToWishlistClicked={() => addToWishlist(product)}
                                                               onAddToCartClicked={addToCart} key={index}/>
@@ -163,7 +163,7 @@ class ElementProductBox extends Component {
                                 <Slider {...Product5} className="product-5 game-product product-m no-arrow">
                                     { products.slice(30, 36).map((product, index) =>
                                         <div className="col-xl-3 col-md-6 col-grid-box">
-                                            <ProductStyleSeven product={product} symbol={symbol}
+                                            <ProductStyleSeven product={product} symbol={'$' /*Symbol*/}
                                                              onAddToCompareClicked={() => addToCompare(product)}
                                                              onAddToWishlistClicked={() => addToWishlist(product)}
                                                              onAddToCartClicked={addToCart} key={index}/>
@@ -183,7 +183,7 @@ class ElementProductBox extends Component {
                             <div className="col">
                                 <div className="no-slider row">
                                     { products.slice(5, 9).map((product, index) =>
-                                        <ProductStyleEight product={product} symbol={symbol}
+                                        <ProductStyleEight product={product} symbol={'$' /*Symbol*/}
                                            onAddToCompareClicked={() => addToCompare(product)}
                                            onAddToWishlistClicked={() => addToWishlist(product)}
                                            onAddToCartClicked={addToCart} key={index}/>
@@ -204,7 +204,7 @@ class ElementProductBox extends Component {
                                 <Slider {...Product5} className="product-5 product-m no-arrow">
                                     { products.slice(5, 9).map((product, index) =>
                                         <div className="col-xl-3 col-md-6 col-grid-box">
-                                            <ProductStyleNine product={product} symbol={symbol}
+                                            <ProductStyleNine product={product} symbol={'$' /*Symbol*/}
                                                onAddToCompareClicked={() => addToCompare(product)}
                                                onAddToWishlistClicked={() => addToWishlist(product)}
                                                onAddToCartClicked={addToCart} key={index}/>
@@ -225,7 +225,7 @@ class ElementProductBox extends Component {
                                 <Slider {...Product4} className="product-4 product-m no-arrow">
                                     { products.slice(5, 9).map((product, index) =>
                                         <div className="col-xl-3 col-md-6 col-grid-box">
-                                            <ProductStyleTen product={product} symbol={symbol}
+                                            <ProductStyleTen product={product} symbol={'$' /*Symbol*/}
                                               onAddToCompareClicked={() => addToCompare(product)}
                                               onAddToWishlistClicked={() => addToWishlist(product)}
                                               onAddToCartClicked={addToCart} key={index}/>
@@ -246,7 +246,7 @@ class ElementProductBox extends Component {
                                 <Slider {...Product4} className="product-4 product-m no-arrow">
                                     { products.slice(5, 9).map((product, index) =>
                                         <div className="col-xl-3 col-md-6 col-grid-box">
-                                            <ProductStyleEleven product={product} symbol={symbol}
+                                            <ProductStyleEleven product={product} symbol={'$' /*Symbol*/}
                                                  onAddToCompareClicked={() => addToCompare(product)}
                                                  onAddToWishlistClicked={() => addToWishlist(product)}
                                                  onAddToCartClicked={addToCart} key={index}/>

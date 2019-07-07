@@ -20,7 +20,7 @@ class ElementService extends Component {
                         <div className="row">
                             <div className="col-md-4 service-block">
                                 <div className="media">
-                                    <img src={`${process.env.PUBLIC_URL}/assets/images/icon/service1.png`} alt=""/>
+                                    <img src={`${process.env.PUBLIC_URL}/assets/images/icon/servicelogo.png`} alt=""/>
                                     <div className="media-body">
                                         <h4>free shipping</h4>
                                         <p>free shipping world wide</p>

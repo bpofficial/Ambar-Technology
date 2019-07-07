@@ -24,7 +24,7 @@ class RelatedProduct extends Component {
                     <div className="row search-product">
                         { items.slice(0, 6).map((product, index ) =>
                             <div key={index} className="col-xl-2 col-md-4 col-sm-6">
-                                <ProductItem product={product} symbol={symbol}
+                                <ProductItem product={product} symbol={'$' /*Symbol*/}
                                              onAddToCompareClicked={() => addToCompare(product)}
                                              onAddToWishlistClicked={() => addToWishlist(product)}
                                              onAddToCartClicked={() => addToCart(product, 1)} key={index} />

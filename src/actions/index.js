@@ -129,11 +129,3 @@ export const filterSort = (sort_by) => ({
     type: types.SORT_BY,
     sort_by
 });
-
-
-// Currency
-export const changeCurrency = (symbol) => ({
-    type: types.CHANGE_CURRENCY,
-    symbol
-});
-

@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import { Link, NavLink} from 'react-router-dom';
-import { IntlActions } from 'react-redux-multilingual'
 import Pace from 'react-pace-progress'
 
 // Import custom components
-import store from '../../../store';
 import NavBar from "./common/navbar";
-import SideBar from "./common/sidebar";
 import CartContainer from "../../../containers/CartContainer";
 import TopBar from "./common/topbar";
-import {changeCurrency} from '../../../actions'
-import {connect} from "react-redux";
 import LogoImage from "./common/logo";
 
-class HeaderFour extends Component {
+export default class Header extends Component {
 
     constructor(props) {
         super(props);
@@ -28,10 +22,6 @@ class HeaderFour extends Component {
             document.querySelector(".loader-wrapper").style = "display: none";
         }, 2000);
     }
-
-    changeLanguage(lang) {
-        store.dispatch(IntlActions.setLocale(lang))
-	}
 
     openNav() {
         var openmyslide = document.getElementById("mySidenav");
@@ -62,8 +52,7 @@ class HeaderFour extends Component {
 				<header >
 					{this.state.isLoading ? <Pace color="#27ae60"/> : null}
 					<div className="mobile-fix-option"></div>
-					{/*Top Header Component*/}
-					<TopBar shade="light"/>
+					{/*Top Header Component <TopBar shade="light"/> */}
 					<div className="container-fluid">
 						<div className="row">
 							<div className="col-sm-12">
@@ -120,7 +109,3 @@ class HeaderFour extends Component {
 			)
 	}
 }
-
-export default connect(null,
-    { changeCurrency }
-)(HeaderFour);

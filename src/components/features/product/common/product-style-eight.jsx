@@ -40,7 +40,7 @@ class ProductStyleEight extends Component {
                     <Link to={`${process.env.PUBLIC_URL}/store/product/${product.id}`}>
                         <h6>{product.name}</h6>
                     </Link>
-                    <h4>{symbol}{product.price-(product.price*product.discount/100)}</h4>
+                    <h4>{'$' /*Symbol*/}{product.price-(product.price*product.discount/100)}</h4>
                 </div>
             </div>
         )

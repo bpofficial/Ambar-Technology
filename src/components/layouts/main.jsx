@@ -4,7 +4,7 @@ import '../common/index.scss';
 import Slider from 'react-slick';
 
 // Import custom components
-import HeaderFour from "../common/headers/header"
+import Header from "../common/headers/header"
 import SpecialProducts from "./special-products"
 import Footer from "../common/footers/footer";
 
@@ -16,7 +16,7 @@ class Products extends Component {
                 <Helmet>
                     <title>Ambar Technology</title>
                 </Helmet>
-                <HeaderFour logoName={'logo/3.png'} />
+                <Header logoName={'1'} />
                 <section className="p-0 padding-bottom-cls">
                     <Slider className="slide-1 home-slider">
                         <div>
@@ -112,8 +112,7 @@ class Products extends Component {
                     </section>
                     {/*About Section End*/}
 
-                    {/*Product slider*/}
-                    <SpecialProducts type={'electronics'} />
+                    {/*Product slider <SpecialProducts type={'electronics'} />*/}
                     {/*Product slider End*/}
                 </div>
                 <div className="footer-white">

@@ -10,9 +10,9 @@ export default class App extends Component {
 
         return (
             <div>
-                <Header logoName={'logo.png'}/>
+                <Header logoName={'1'}/>
                 {this.props.children}
-                <Footer logoName={'logo.png'}/>
+                <Footer logoName={'1'}/>
             </div>
         );
     }

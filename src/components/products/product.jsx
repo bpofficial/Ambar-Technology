@@ -121,7 +121,7 @@ class LeftSideBar extends Component {
                                                 </Slider>
                                                 <SmallImages item={item} settings={productsnav} navOne={this.state.nav1} />
                                             </div>
-                                            <DetailsWithPrice symbol={symbol} item={item} navOne={this.state.nav1} addToCartClicked={addToCart} BuynowClicked={addToCartUnsafe} addToWishlistClicked={addToWishlist} />
+                                            <DetailsWithPrice symbol={'$' /*Symbol*/} item={item} navOne={this.state.nav1} addToCartClicked={addToCart} BuynowClicked={addToCartUnsafe} addToWishlistClicked={addToWishlist} />
                                         </div>
                                     </div>
                                     <DetailsTopTabs item={item} />

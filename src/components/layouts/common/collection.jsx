@@ -35,7 +35,7 @@ class TopCollection extends Component {
                                 <Slider {...properties} className="product-4 product-m no-arrow">
                                     { items.map((product, index ) =>
                                         <div key={index}>
-                                        <ProductItem product={product} symbol={symbol}
+                                        <ProductItem product={product} symbol={'$' /*Symbol*/}
                                                      onAddToCompareClicked={() => addToCompare(product)}
                                                      onAddToWishlistClicked={() => addToWishlist(product)}
                                                      onAddToCartClicked={() => addToCart(product, 1)} key={index} />

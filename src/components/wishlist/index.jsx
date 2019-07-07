@@ -52,8 +52,8 @@ class wishList extends Component {
                                                             <p>in stock</p>
                                                         </div>
                                                         <div className="col-xs-3">
-                                                            <h2 className="td-color">{symbol}{item.price-(item.price*item.discount/100)}
-                                                            <del><span className="money">{symbol}{item.price}</span></del></h2>
+                                                            <h2 className="td-color">{'$' /*Symbol*/}{item.price-(item.price*item.discount/100)}
+                                                            <del><span className="money">{'$' /*Symbol*/}{item.price}</span></del></h2>
                                                         </div>
                                                         <div className="col-xs-3">
                                                             <h2 className="td-color">
@@ -67,8 +67,8 @@ class wishList extends Component {
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td><h2>{symbol}{item.price-(item.price*item.discount/100)}
-                                                     <del><span className="money">{symbol}{item.price}</span></del></h2></td>
+                                                <td><h2>{'$' /*Symbol*/}{item.price-(item.price*item.discount/100)}
+                                                     <del><span className="money">{'$' /*Symbol*/}{item.price}</span></del></h2></td>
                                                 <td >
                                                     <p>in stock</p>
                                                 </td>

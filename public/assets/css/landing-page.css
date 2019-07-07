@@ -174,7 +174,6 @@
     transform: translateY(0px); } }
   .landing-page-multikart .main-img {
     position: relative;
-    background-image: url("/assets/images/landing-Page/home.jpg");
     height: 93vh;
     width: 100%;
     background-position: center;

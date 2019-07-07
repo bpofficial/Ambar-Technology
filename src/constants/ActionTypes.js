@@ -10,9 +10,6 @@ export const FILTER_COLOR = 'FILTER_COLOR'
 export const FILTER_PRICE = 'FILTER_PRICE'
 export const SORT_BY = 'SORT_BY'
 
-export const CHANGE_CURRENCY = 'CHANGE_CURRENCY'
-
-
 // Cart
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'

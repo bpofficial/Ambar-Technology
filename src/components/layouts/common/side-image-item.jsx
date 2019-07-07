@@ -43,8 +43,8 @@ class SideImageItem extends Component {
                             <Link to={`${process.env.PUBLIC_URL}/store/product/${product.id}`}>
                                 <h6>{product.name}</h6>
                             </Link>
-                            <h4>{symbol}{product.price-(product.price*product.discount/100)}
-                                <del><span className="money">{symbol}{product.price}</span></del>
+                            <h4>{'$' /*Symbol*/}{product.price-(product.price*product.discount/100)}
+                                <del><span className="money">{'$' /*Symbol*/}{product.price}</span></del>
                             </h4>
                             {product.variants?
                                 <ul className="color-variant">

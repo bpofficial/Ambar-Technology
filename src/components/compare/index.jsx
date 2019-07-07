@@ -68,8 +68,8 @@ class Compare extends Component {
                                                                 item.variants[0].images
                                                                 :item.pictures[0]} className="img-fluid" alt="" />
                                                     <h5>{item.name}</h5></Link>
-                                                    <h5>{symbol}{(item.price*item.discount/100)}
-                                                        <del><span className="money">{symbol}{item.price}</span></del></h5>
+                                                    <h5>{'$' /*Symbol*/}{(item.price*item.discount/100)}
+                                                        <del><span className="money">{'$' /*Symbol*/}{item.price}</span></del></h5>
                                                 </div>
                                                 <div className="detail-part">
                                                     <div className="title-detail">

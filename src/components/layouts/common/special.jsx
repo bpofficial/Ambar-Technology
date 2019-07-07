@@ -51,8 +51,8 @@ class Special extends Component {
                                                             <Link to={`${process.env.PUBLIC_URL}/store/product/${product[0].id}`} >
                                                                 <h6>{product[0].name}</h6>
                                                             </Link>
-                                                            <h4>{symbol}{product[0].price-(product[0].price*product[0].discount/100)}
-                                                                <del><span className="money">{symbol}{product[0].price}</span></del>
+                                                            <h4>{'$' /*Symbol*/}{product[0].price-(product[0].price*product[0].discount/100)}
+                                                                <del><span className="money">{'$' /*Symbol*/}{product[0].price}</span></del>
                                                             </h4>
                                                         </div>
                                                     </div>
@@ -73,8 +73,8 @@ class Special extends Component {
                                                             <Link to={`${process.env.PUBLIC_URL}/store/product/${product[1].id}`} >
                                                                 <h6>{product[1].name}</h6>
                                                             </Link>
-                                                            <h4>{symbol}{product[1].price-(product[1].price*product[1].discount/100)}
-                                                                <del><span className="money">{symbol}{product[1].price}</span></del>
+                                                            <h4>{'$' /*Symbol*/}{product[1].price-(product[1].price*product[1].discount/100)}
+                                                                <del><span className="money">{'$' /*Symbol*/}{product[1].price}</span></del>
                                                             </h4>
                                                         </div>
                                                     </div>
@@ -87,7 +87,7 @@ class Special extends Component {
                                     <div>
                                         <div className="offer-slider">
                                             <div>
-                                                <ProductItem product={product[2]} symbol={symbol}
+                                                <ProductItem product={product[2]} symbol={'$' /*Symbol*/}
                                                              onAddToCompareClicked={() => addToCompare(product[2])}
                                                              onAddToWishlistClicked={() => addToWishlist(product[2])}
                                                              onAddToCartClicked={() => addToCart(product[2], 1)}
@@ -118,8 +118,8 @@ class Special extends Component {
                                                             <Link to={`${process.env.PUBLIC_URL}/store/product/${product[3].id}`} >
                                                                 <h6>{product[3].name}</h6>
                                                             </Link>
-                                                            <h4>{symbol}{product[3].price-(product[3].price*product[3].discount/100)}
-                                                                <del><span className="money">{symbol}{product[3].price}</span></del>
+                                                            <h4>{'$' /*Symbol*/}{product[3].price-(product[3].price*product[3].discount/100)}
+                                                                <del><span className="money">{'$' /*Symbol*/}{product[3].price}</span></del>
                                                             </h4>
                                                         </div>
                                                     </div>
@@ -140,8 +140,8 @@ class Special extends Component {
                                                             <Link to={`${process.env.PUBLIC_URL}/store/product/${product[4].id}`} >
                                                                 <h6>{product[4].name}</h6>
                                                             </Link>
-                                                            <h4>{symbol}{product[4].price-(product[4].price*product[4].discount/100)}
-                                                                <del><span className="money">{symbol}{product[4].price}</span></del>
+                                                            <h4>{'$' /*Symbol*/}{product[4].price-(product[4].price*product[4].discount/100)}
+                                                                <del><span className="money">{'$' /*Symbol*/}{product[4].price}</span></del>
                                                             </h4>
                                                         </div>
                                                     </div>

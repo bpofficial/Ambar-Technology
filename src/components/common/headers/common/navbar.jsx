@@ -22,8 +22,7 @@ export default class NavBar extends Component {
         if (window.innerWidth < 750) {
             this.setState({navClose: {right:'-410px'}})
         }
-        if (window.innerWidth < 1199)
-        {
+        if (window.innerWidth < 1199) {
             this.setState({navClose: {right:'-300px'}})
         }
     }
@@ -49,33 +48,26 @@ export default class NavBar extends Component {
                     <div className="toggle-nav" onClick={this.openNav.bind(this)}>
                         <i className="fa fa-bars sidebar-bar" ></i>
                     </div>
-                    {/*Horizontal menu TODO: Fix menu disappearing after zoom*/}
                     <ul id="main-menu" className="sm pixelstrap sm-horizontal" style={this.state.navClose}>
                         <li >
                             <div className="mobile-back text-right" onClick={this.closeNav.bind(this)}>
                                 Back<i className="fa fa-angle-right pl-2" aria-hidden="true"></i>
                             </div>
                         </li>
-                        <li >
-                            <a href="/store">Shop</a>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>
+                            <a  style={{paddingRight:'75px'}} href="/store">Shop</a>
                             <ul>
-                                {//TODO: Complete this => Category collection
-                                }
+                                {/* TODO: Complete this => Category collection */}
                                 <li><Link to={`${process.env.PUBLIC_URL}/store`} >{'Category 1'}</Link></li>
-                                <a />
                             </ul>
                         </li>
                         <li >
                             <a href="/blog">Blog</a>
-                            <ul>
-                                {/*
-                                <li><Link to={`${process.env.PUBLIC_URL}/blog/blog-page`} >Blog</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/blog/left-sidebar`}>Blog</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/blog/details`} >Details</Link></li>
-                                */}
-                            <a />
-                            </ul>
                         </li>
+                        <li />
                         <li >
                             <a href="/about">About Us</a>
                         </li>

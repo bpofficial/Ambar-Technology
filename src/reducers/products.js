@@ -1,7 +1,7 @@
 import {
     FETCH_SINGLE_PRODUCT,
-    CHANGE_CURRENCY,
-    RECEIVE_PRODUCTS } from "../constants/ActionTypes";
+    RECEIVE_PRODUCTS 
+} from "../constants/ActionTypes";
 
 
 const initialState = {
@@ -20,13 +20,11 @@ const productReducer = (state = initialState, action) => {
                 const singleItem = state.products.reduce((itemAcc, product) => {
                     return product
                 }, [])
-                return { ...state,
-                    product_details: singleItem };
+                return { 
+                    ...state,
+                    product_details: singleItem 
+                };
             }
-
-        case CHANGE_CURRENCY:
-            return { ...state,
-                symbol: action.symbol };
         default:
             return state;
     }

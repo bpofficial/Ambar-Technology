@@ -31,7 +31,7 @@ class SpecialProducts extends Component {
                                         <TabPanel>
                                             <div className="no-slider row">
                                                 { newProducts.map((product, index ) =>
-                                                    <ProductItem product={product} symbol={symbol}
+                                                    <ProductItem product={product} symbol={'$' /*Symbol*/}
                                                                  onAddToCompareClicked={() => addToCompare(product)}
                                                                  onAddToWishlistClicked={() => addToWishlist(product)}
                                                                  onAddToCartClicked={() => addToCart(product, 1)} key={index} /> )
@@ -41,7 +41,7 @@ class SpecialProducts extends Component {
                                         <TabPanel>
                                             <div className="no-slider row">
                                                 { featuredProducts.map((product, index ) =>
-                                                    <ProductItem product={product} symbol={symbol}
+                                                    <ProductItem product={product} symbol={'$' /*Symbol*/}
                                                                  onAddToCompareClicked={() => addToCompare(product)}
                                                                  onAddToWishlistClicked={() => addToWishlist(product)}
                                                                  onAddToCartClicked={() => addToCart(product, 1)} key={index} /> )
@@ -51,7 +51,7 @@ class SpecialProducts extends Component {
                                         <TabPanel>
                                             <div className=" no-slider row">
                                                 { bestSeller.map((product, index ) =>
-                                                    <ProductItem product={product} symbol={symbol}
+                                                    <ProductItem product={product} symbol={'$' /*Symbol*/}
                                                                  onAddToCompareClicked={() => addToCompare(product)}
                                                                  onAddToWishlistClicked={() => addToWishlist(product)}
                                                                  onAddToCartClicked={() => addToCart(product, 1)} key={index} /> )

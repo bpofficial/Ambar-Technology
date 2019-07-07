@@ -12,13 +12,13 @@ const CartContainer = ({cartList, total, symbol, removeFromCart}) => (
             <i className="fa fa-shopping-cart"></i></Link>
         <ul className="show-div shopping-cart">
             { cartList.map((item,index) => (
-                <CartPage key={index} item={item} total={total} symbol={symbol} removeFromCart={() => removeFromCart(item)}  />
+                <CartPage key={index} item={item} total={total} symbol={'$' /*Symbol*/} removeFromCart={() => removeFromCart(item)}  />
             ))}
             {(cartList.length > 0) ?
                 <div>
             <li>
                 <div className="total">
-                    <h5>subtotal : <span>{symbol}{total}</span></h5>
+                    <h5>subtotal : <span>{'$' /*Symbol*/}{total}</span></h5>
                 </div>
             </li>
             <li>
