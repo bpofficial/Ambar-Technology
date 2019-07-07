@@ -3,7 +3,9 @@ import {Link} from 'react-router-dom';
 import $ from 'jquery';
 import 'smartmenus';
 
-export default (props, state) => {
+export default () => {
+
+    const [navState, setNavState] = useState({right: '0px'})
 
     $(function() {
         $('#main-menu').smartmenus({
@@ -12,20 +14,18 @@ export default (props, state) => {
         });
     });
     if (window.innerWidth < 750) {
-        this.setState({navClose: {right:'-410px'}})
+        setNavState({ right:'-410px' })
     }
     if (window.innerWidth < 1199) {
-        this.setState({navClose: {right:'-300px'}})
+        setNavState({ right:'-300px' })
     }
 
-    const [navState, setNavState] = useState({right: '0px'})
-
     const openNav = () =>  {
-        setNavState({right:'0px'})
+        setNavState({ right:'0px' })
     }
 
     const closeNav = () =>  {
-        setNavState({right:'-410px'})
+        setNavState({ right:'-410px' })
     }
 
     const onMouseEnterHandler = () => {
