@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux'
-import {Link} from 'react-router-dom'
+import React, {Component } from 'react';
+import {connect } from 'react-redux'
+import {Link } from 'react-router-dom'
 import Slider from 'react-slick';
 
 import Breadcrumb from '../common/breadcrumb';
-import {removeFromCompare, addToCart} from '../../actions'
+import {removeFromCompare, addToCart } from '../../actions'
 
 class Compare extends Component {
 

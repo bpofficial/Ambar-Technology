@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import {Helmet} from 'react-helmet'
-import { connect } from 'react-redux'
-import {Link} from 'react-router-dom'
+import React, {Component } from 'react';
+import {Helmet } from 'react-helmet'
+import {connect } from 'react-redux'
+import {Link } from 'react-router-dom'
 
 
 import Breadcrumb from "../common/breadcrumb";
-import {getCartTotal} from "../../services";
-import {removeFromCart, incrementQty, decrementQty} from '../../actions'
-import { PAGE_CONSTANTS } from '../../constants/root';
+import {getCartTotal } from "../../services";
+import {removeFromCart, incrementQty, decrementQty } from '../../actions'
+import {PAGE_CONSTANTS } from '../../constants/root';
 
 class cartComponent extends Component {
 
@@ -71,7 +71,7 @@ class cartComponent extends Component {
                                                         </div>
                                                         <div className="col-xs-3">
                                                             <h2 className="td-color">
-                                                                <a href="#" className="icon" onClick={() => this.props.removeFromCart(item)}>
+                                                                <a href="/" className="icon" onClick={() => this.props.removeFromCart(item)}>
                                                                     <i className="icon-close"></i>
                                                                 </a>
                                                             </h2>
@@ -98,7 +98,7 @@ class cartComponent extends Component {
                                                     </div>{(item.qty >= item.stock)? 'out of Stock' : ''}
                                                 </td>
                                                 <td>
-                                                    <a href="#" className="icon" onClick={() => this.props.removeFromCart(item)}>
+                                                    <a href="/" className="icon" onClick={() => this.props.removeFromCart(item)}>
                                                         <i className="fa fa-times"></i>
                                                     </a>
                                                 </td>

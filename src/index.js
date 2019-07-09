@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { ScrollContext } from 'react-router-scroll-4';
-import { IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
+import {Provider } from 'react-redux';
+import {BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import {ScrollContext } from 'react-router-scroll-4';
+import {IntlReducer as Intl, IntlProvider } from 'react-redux-multilingual'
 import './index.scss';
 
 // Import custom components
 import store from './store';
-import { getAllProducts } from './actions'
+import { getAllProducts, getAllCategories } from './actions'
 import Main from './components/layouts/main';
 
 
@@ -44,6 +44,7 @@ class Root extends React.Component {
 
     render() {
         store.dispatch(getAllProducts());
+        store.dispatch(getAllCategories());
 
         return(
         	<Provider store={store}>

@@ -44,7 +44,7 @@ export const getMinMaxPrice = (products) => {
     return {'min':min, 'max':max};
 }
 
-export const getVisibleproducts = (data, { brand, color, value, sortBy }) => {
+export const getVisibleproducts = (data, {brand, color, value, sortBy }) => {
     return data.products.filter(product => {
 
         let brandMatch;

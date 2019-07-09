@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 
 import Breadcrumb from "../../common/breadcrumb";
 import {
@@ -6,7 +6,7 @@ import {
     svgFreeShipping,
     svgservice,
     svgpayment
-} from "../../../services/script"
+ } from "../../../services/script"
 
 class ElementService extends Component {
     render() {

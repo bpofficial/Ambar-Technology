@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 import Slider from 'react-slick';
 
 import Breadcrumb from "../common/breadcrumb";
-import {Slider2, Team4} from "../../services/script"
+import {Slider2, Team4 } from "../../services/script"
 
 class aboutUs extends Component {
 
@@ -92,7 +92,7 @@ class aboutUs extends Component {
                                     <div>
                                         <div className="media">
                                             <div className="text-center">
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/avtar.jpg`} alt="#" />
+                                                <img src={`${process.env.PUBLIC_URL}/assets/images/avtar.jpg`} alt="/" />
                                                     <h5>Mark Jecno</h5>
                                                     <h6>Designer</h6>
                                             </div>
@@ -106,7 +106,7 @@ class aboutUs extends Component {
                                     <div>
                                         <div className="media">
                                             <div className="text-center">
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/2.jpg`} alt="#" />
+                                                <img src={`${process.env.PUBLIC_URL}/assets/images/2.jpg`} alt="/" />
                                                     <h5>Mark Jecno</h5>
                                                     <h6>Designer</h6>
                                             </div>
@@ -120,7 +120,7 @@ class aboutUs extends Component {
                                     <div>
                                         <div className="media">
                                             <div className="text-center">
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/avtar.jpg`} alt="#" />
+                                                <img src={`${process.env.PUBLIC_URL}/assets/images/avtar.jpg`} alt="/" />
                                                     <h5>Mark Jecno</h5>
                                                     <h6>Designer</h6>
                                             </div>
@@ -134,7 +134,7 @@ class aboutUs extends Component {
                                     <div>
                                         <div className="media">
                                             <div className="text-center">
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/avtar.jpg`} alt="#" />
+                                                <img src={`${process.env.PUBLIC_URL}/assets/images/avtar.jpg`} alt="/" />
                                                     <h5>Mark Jecno</h5>
                                                     <h6>Designer</h6>
                                             </div>
@@ -148,7 +148,7 @@ class aboutUs extends Component {
                                     <div>
                                         <div className="media">
                                             <div className="text-center">
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/avtar.jpg`} alt="#" />
+                                                <img src={`${process.env.PUBLIC_URL}/assets/images/avtar.jpg`} alt="/" />
                                                     <h5>Mark Jecno</h5>
                                                     <h6>Designer</h6>
                                             </div>
@@ -162,7 +162,7 @@ class aboutUs extends Component {
                                     <div>
                                         <div className="media">
                                             <div className="text-center">
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/avtar.jpg`} alt="#" />
+                                                <img src={`${process.env.PUBLIC_URL}/assets/images/avtar.jpg`} alt="/" />
                                                     <h5>Mark Jecno</h5>
                                                     <h6>Designer</h6>
                                             </div>

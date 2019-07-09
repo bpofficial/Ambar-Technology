@@ -17,15 +17,15 @@
   "tags": ["nike", "caprese"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "yellow",
     "images": "/assets/images/fashion/product/1.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/21.jpg"
   },
-  {
+  { 
     "color": "green",
     "images": "/assets/images/fashion/product/36.jpg"
   }]
@@ -48,11 +48,11 @@
   "tags": ["caprese", "puma"],
   "rating": 5,
   "variants": [
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/15.jpg"
   },
-  {
+  { 
     "color": "orange",
     "images": "/assets/images/fashion/product/7.jpg"
   }]
@@ -75,15 +75,15 @@
   "tags": ["puma"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "blue",
     "images": "/assets/images/fashion/product/32.jpg"
   },
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/2.jpg"
   },
-  {
+  { 
     "color": "yellow",
     "images": "/assets/images/fashion/product/25.jpg"
   }]
@@ -106,15 +106,15 @@
   "tags": ["lifestyle"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "pink",
     "images": "/assets/images/fashion/product/5.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/12.jpg"
   },
-  {
+  { 
     "color": "green",
     "images": "/assets/images/fashion/product/31.jpg"
   }]
@@ -137,15 +137,15 @@
   "tags": ["caprese", "lifestyle"],
   "rating": 5,
   "variants": [
-  {
+  { 
     "color": "pink",
     "images": "/assets/images/fashion/product/13.jpg"
   },
-  {
+  { 
     "color": "yellow",
     "images": "/assets/images/fashion/product/10.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/21.jpg"
   }]
@@ -168,15 +168,15 @@
   "tags": ["caprese"],
   "rating": 5,
   "variants": [
-  {
+  { 
     "color": "blue",
     "images": "/assets/images/fashion/product/30.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/24.jpg"
   },
-  {
+  { 
     "color": "orange",
     "images": "/assets/images/fashion/product/9.jpg"
   }]
@@ -199,15 +199,15 @@
   "tags": ["nike", "lifestyle"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "red",
     "images": "/assets/images/fashion/product/20.jpg"
   },
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/4.jpg"
   },
-  {
+  { 
     "color": "blue",
     "images": "/assets/images/fashion/product/35.jpg"
   }]
@@ -230,11 +230,11 @@
   "tags": ["nike", "lifestyle"],
   "rating": 3,
   "variants": [
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/11.jpg"
   },
-  {
+  { 
     "color": "yellow",
     "images": "/assets/images/fashion/product/1.jpg"
   }]
@@ -257,11 +257,11 @@
   "tags": ["nike", "lifestyle"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "pink",
     "images": "/assets/images/fashion/product/14.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/4.jpg"
   }]
@@ -284,15 +284,15 @@
   "tags": ["nike", "lifestyle"],
   "rating": 3,
   "variants": [
-  {
+  { 
     "color": "red",
     "images": "/assets/images/fashion/product/23.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/22.jpg"
   },
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/2.jpg"
   }]
@@ -315,15 +315,15 @@
   "tags": ["nike", "lifestyle"],
   "rating": 5,
   "variants": [
-  {
+  { 
     "color": "orange",
     "images": "/assets/images/fashion/product/9.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/12.jpg"
   },
-  {
+  { 
     "color": "pink",
     "images": "/assets/images/fashion/product/14.jpg"
   }]
@@ -346,11 +346,11 @@
   "tags": ["nike", "lifestyle"],
   "rating": 3,
   "variants": [
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/2.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/22.jpg"
   }]
@@ -373,11 +373,11 @@
   "tags": ["nike", "lifestyle"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "green",
     "images": "/assets/images/fashion/product/31.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/24.jpg"
   }]
@@ -400,15 +400,15 @@
   "tags": ["nike", "lifestyle"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "orange",
     "images": "/assets/images/fashion/product/13.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/22.jpg"
   },
-  {
+  { 
     "color": "yellow",
     "images": "/assets/images/fashion/product/10.jpg"
   }]
@@ -431,19 +431,19 @@
   "tags": ["nike", "lifestyle"],
   "rating": 5,
   "variants": [
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/17.jpg"
   },
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/21.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/12.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/15.jpg"
   }]
@@ -466,15 +466,15 @@
   "tags": ["nike", "lifestyle"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "pink",
     "images": "/assets/images/fashion/product/3.jpg"
   },
-  {
+  { 
     "color": "yellow",
     "images": "/assets/images/fashion/product/10.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/24.jpg"
   }]
@@ -497,15 +497,15 @@
   "tags": ["nike", "lifestyle"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "red",
     "images": "/assets/images/fashion/product/25.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/24.jpg"
   },
-  {
+  { 
     "color": "pink",
     "images": "/assets/images/fashion/product/34.jpg"
   }]
@@ -528,15 +528,15 @@
   "tags": ["lifestyle", "nike"],
   "rating": 5,
   "variants": [
-  {
+  { 
     "color": "orange",
     "images": "/assets/images/fashion/product/7.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/6.jpg"
   },
-  {
+  { 
     "color": "red",
     "images": "/assets/images/fashion/product/20.jpg"
   }]
@@ -559,15 +559,15 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/43.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/59.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/42.jpg"
   }]
@@ -590,15 +590,15 @@
   "tags": ["lifestyle", "nike"],
   "rating": 5,
   "variants": [
-  {
+  { 
     "color": "orange",
     "images": "/assets/images/fashion/product/66.jpg"
   },
-  {
+  { 
     "color": "green",
     "images": "/assets/images/fashion/product/47.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/74.jpg"
   }]
@@ -621,11 +621,11 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/56.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/72.jpg"
   }]
@@ -648,15 +648,15 @@
   "tags": ["lifestyle", "nike"],
   "rating": 5,
   "variants": [
-  {
+  { 
     "color": "green",
     "images": "/assets/images/fashion/product/47.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/46.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/55.jpg"
   }]
@@ -679,15 +679,15 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "pink",
     "images": "/assets/images/fashion/product/63.jpg"
   },
-  {
+  { 
     "color": "green",
     "images": "/assets/images/fashion/product/46.jpg"
   },
-  {
+  { 
     "color": "yellow",
     "images": "/assets/images/fashion/product/51.jpg"
   }]
@@ -710,15 +710,15 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "orange",
     "images": "/assets/images/fashion/product/73.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/72.jpg"
   },
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/80.jpg"
   }]
@@ -741,11 +741,11 @@
   "tags": ["lifestyle", "nike"],
   "rating": 5,
   "variants": [
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/55.jpg"
   },
-  {
+  { 
     "color": "green",
     "images": "/assets/images/fashion/product/47.jpg"
   }]
@@ -768,15 +768,15 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/51.jpg"
   },
-  {
+  { 
     "color": "pink",
     "images": "/assets/images/fashion/product/66.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/62.jpg"
   }]
@@ -799,11 +799,11 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "blue",
     "images": "/assets/images/fashion/product/78.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/71.jpg"
   }]
@@ -826,15 +826,15 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/49.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/72.jpg"
   },
-  {
+  { 
     "color": "red",
     "images": "/assets/images/fashion/product/60.jpg"
   }]
@@ -857,11 +857,11 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "green",
     "images": "/assets/images/fashion/product/47.jpg"
   },
-  {
+  { 
     "color": "yellow",
     "images": "/assets/images/fashion/product/79.jpg"
   }]
@@ -884,15 +884,15 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "yellow",
     "images": "/assets/images/fashion/product/51.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/77.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/65.jpg"
   }]
@@ -915,11 +915,11 @@
   "tags": ["lifestyle", "nike"],
   "rating": 5,
   "variants": [
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/76.jpg"
   },
-  {
+  { 
     "color": "red",
     "images": "/assets/images/fashion/product/60.jpg"
   }]
@@ -942,11 +942,11 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "pink",
     "images": "/assets/images/fashion/product/67.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/77.jpg"
   }]
@@ -969,15 +969,15 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "blue",
     "images": "/assets/images/fashion/product/61.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/75.jpg"
   },
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/56.jpg"
   }]
@@ -1000,11 +1000,11 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "red",
     "images": "/assets/images/fashion/product/66.jpg"
   },
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/75.jpg"
   }]
@@ -1027,15 +1027,15 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "orange",
     "images": "/assets/images/fashion/product/60.jpg"
   },
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/74.jpg"
   },
-  {
+  { 
     "color": "green",
     "images": "/assets/images/fashion/product/47.jpg"
   }]
@@ -1058,11 +1058,11 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/70.jpg"
   },
-  {
+  { 
     "color": "pink",
     "images": "/assets/images/fashion/product/67.jpg"
   }]
@@ -1085,7 +1085,7 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/69.jpg"
   }]
@@ -1108,11 +1108,11 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "blue",
     "images": "/assets/images/fashion/product/49.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/65.jpg"
   }]
@@ -1135,20 +1135,20 @@
   "tags": ["lifestyle", "nike"],
   "rating": 4,
   "variants": [
-  {
+  { 
     "color": "gray",
     "images": "/assets/images/fashion/product/62.jpg"
   },
-  {
+  { 
     "color": "black",
     "images": "/assets/images/fashion/product/45.jpg"
   },
-  {
+  { 
     "color": "white",
     "images": "/assets/images/fashion/product/48.jpg"
   }]
 },
-  {
+  { 
     "id": 49,
     "name": "Cabbage",
     "price": 120.00,
@@ -1162,7 +1162,7 @@
     "sale": false,
     "category": "vegetable"
   },
-  {
+  { 
     "id": 50,
     "name": "Onions",
     "price": 100.00,
@@ -1176,7 +1176,7 @@
     "sale": false,
     "category": "vegetable"
   },
-  {
+  { 
     "id": 51,
     "name": "Tomato",
     "price": 100.00,
@@ -1190,7 +1190,7 @@
     "sale": false,
     "category": "vegetable"
   },
-  {
+  { 
     "id": 52,
     "name": "Cucumber",
     "price": 300.00,
@@ -1204,7 +1204,7 @@
     "sale": false,
     "category": "vegetable"
   },
-  {
+  { 
     "id": 52,
     "name": "Carrot",
     "price": 500.00,
@@ -1218,7 +1218,7 @@
     "sale": false,
     "category": "vegetable"
   },
-  {
+  { 
     "id": 53,
     "name": "Black Leather Watch",
     "price": 300.00,
@@ -1234,12 +1234,12 @@
     "colors": ["black"],
     "tags": ["titan","reebok"],
     "variants": [
-      {
+      { 
         "color": "black",
         "images": "/assets/images/watch/3.jpg"
       }]
   },
-  {
+  { 
     "id": 54,
     "name": "White Smart Watch",
     "price": 700.00,
@@ -1255,16 +1255,16 @@
     "colors": ["white","black"],
     "tags": ["titan", "unisex"],
     "variants": [
-      {
+      { 
         "color": "white",
         "images": "/assets/images/watch/1.jpg"
       },
-      {
+      { 
         "color": "black",
         "images": "/assets/images/watch/11.jpg"
       }]
   },
-  {
+  { 
     "id": 55,
     "name": "Blue Strap Watch",
     "price": 100.00,
@@ -1280,16 +1280,16 @@
     "colors": ["blue","black"],
     "tags": ["reebok","rolex", "unisex"],
     "variants": [
-      {
+      { 
         "color": "blue",
         "images": "/assets/images/watch/5.jpg"
       },
-      {
+      { 
         "color": "black",
         "images": "/assets/images/watch/11.jpg"
       }]
   },
-  {
+  { 
     "id": 56,
     "name": "Golden Strap Watch",
     "price": 200.00,
@@ -1305,16 +1305,16 @@
     "colors": ["brown","black"],
     "tags": ["reebok","rolex", "unisex"],
     "variants": [
-      {
+      { 
         "color": "brown",
         "images": "/assets/images/watch/7.jpg"
       },
-      {
+      { 
         "color": "black",
         "images": "/assets/images/watch/11.jpg"
       }]
   },
-  {
+  { 
     "id": 57,
     "name": "Men brown Watch",
     "price": 200.00,
@@ -1330,16 +1330,16 @@
     "colors": ["brown","white"],
     "tags": ["reebok","rolex", "unisex"],
     "variants": [
-      {
+      { 
         "color": "brown",
         "images": "/assets/images/watch/12.jpg"
       },
-      {
+      { 
         "color": "white",
         "images": "/assets/images/watch/1.jpg"
       }]
   },
-  {
+  { 
     "id": 58,
     "name": "Men black Watch",
     "price": 200.00,
@@ -1355,16 +1355,16 @@
     "colors": ["black","gray"],
     "tags": ["unisex","rolex","titan"],
     "variants": [
-      {
+      { 
         "color": "black",
         "images": "/assets/images/watch/11.jpg"
       },
-      {
+      { 
         "color": "gray",
         "images": "/assets/images/watch/1.jpg"
       }]
   },
-  {
+  { 
     "id": 59,
     "name": "Men black Watch",
     "price": 200.00,
@@ -1380,20 +1380,20 @@
     "colors": ["blue","white","gray"],
     "tags": ["reebok","rolex","titan"],
     "variants": [
-      {
+      { 
         "color": "blue",
         "images": "/assets/images/watch/10.jpg"
       },
-      {
+      { 
         "color": "white",
         "images": "/assets/images/watch/1.jpg"
       },
-      {
+      { 
         "color": "gray",
         "images": "/assets/images/watch/3.jpg"
       }]
   },
-  {
+  { 
     "id": 60,
     "name": "brown Strap Watch",
     "price": 200.00,
@@ -1409,16 +1409,16 @@
     "colors": ["brown","gray"],
     "tags": ["reebok", "unisex","titan"],
     "variants": [
-      {
+      { 
         "color": "brown",
         "images": "/assets/images/watch/9.jpg"
       },
-      {
+      { 
         "color": "gray",
         "images": "/assets/images/watch/3.jpg"
       }]
   },
-  {
+  { 
     "id": 61,
     "name": "Black Leather Watch",
     "price": 300.00,
@@ -1434,12 +1434,12 @@
     "colors": ["black"],
     "tags": ["titan", "unisex"],
     "variants": [
-      {
+      { 
         "color": "black",
         "images": "/assets/images/watch/3.jpg"
       }]
   },
-  {
+  { 
     "id": 62,
     "name": "White Smart Watch",
     "price": 700.00,
@@ -1455,16 +1455,16 @@
     "colors": ["white","black"],
     "tags": ["titan", "unisex"],
     "variants": [
-      {
+      { 
         "color": "white",
         "images": "/assets/images/watch/1.jpg"
       },
-      {
+      { 
         "color": "black",
         "images": "/assets/images/watch/11.jpg"
       }]
   },
-  {
+  { 
     "id": 63,
     "name": "Blue Strap Watch",
     "price": 100.00,
@@ -1480,16 +1480,16 @@
     "colors": ["blue","black"],
     "tags": ["reebok","rolex"],
     "variants": [
-      {
+      { 
         "color": "blue",
         "images": "/assets/images/watch/5.jpg"
       },
-      {
+      { 
         "color": "black",
         "images": "/assets/images/watch/11.jpg"
       }]
   },
-  {
+  { 
     "id": 64,
     "name": "Golden Strap Watch",
     "price": 200.00,
@@ -1505,16 +1505,16 @@
     "colors": ["brown","black"],
     "tags": ["reebok", "unisex"],
     "variants": [
-      {
+      { 
         "color": "brown",
         "images": "/assets/images/watch/7.jpg"
       },
-      {
+      { 
         "color": "black",
         "images": "/assets/images/watch/11.jpg"
       }]
   },
-  {
+  { 
     "id": 65,
     "name": "Men brown Watch",
     "price": 200.00,
@@ -1530,16 +1530,16 @@
     "colors": ["brown","white"],
     "tags": ["reebok","rolex", "unisex"],
     "variants": [
-      {
+      { 
         "color": "brown",
         "images": "/assets/images/watch/12.jpg"
       },
-      {
+      { 
         "color": "white",
         "images": "/assets/images/watch/1.jpg"
       }]
   },
-  {
+  { 
     "id": 66,
     "name": "Men black Watch",
     "price": 200.00,
@@ -1555,16 +1555,16 @@
     "colors": ["black","gray"],
     "tags": ["unisex","rolex","titan"],
     "variants": [
-      {
+      { 
         "color": "black",
         "images": "/assets/images/watch/11.jpg"
       },
-      {
+      { 
         "color": "gray",
         "images": "/assets/images/watch/1.jpg"
       }]
   },
-  {
+  { 
     "id": 67,
     "name": "Men black Watch",
     "price": 200.00,
@@ -1580,20 +1580,20 @@
     "colors": ["blue","white","gray"],
     "tags": ["reebok","rolex","titan"],
     "variants": [
-      {
+      { 
         "color": "blue",
         "images": "/assets/images/watch/10.jpg"
       },
-      {
+      { 
         "color": "white",
         "images": "/assets/images/watch/1.jpg"
       },
-      {
+      { 
         "color": "gray",
         "images": "/assets/images/watch/3.jpg"
       }]
   },
-  {
+  { 
     "id": 68,
     "name": "brown Strap Watch",
     "price": 200.00,
@@ -1609,11 +1609,11 @@
     "colors": ["brown","gray"],
     "tags": ["reebok","rolex","titan"],
     "variants": [
-      {
+      { 
         "color": "brown",
         "images": "/assets/images/watch/9.jpg"
       },
-      {
+      { 
         "color": "gray",
         "images": "/assets/images/watch/3.jpg"
       }]
@@ -1622,7 +1622,7 @@
 
 
 
-  {
+  { 
     "id": 69,
     "name": "Accent Chair",
     "price": 100.00,
@@ -1637,7 +1637,7 @@
     "category": "furniture",
     "tags": ["craft","durian","vittoria","aura"]
   },
-  {
+  { 
     "id": 70,
     "name": "Black Chair",
     "price": 200.00,
@@ -1652,7 +1652,7 @@
     "category": "furniture",
     "tags": ["durian","vittoria"]
   },
-  {
+  { 
     "id": 71,
     "name": "Brown Chair",
     "price": 250.00,
@@ -1667,7 +1667,7 @@
     "category": "furniture",
     "tags": ["durian","vittoria","aura"]
   },
-  {
+  { 
     "id": 72,
     "name": "Foldable Table",
     "price": 200.00,
@@ -1682,7 +1682,7 @@
     "category": "furniture",
     "tags": ["craft","vittoria","aura"]
   },
-  {
+  { 
     "id": 73,
     "name": "Night Lamp",
     "price": 130.00,
@@ -1697,7 +1697,7 @@
     "category": "furniture",
     "tags": ["craft","durian","aura"]
   },
-  {
+  { 
     "id": 74,
     "name": "Compfort Table",
     "price": 280.00,
@@ -1712,7 +1712,7 @@
     "category": "furniture",
     "tags": ["craft","aura"]
   },
-  {
+  { 
     "id": 75,
     "name": "Round Table",
     "price": 160.00,
@@ -1727,7 +1727,7 @@
     "category": "furniture",
     "tags": ["aura"]
   },
-  {
+  { 
     "id": 76,
     "name": "Seating Sofa",
     "price": 500.00,
@@ -1742,7 +1742,7 @@
     "category": "furniture",
     "tags": ["durian","aura"]
   },
-  {
+  { 
     "id": 77,
     "name": "Glass Black Table",
     "price": 130.00,
@@ -1757,7 +1757,7 @@
     "category": "furniture",
     "tags": ["durian"]
   },
-  {
+  { 
     "id": 78,
     "name": "White Night lamp",
     "price": 100.00,
@@ -1772,7 +1772,7 @@
     "category": "furniture",
     "tags": ["craft","durian","aura"]
   },
-  {
+  { 
     "id": 79,
     "name": "Radiance Day Creme",
     "price": 110.00,
@@ -1786,7 +1786,7 @@
     "sale": true,
     "category": "beauty"
   },
-  {
+  { 
     "id": 80,
     "name": "Creme Compact",
     "price": 100.00,
@@ -1800,7 +1800,7 @@
     "sale": false,
     "category": "beauty"
   },
-  {
+  { 
     "id": 81,
     "name": "Lip Crayon",
     "price": 300.00,
@@ -1814,7 +1814,7 @@
     "sale": false,
     "category": "beauty"
   },
-  {
+  { 
     "id": 82,
     "name": "Nail Lacquer",
     "price": 500.00,
@@ -1828,7 +1828,7 @@
     "sale": true,
     "category": "beauty"
   },
-  {
+  { 
     "id": 83,
     "name": "Creme Compact",
     "price": 550.00,
@@ -1842,7 +1842,7 @@
     "sale": false,
     "category": "beauty"
   },
-  {
+  { 
     "id": 84,
     "name": "Radiance Day Creme",
     "price": 160.00,
@@ -1856,7 +1856,7 @@
     "sale": true,
     "category": "beauty"
   },
-  {
+  { 
     "id": 85,
     "name": "Skin Creme",
     "price": 100.00,
@@ -1870,7 +1870,7 @@
     "sale": false,
     "category": "beauty"
   },
-  {
+  { 
     "id": 86,
     "name": "Digital Watch",
     "price": 100.00,
@@ -1884,7 +1884,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 87,
     "name": "Wired Printer",
     "price": 300.00,
@@ -1898,7 +1898,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 88,
     "name": "Electric Machine",
     "price": 400.00,
@@ -1912,7 +1912,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 89,
     "name": "Electronic Freezer",
     "price": 150.00,
@@ -1926,7 +1926,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 90,
     "name": "Digital Remote",
     "price": 180.00,
@@ -1940,7 +1940,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 91,
     "name": "Wireless Mouse",
     "price": 220.00,
@@ -1954,7 +1954,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 92,
     "name": "Washing Machine",
     "price": 100.00,
@@ -1968,7 +1968,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 93,
     "name": "Digital Watch",
     "price": 100.00,
@@ -1982,7 +1982,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 94,
     "name": "Wired Printer",
     "price": 300.00,
@@ -1996,7 +1996,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 95,
     "name": "Electric Machine",
     "price": 400.00,
@@ -2010,7 +2010,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 96,
     "name": "Electronic Freezer",
     "price": 150.00,
@@ -2024,7 +2024,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 97,
     "name": "Digital Remote",
     "price": 180.00,
@@ -2038,7 +2038,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 98,
     "name": "Wireless Mouse",
     "price": 220.00,
@@ -2052,7 +2052,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 99,
     "name": "Washing Machine",
     "price": 100.00,
@@ -2069,7 +2069,7 @@
 
 
 
-  {
+  { 
     "id": 100,
     "name": "Digital Tourch",
     "price": 300.00,
@@ -2083,7 +2083,7 @@
     "sale": true,
     "category": "electronics"
   },
-  {
+  { 
     "id": 101,
     "name": "Turkey",
     "price": 300.00,
@@ -2097,7 +2097,7 @@
     "sale": false,
     "category": "pets"
   },
-  {
+  { 
     "id": 102,
     "name": "Turkey and Chicken",
     "price": 150.00,
@@ -2111,7 +2111,7 @@
     "sale": false,
     "category": "pets"
   },
-  {
+  { 
     "id": 103,
     "name": "Roasted Bison",
     "price": 200.00,
@@ -2125,7 +2125,7 @@
     "sale": false,
     "category": "pets"
   },
-  {
+  { 
     "id": 104,
     "name": "Puppy Food",
     "price": 300.00,
@@ -2139,7 +2139,7 @@
     "sale": false,
     "category": "pets"
   },
-  {
+  { 
     "id": 105,
     "name": "Dog Orthopadic",
     "price": 350.00,
@@ -2153,7 +2153,7 @@
     "sale": false,
     "category": "pets"
   },
-  {
+  { 
     "id": 106,
     "name": "Dog Crock",
     "price": 130.00,
@@ -2167,7 +2167,7 @@
     "sale": false,
     "category": "pets"
   },
-  {
+  { 
     "id": 107,
     "name": "Dog Dry Food",
     "price": 500.00,
@@ -2181,7 +2181,7 @@
     "sale": false,
     "category": "pets"
   },
-  {
+  { 
     "id": 108,
     "name": "Dry Food",
     "price": 300.00,
@@ -2197,7 +2197,7 @@
   },
 
 
-  {
+  { 
     "id": 120,
     "name": "Turkey",
     "price": 300.00,
@@ -2212,7 +2212,7 @@
     "rating": 4,
     "category": "kids"
   },
-  {
+  { 
     "id": 121,
     "name": "Turkey and Chicken",
     "price": 150.00,
@@ -2227,7 +2227,7 @@
     "rating": 3,
     "category": "kids"
   },
-  {
+  { 
     "id": 122,
     "name": "Roasted Bison",
     "price": 200.00,
@@ -2242,7 +2242,7 @@
     "rating": 4,
     "category": "kids"
   },
-  {
+  { 
     "id": 123,
     "name": "Puppy Food",
     "price": 300.00,
@@ -2257,7 +2257,7 @@
     "rating": 5,
     "category": "kids"
   },
-  {
+  { 
     "id": 124,
     "name": "Dog Orthopadic",
     "price": 350.00,
@@ -2272,7 +2272,7 @@
     "rating": 4,
     "category": "kids"
   },
-  {
+  { 
     "id": 125,
     "name": "Dog Crock",
     "price": 130.00,
@@ -2287,7 +2287,7 @@
     "rating": 3,
     "category": "kids"
   },
-  {
+  { 
     "id": 126,
     "name": "Dog Dry Food",
     "price": 500.00,
@@ -2302,7 +2302,7 @@
     "rating": 4,
     "category": "kids"
   },
-  {
+  { 
     "id": 127,
     "name": "Dry Food",
     "price": 300.00,

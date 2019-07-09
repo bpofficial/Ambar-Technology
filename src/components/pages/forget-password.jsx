@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 import Breadcrumb from "../common/breadcrumb";
 
 class ForgetPassword extends Component {
@@ -27,7 +27,7 @@ class ForgetPassword extends Component {
                                             <input type="text" className="form-control" id="email"
                                                    placeholder="Enter Your Email" required="" />
                                         </div>
-                                        <a href="#" className="btn btn-solid">Submit</a>
+                                        <a href="/" className="btn btn-solid">Submit</a>
                                     </div>
                                 </form>
                             </div>

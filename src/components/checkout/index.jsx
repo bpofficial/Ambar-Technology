@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import {Helmet} from 'react-helmet'
-import { connect } from 'react-redux'
+import React, {Component } from 'react';
+import {Helmet } from 'react-helmet'
+import {connect } from 'react-redux'
 import {Link, Redirect } from 'react-router-dom'
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 import SimpleReactValidator from 'simple-react-validator';
 
 import Breadcrumb from "../common/breadcrumb";
-import {removeFromWishlist} from '../../actions'
-import {getCartTotal} from "../../services";
+import {removeFromWishlist } from '../../actions'
+import {getCartTotal } from "../../services";
 
 class checkOut extends Component {
 
@@ -66,7 +66,7 @@ class checkOut extends Component {
                     console.log(token)
                       this.props.history.push({
                           pathname: '/order-success',
-                              state: { payment: token, items: this.props.cartItems, orderTotal: this.props.total, symbol: this.props.symbol }
+                              state: {payment: token, items: this.props.cartItems, orderTotal: this.props.total, symbol: this.props.symbol }
                       })
                 }
               });
@@ -90,7 +90,7 @@ class checkOut extends Component {
             console.log("The payment was succeeded!", payment);
             this.props.history.push({
                 pathname: '/order-success',
-                    state: { payment: payment, items: cartItems, orderTotal: total, symbol: symbol }
+                    state: {payment: payment, items: cartItems, orderTotal: total, symbol: symbol }
             })
 
         }

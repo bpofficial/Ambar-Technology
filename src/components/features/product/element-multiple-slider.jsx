@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 import Slider from "react-slick"
-import {connect} from "react-redux";
+import {connect } from "react-redux";
 
 // import Custom Components
 import Breadcrumb from "../../common/breadcrumb";
@@ -9,8 +9,8 @@ import {
     getBestSellerProducts,
     getNewProducts,
     getVisibleproducts
-} from "../../../services";
-import {addToCart, addToCompare, addToWishlist} from "../../../actions";
+ } from "../../../services";
+import {addToCart, addToCompare, addToWishlist } from "../../../actions";
 import ProductStyleTwo from "./common/product-style-two";
 
 
@@ -70,7 +70,7 @@ class ElementMultipleSlider extends Component {
                                         <h4>on sale</h4>
                                         <h2 className="title-inner2">season sale</h2>
                                         <Slider className="offer-slider slide-1">
-                                            { newWatches.slice(2, 5).map((product, index) =>
+                                            {newWatches.slice(2, 5).map((product, index) =>
                                                 <div key={index}>
                                                     <ProductStyleTwo product={product} symbol={'$' /*Symbol*/}
                                                          onAddToCompareClicked={() => addToCompare(product)}

@@ -1,18 +1,20 @@
 import shop from '../api/shop'
 import * as types from '../constants/ActionTypes'
-import store from "../store";
-import { toast  } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 export const fetchProductsBegin = () => ({
     type: types.FETCH_PRODUCTS_BEGIN
 });
 
-
-
 export const receiveProducts = products => ({
     type: types.RECEIVE_PRODUCTS,
     products
+})
+
+export const receiveCategories = categories => ({
+    type: types.RECEIVE_CATEGORIES,
+    categories
 })
 
 export const getAllProducts = () => dispatch => {
@@ -24,10 +26,10 @@ export const getAllProducts = () => dispatch => {
 }
 
 //TODO: Complete this => Category collection
-export const getAllCategories= () => dispatch => {
-    shop.getCategories(products => {
-        dispatch(receiveProducts(products));
-        return products;
+export const getAllCategories = () => dispatch => {
+    shop.getCategories(categories => {
+        dispatch(receiveCategories(categories));
+        return categories;
     })
 }
 

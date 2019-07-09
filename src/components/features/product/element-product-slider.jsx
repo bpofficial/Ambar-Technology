@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 import Slider from "react-slick"
-import {connect} from "react-redux";
+import {connect } from "react-redux";
 
 // import Custom Components
 import Breadcrumb from "../../common/breadcrumb";
 import ProductStyleOne from "./common/product-style-one";
-import {getVisibleproducts} from "../../../services";
-import {addToCart, addToCompare, addToWishlist} from "../../../actions";
-import {Product4} from "../../../services/script";
+import {getVisibleproducts } from "../../../services";
+import {addToCart, addToCompare, addToWishlist } from "../../../actions";
+import {Product4 } from "../../../services/script";
 
 class ElementProductSlider extends Component {
 
@@ -23,7 +23,7 @@ class ElementProductSlider extends Component {
                         <div className="row">
                             <div className="col">
                                 <Slider {...Product4} className="product-4 product-m no-arrow">
-                                { products.map((product, index) =>
+                                {products.map((product, index) =>
                                     <div className="col-xl-3 col-md-6 col-grid-box" key={index}>
                                     <ProductStyleOne product={product} symbol={'$' /*Symbol*/}
                                                      onAddToCompareClicked={() => addToCompare(product)}

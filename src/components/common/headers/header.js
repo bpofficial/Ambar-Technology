@@ -4,38 +4,24 @@ import Pace from 'react-pace-progress'
 // Import custom components
 import NavBar from "./common/navbar";
 import CartContainer from "../../../containers/CartContainer";
-import TopBar from "./common/topbar";
 import Logo from "./common/logo";
 
-export default (props, state) => {
+export default ({ logoName }) => { 
 
-	const [loadState, setLoadState] = useState(false);
+	const [loadState, setLoadState] = useState(true);
 
-	setTimeout(function() {
+	setTimeout(function() { 
 		document.querySelector(".loader-wrapper").style = "display: none";
+		setLoadState(false)
 	}, 2000);
 
-    const openNav = () => {
-        var openmyslide = document.getElementById("mySidenav");
-        if( openmyslide ){
-            openmyslide.classList.add('open-side')
-		}
-    }
-    const openSearch = () => {
+    const openSearch = () => { 
         document.getElementById("search-overlay").style.display = "block";
     }
 
-    const closeSearch = () => {
+    const closeSearch = () => { 
         document.getElementById("search-overlay").style.display = "none";
     }
-
-	const load = () => {
-		setLoadState(true)
-		fetch().then(()=>{
-			// deal with data fetched
-			setLoadState(false)
-		})
-	};
 
 	return (
 		<div>
@@ -49,7 +35,7 @@ export default (props, state) => {
 							<div className="main-menu">
 								<div className="menu-left">
 									<div className="brand-logo">
-										<Logo logo={props.logoName} />
+										<Logo logo={logoName} />
 									</div>
 								</div>
 								<div className="menu-right pull-right">

@@ -22,10 +22,10 @@ export default function cartReducer(state = {
                     return cartAcc
                 }, [])
 
-                return { ...state, cart }
+                return {...state, cart }
             }
 
-            return { ...state, cart: [...state.cart, { ...action.product, qty: action.qty, sum: (action.product.price*action.product.discount/100)*action.qty }] }
+            return {...state, cart: [...state.cart, {...action.product, qty: action.qty, sum: (action.product.price*action.product.discount/100)*action.qty }] }
 
         case DECREMENT_QTY:
             
@@ -41,10 +41,10 @@ export default function cartReducer(state = {
                     return cartAcc
                 }, [])
 
-                return { ...state, cart }
+                return {...state, cart }
             }
 
-            return { ...state, cart: [...state.cart, { ...action.product, qty: action.qty, sum: action.product.price*action.qty }] }
+            return {...state, cart: [...state.cart, {...action.product, qty: action.qty, sum: action.product.price*action.qty }] }
 
         case REMOVE_FROM_CART:
             return {

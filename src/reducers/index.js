@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import {combineReducers } from 'redux';
 
 // Import custom components
 import productReducer from './products';

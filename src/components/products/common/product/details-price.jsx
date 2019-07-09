@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import React, {Component } from 'react';
+import {Link } from 'react-router-dom'
 import Slider from 'react-slick';
 import Modal from 'react-responsive-modal';
 
@@ -79,7 +79,7 @@ class DetailsWithPrice extends Component {
                         {item.size?
                             <div>
                                 <h6 className="product-title size-text">select size
-                                    <span><a href="#" data-toggle="modal"
+                                    <span><a href="/" data-toggle="modal"
                                              data-target="#sizemodal" onClick={this.onOpenModal} >size chart</a></span></h6>
                                 <div className="modal fade" id="sizemodal" tabIndex="-1"
                                      role="dialog" aria-labelledby="exampleModalLabel"
@@ -105,7 +105,7 @@ class DetailsWithPrice extends Component {
                                 <div className="size-box">
                             <ul>
                                 {item.size.map((size, i) => {
-                                    return <li key={i}><a href="#">{size}</a></li>
+                                    return <li key={i}><a href="/">{size}</a></li>
                                 })}
                             </ul>
                         </div>

@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {Helmet} from 'react-helmet'
+import React, {Component } from 'react';
+import { Helmet } from 'react-helmet'
 import Slider from 'react-slick';
 import '../common/index.scss';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 // import custom Components
 import Service from "./common/service";
-import NewProduct from "../common/new-product";
+import NewProduct from "../common/featured";
 import Breadcrumb from "../common/breadcrumb";
 import DetailsWithPrice from "./common/product/details-price";
 import DetailsTopTabs from "./common/details-top-tabs";
@@ -43,7 +43,7 @@ class Product extends Component {
     }
 
     render(){
-        const { item, addToCart, addToCartUnsafe, addToWishlist } = this.props
+        const {item, addToCart, addToCartUnsafe, addToWishlist } = this.props
         console.log(this.props, item)
         var products = {
             slidesToShow: 1,

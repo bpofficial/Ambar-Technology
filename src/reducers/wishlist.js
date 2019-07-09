@@ -19,10 +19,10 @@ export default function wishlistReducer(state = {
                     return cartAcc
                 }, [])
 
-                return { ...state, list }
+                return {...state, list }
             }
 
-            return { ...state, list: [...state.list, action.product] }
+            return {...state, list: [...state.list, action.product] }
 
         case REMOVE_FROM_WISHLIST:
             return {

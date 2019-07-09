@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux'
-import {Link} from 'react-router-dom';
+import React, {Component } from 'react';
+import {connect } from 'react-redux'
+import {Link } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
-import { getTotal, getCartProducts } from '../../../reducers'
-import { addToCart, addToWishlist, addToCompare } from '../../../actions'
-import {getVisibleproducts} from '../../../services';
+import {getTotal, getCartProducts } from '../../../reducers'
+import {addToCart, addToWishlist, addToCompare } from '../../../actions'
+import {getVisibleproducts } from '../../../services';
 import ProductListItem from "./product-list-item";
 
 class ProductListing extends Component {
@@ -14,7 +14,7 @@ class ProductListing extends Component {
     constructor (props) {
         super (props)
 
-        this.state = { limit: 5, hasMoreItems: true };
+        this.state = {limit: 5, hasMoreItems: true };
 
     }
 
@@ -57,7 +57,7 @@ class ProductListing extends Component {
                                 }
                             >
                                 <div className="row">
-                                    { products.slice(0, this.state.limit).map((product, index) =>
+                                    {products.slice(0, this.state.limit).map((product, index) =>
                                         <div className={`${this.props.colSize===3?'col-xl-3 col-md-6 col-grid-box':'col-lg-'+this.props.colSize}`} key={index}>
                                         <ProductListItem product={product} symbol={'$' /*Symbol*/}
                                                          onAddToCompareClicked={() => addToCompare(product)}

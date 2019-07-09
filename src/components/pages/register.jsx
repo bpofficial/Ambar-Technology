@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 
 import Breadcrumb from "../common/breadcrumb";
 
@@ -48,7 +48,7 @@ class Register extends Component {
                                                 <input type="password" className="form-control" id="review"
                                                        placeholder="Enter your password" required="" />
                                             </div>
-                                            <a href="#" className="btn btn-solid">create Account</a>
+                                            <a href="/" className="btn btn-solid">create Account</a>
                                         </div>
                                     </form>
                                 </div>

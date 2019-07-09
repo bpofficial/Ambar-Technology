@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, {Component } from 'react';
+import {Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
 
@@ -10,7 +10,7 @@ class ProductListItem extends Component {
 
         this.state = {
             open: false,
-            stock: 'InStock',
+            stock: 'In Stock',
             quantity: 1,
             image: ''
         }
@@ -30,7 +30,7 @@ class ProductListItem extends Component {
 
     minusQty = () => {
         if(this.state.quantity > 1) {
-            this.setState({stock: 'InStock'})
+            this.setState({stock: 'In Stock'})
             this.setState({quantity: this.state.quantity - 1})
         }
     }
@@ -39,7 +39,7 @@ class ProductListItem extends Component {
         if(this.props.product.stock >= this.state.quantity) {
             this.setState({quantity: this.state.quantity+1})
         }else{
-            this.setState({stock: 'Out of Stock !'})
+            this.setState({stock: 'Out of Stock'})
         }
     }
     changeQty = (e) => {
@@ -108,7 +108,8 @@ class ProductListItem extends Component {
                                 <ul className="color-variant">
                                     {product.variants.map((vari, i) => {
                                         return (
-                                            <li className={vari.color} key={i} title={vari.color} onClick={() => this.onClickHandle(vari.images)}></li>)
+                                            <li className={vari.color} key={i} title={vari.color} onClick={() => this.onClickHandle(vari.images)}></li>
+                                        )
                                     })}
                                 </ul>:''}
                             </div>
@@ -146,7 +147,7 @@ class ProductListItem extends Component {
                                                         <div className="size-box">
                                                             <ul>
                                                                 {product.size.map((size, i) => {
-                                                                    return <li key={i}><a href="#">{size}</a></li>
+                                                                    return <li key={i}><a href="/">{size}</a></li>
                                                                 })}
                                                             </ul>
                                                         </div>:''}

@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import React, {Component } from 'react';
+import {connect } from 'react-redux'
+import {Link } from 'react-router-dom'
 import Slider from 'react-slick';
 
 
@@ -117,7 +117,7 @@ class Price extends Component {
                         <div className="size-box">
                             <ul>
                                 {item.size.map((size, i) => {
-                                    return <li key={i}><a href="#">{size}</a></li>
+                                    return <li key={i}><a href="/">{size}</a></li>
                                 })}
                             </ul>
                         </div>

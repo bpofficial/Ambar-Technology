@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import React, {Component } from 'react';
+import {Link } from 'react-router-dom'
 import Slider from 'react-slick';
 import ig from 'fetch-instagram';
 
-import {Slider5, Slider7} from "../../../services/script"
+import {Slider5, Slider7 } from "../../../services/script"
 
 class Instagram extends Component {
 

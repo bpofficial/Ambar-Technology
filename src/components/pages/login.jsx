@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 
 import Breadcrumb from "../common/breadcrumb";
 
@@ -35,7 +35,7 @@ class Login extends Component {
                                             <input type="password" className="form-control" id="review"
                                                    placeholder="Enter your password" required="" />
                                         </div>
-                                        <a href="#" className="btn btn-solid">Login</a>
+                                        <a href="/" className="btn btn-solid">Login</a>
                                     </form>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@ class Login extends Component {
                                     <p>Sign up for a free account at our store. Registration is quick and easy. It
                                         allows you to be able to order from our shop. To start shopping click
                                         register.</p>
-                                    <a href="#" className="btn btn-solid">Create an Account</a>
+                                    <a href="/" className="btn btn-solid">Create an Account</a>
                                 </div>
                             </div>
                         </div>

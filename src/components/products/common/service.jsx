@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 
 import {
     svgFreeShipping,
     svgservice,
     svgoffer,
     svgpayment
-} from "../../../services/script"
+ } from "../../../services/script"
 
 class Service extends Component {
     render() {

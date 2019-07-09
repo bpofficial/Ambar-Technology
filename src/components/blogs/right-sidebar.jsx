@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 import Breadcrumb from "../common/breadcrumb";
-import {Link} from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
 class RightSidebar extends Component {
 

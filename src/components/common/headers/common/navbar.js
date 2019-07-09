@@ -1,35 +1,36 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 import $ from 'jquery';
 import 'smartmenus';
 
-export default () => {
+const NavBar = ({ categories }) => {
 
     const [navState, setNavState] = useState({right: '0px'})
 
-    $(function() {
+    $(function() { 
         $('#main-menu').smartmenus({
             subMenusSubOffsetX: 1,
             subMenusSubOffsetY: -8
         });
     });
-    if (window.innerWidth < 750) {
+    if (window.innerWidth < 750) { 
         setNavState({ right:'-410px' })
     }
-    if (window.innerWidth < 1199) {
+    if (window.innerWidth < 1199) { 
         setNavState({ right:'-300px' })
     }
 
-    const openNav = () =>  {
+    const openNav = () =>  { 
         setNavState({ right:'0px' })
     }
 
-    const closeNav = () =>  {
+    const closeNav = () =>  { 
         setNavState({ right:'-410px' })
     }
 
-    const onMouseEnterHandler = () => {
-        if (window.innerWidth > 1199) {
+    const onMouseEnterHandler = () => { 
+        if (window.innerWidth > 1199) { 
             document.querySelector("#main-menu").classList.add("hover-unset");
         }
     }
@@ -53,12 +54,11 @@ export default () => {
                     <li>
                         <a  style={{paddingRight:'75px'}} href="/store">Store</a>
                         <ul>
-                            {/* TODO: Complete this => Category collection */}
-                            <li><Link to={`${process.env.PUBLIC_URL}/store`} >{'Category 1'}</Link></li>
+                            { /* TODO: Complete this => Category collection */}
+                            {categories.length < 1 ? <div className="loading-cls"></div> : categories.map((name, i) => {
+                                return <li key={i}><Link to={`${process.env.PUBLIC_URL}/store/${name.toLowerCase()}`} >{name}</Link></li>
+                            })}
                         </ul>
-                    </li>
-                    <li >
-                        <a href="/blog">Blog</a>
                     </li>
                     <li />
                     <li >
@@ -72,3 +72,11 @@ export default () => {
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    categories: state.data.categories
+})
+
+export default connect(
+    mapStateToProps
+)(NavBar);

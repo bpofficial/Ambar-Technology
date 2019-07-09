@@ -19,10 +19,10 @@ export default function compareReducer(state = {
                     return cartAcc
                 }, [])
 
-                return { ...state, items }
+                return {...state, items }
             }
 
-            return { ...state, items: [...state.items, action.product] }
+            return {...state, items: [...state.items, action.product] }
 
         case REMOVE_FROM_COMPARE:
             return {

@@ -174,7 +174,7 @@ module.exports = {
     strictExportPresence: true,
     rules: [
       // Disable require.ensure as it's not a standard language feature.
-      { parser: { requireEnsure: false } },
+      {parser: {requireEnsure: false } },
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
       {
@@ -252,7 +252,7 @@ module.exports = {
               presets: [
                 [
                   require.resolve('babel-preset-react-app/dependencies'),
-                  { helpers: true },
+                  {helpers: true },
                 ],
               ],
               cacheDirectory: true,
@@ -349,7 +349,7 @@ module.exports = {
     // the requesting resource.
     new ModuleNotFoundPlugin(paths.appPath),
     // Makes some environment variables available to the JS code, for example:
-    // if (process.env.NODE_ENV === 'development') { ... }. See `./env.js`.
+    // if (process.env.NODE_ENV === 'development') {... }. See `./env.js`.
     new webpack.DefinePlugin(env.stringified),
     // This is necessary to emit hot updates (currently CSS only):
     new webpack.HotModuleReplacementPlugin(),

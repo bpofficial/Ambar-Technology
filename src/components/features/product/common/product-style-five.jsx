@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, {Component } from 'react';
+import {Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
 
@@ -147,7 +147,7 @@ class ProductStyleFive extends Component {
                                                     <div className="size-box">
                                                         <ul>
                                                             {product.size.map((size, i) => {
-                                                                return <li key={i}><a href="#">{size}</a></li>
+                                                                return <li key={i}><a href="/">{size}</a></li>
                                                             })}
                                                         </ul>
                                                     </div>:''}

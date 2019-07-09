@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, {Component } from 'react';
 import Slider from 'react-slick';
 
 class SmallImages extends Component {
@@ -16,7 +16,7 @@ class SmallImages extends Component {
     }
 
     render() {
-        const { item, settings } = this.props;
+        const {item, settings } = this.props;
 
         var productsnav = settings;
 

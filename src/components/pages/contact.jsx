@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 import Breadcrumb from "../common/breadcrumb";
-import { PAGE_CONSTANTS } from '../../constants/root';
+import {PAGE_CONSTANTS } from '../../constants/root';
 
 class Contact extends Component {
 

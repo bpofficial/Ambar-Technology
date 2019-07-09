@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 import Slider from "react-slick";
 
 import Breadcrumb from "../../common/breadcrumb";
-import {Product4} from "../../../services/script";
+import {Product4 } from "../../../services/script";
 
 class ElementRatio extends Component {
     render() {
@@ -42,7 +42,7 @@ class ElementRatio extends Component {
                                                 <a href="javascript:void(0)" title="Add to Wishlist">
                                                     <i className="fa fa-heart" aria-hidden="true"></i>
                                                 </a>
-                                                <a href="#"
+                                                <a href="/"
                                                     data-toggle="modal"
                                                     data-target="#quick-view"
                                                     title="Quick View">
@@ -89,7 +89,7 @@ class ElementRatio extends Component {
                                                 <a href="javascript:void(0)" title="Add to Wishlist">
                                                     <i className="fa fa-heart" aria-hidden="true"></i>
                                                 </a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View">
+                                                <a href="/" data-toggle="modal" data-target="#quick-view" title="Quick View">
                                                     <i className="fa fa-search" aria-hidden="true"></i>
                                                 </a>
                                                 <a href="compare.html" title="Compare">
@@ -130,7 +130,7 @@ class ElementRatio extends Component {
                                                 </button>
                                                 <a href="javascript:void(0)" title="Add to Wishlist">
                                                     <i className="fa fa-heart" aria-hidden="true"></i></a>
-                                                <a href="#"
+                                                <a href="/"
                                                     data-toggle="modal"
                                                     data-target="#quick-view"
                                                     title="Quick View">
@@ -181,7 +181,7 @@ class ElementRatio extends Component {
                                                 <a href="javascript:void(0)" title="Add to Wishlist">
                                                     <i className="fa fa-heart" aria-hidden="true"></i>
                                                 </a>
-                                                <a href="#"
+                                                <a href="/"
                                                     data-toggle="modal"
                                                     data-target="#quick-view"
                                                     title="Quick View">
@@ -238,7 +238,7 @@ class ElementRatio extends Component {
                                                 </button>
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i
                                                     className="fa fa-heart" aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view"
+                                                <a href="/" data-toggle="modal" data-target="#quick-view"
                                                    title="Quick View"><i className="fa fa-search"
                                                                          aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
@@ -265,7 +265,7 @@ class ElementRatio extends Component {
                                                 </button>
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i
                                                     className="fa fa-heart" aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view"
+                                                <a href="/" data-toggle="modal" data-target="#quick-view"
                                                    title="Quick View"><i className="fa fa-search"
                                                                          aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
@@ -292,7 +292,7 @@ class ElementRatio extends Component {
                                                 </button>
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i
                                                     className="fa fa-heart" aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view"
+                                                <a href="/" data-toggle="modal" data-target="#quick-view"
                                                    title="Quick View"><i className="fa fa-search"
                                                                          aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
@@ -319,7 +319,7 @@ class ElementRatio extends Component {
                                                 </button>
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i
                                                     className="fa fa-heart" aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view"
+                                                <a href="/" data-toggle="modal" data-target="#quick-view"
                                                    title="Quick View"><i className="fa fa-search"
                                                                          aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
@@ -358,7 +358,7 @@ class ElementRatio extends Component {
                                                 <button title="Add to cart"><i className="fa fa-shopping-cart"></i></button>
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i className="fa fa-heart"
                                                                                                         aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                <a href="/" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
                                                     className="fa fa-search" aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
                                                                                           aria-hidden="true"></i></a>
@@ -382,7 +382,7 @@ class ElementRatio extends Component {
                                                 <button title="Add to cart"><i className="fa fa-shopping-cart"></i></button>
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i className="fa fa-heart"
                                                                                                         aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                <a href="/" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
                                                     className="fa fa-search" aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
                                                                                           aria-hidden="true"></i></a>
@@ -406,7 +406,7 @@ class ElementRatio extends Component {
                                                 <button title="Add to cart"><i className="fa fa-shopping-cart"></i></button>
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i className="fa fa-heart"
                                                                                                         aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                <a href="/" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
                                                     className="fa fa-search" aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
                                                                                           aria-hidden="true"></i></a>
@@ -430,7 +430,7 @@ class ElementRatio extends Component {
                                                 <button title="Add to cart"><i className="fa fa-shopping-cart"></i></button>
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i className="fa fa-heart"
                                                                                                         aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                <a href="/" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
                                                     className="fa fa-search" aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
                                                                                           aria-hidden="true"></i></a>
@@ -468,7 +468,7 @@ class ElementRatio extends Component {
                                             <div className="cart-info cart-wrap">
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i className="fa fa-heart"
                                                                                                         aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                <a href="/" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
                                                     className="fa fa-search" aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
                                                                                           aria-hidden="true"></i></a>
@@ -503,7 +503,7 @@ class ElementRatio extends Component {
                                             <div className="cart-info cart-wrap">
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i className="fa fa-heart"
                                                                                                         aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                <a href="/" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
                                                     className="fa fa-search" aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
                                                                                           aria-hidden="true"></i></a>
@@ -534,7 +534,7 @@ class ElementRatio extends Component {
                                             <div className="cart-info cart-wrap">
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i className="fa fa-heart"
                                                                                                         aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                <a href="/" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
                                                     className="fa fa-search" aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
                                                                                           aria-hidden="true"></i></a>
@@ -572,7 +572,7 @@ class ElementRatio extends Component {
                                             <div className="cart-info cart-wrap">
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i className="fa fa-heart"
                                                                                                         aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                <a href="/" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
                                                     className="fa fa-search" aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
                                                                                           aria-hidden="true"></i></a>
@@ -607,7 +607,7 @@ class ElementRatio extends Component {
                                             <div className="cart-info cart-wrap">
                                                 <a href="javascript:void(0)" title="Add to Wishlist"><i className="fa fa-heart"
                                                                                                         aria-hidden="true"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                <a href="/" data-toggle="modal" data-target="#quick-view" title="Quick View"><i
                                                     className="fa fa-search" aria-hidden="true"></i></a>
                                                 <a href="compare.html" title="Compare"><i className="fa fa-refresh"
                                                                                           aria-hidden="true"></i></a>

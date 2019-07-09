@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 
 //import Custom Components
 import Breadcrumb from "../../common/breadcrumb";
@@ -14,7 +14,7 @@ class ElementBanner extends Component {
                     <div className="container">
                         <div className="row partition2">
                             <div className="col-md-6">
-                                <a href="#">
+                                <a href="/">
                                     <div className="collection-banner p-right text-center">
                                         <div className="img-part">
                                             <img src={`${process.env.PUBLIC_URL}/assets/images/sub-banner1.jpg`}
@@ -30,7 +30,7 @@ class ElementBanner extends Component {
                                 </a>
                             </div>
                             <div className="col-md-6">
-                                <a href="#">
+                                <a href="/">
                                     <div className="collection-banner p-right text-center">
                                         <div className="img-part">
                                             <img src={`${process.env.PUBLIC_URL}/assets/images/sub-banner2.jpg`}
@@ -55,7 +55,7 @@ class ElementBanner extends Component {
                     <div className="container">
                         <div className="row partition3">
                             <div className="col-md-4">
-                                <a href="#">
+                                <a href="/">
                                     <div className="collection-banner p-right text-right">
                                         <div className="img-part">
                                             <img src={`${process.env.PUBLIC_URL}/assets/images/electronics/5.jpg`}
@@ -71,7 +71,7 @@ class ElementBanner extends Component {
                                 </a>
                             </div>
                             <div className="col-md-4">
-                                <a href="#">
+                                <a href="/">
                                     <div className="collection-banner p-right text-right">
                                         <div className="img-part">
                                             <img src={`${process.env.PUBLIC_URL}/assets/images/electronics/6.jpg`}
@@ -87,7 +87,7 @@ class ElementBanner extends Component {
                                 </a>
                             </div>
                             <div className="col-md-4">
-                                <a href="#">
+                                <a href="/">
                                     <div className="collection-banner p-right text-right">
                                         <div className="img-part">
                                             <img src={`${process.env.PUBLIC_URL}/assets/images/electronics/7.jpg`}
@@ -112,7 +112,7 @@ class ElementBanner extends Component {
                     <div className="container">
                         <div className="row partition4">
                             <div className="col-lg-3 col-md-6">
-                                <a href="#">
+                                <a href="/">
                                     <div className="collection-banner p-left">
                                         <div className="img-part">
                                             <img src={`${process.env.PUBLIC_URL}/assets/images/banner.jpg`}
@@ -128,7 +128,7 @@ class ElementBanner extends Component {
                                 </a>
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <a href="#">
+                                <a href="/">
                                     <div className="collection-banner p-left">
                                         <div className="img-part">
                                             <img src={`${process.env.PUBLIC_URL}/assets/images/banner1.jpg`}
@@ -144,7 +144,7 @@ class ElementBanner extends Component {
                                 </a>
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <a href="#">
+                                <a href="/">
                                     <div className="collection-banner p-left">
                                         <div className="img-part">
                                             <img src={`${process.env.PUBLIC_URL}/assets/images/banner.jpg`}
@@ -160,7 +160,7 @@ class ElementBanner extends Component {
                                 </a>
                             </div>
                             <div className="col-lg-3 col-md-6">
-                                <a href="#">
+                                <a href="/">
                                     <div className="collection-banner p-left">
                                         <div className="img-part">
                                             <img src={`${process.env.PUBLIC_URL}/assets/images/banner1.jpg`}
@@ -185,7 +185,7 @@ class ElementBanner extends Component {
                     <div className="container">
                         <div className="row partition3">
                             <div className="col-md-4">
-                                <a href="#">
+                                <a href="/">
                                     <div className="collection-banner p-left text-left">
                                         <img src={`${process.env.PUBLIC_URL}/assets/images/fashion/banner/5.jpg`} alt=""
                                              className="img-fluid blur-up lazyload bg-img" />
@@ -197,7 +197,7 @@ class ElementBanner extends Component {
                                 </a>
                             </div>
                             <div className="col-md-4">
-                                <a href="#">
+                                <a href="/">
                                     <div className="collection-banner p-left text-left">
                                         <img src={`${process.env.PUBLIC_URL}/assets/images/fashion/banner/6.jpg`} alt=""
                                              className="img-fluid blur-up lazyload bg-img" />
@@ -209,7 +209,7 @@ class ElementBanner extends Component {
                                 </a>
                             </div>
                             <div className="col-md-4">
-                                <a href="#">
+                                <a href="/">
                                     <div className="collection-banner p-left text-left">
                                         <img src={`${process.env.PUBLIC_URL}/assets/images/fashion/banner/8.jpg`} alt=""
                                              className="img-fluid blur-up lazyload bg-img" />

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component } from 'react';
 
 
 class orderSuccess extends Component {
@@ -11,7 +11,7 @@ class orderSuccess extends Component {
     render() {
 
         const {payment, items, symbol, orderTotal} = this.props.location.state;
-        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        var options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         var current = new Date();
         var next5days = new Date(Date.now() + 5 * 86400000);
         let CheckDate = current.toLocaleDateString("en-US", options).toString()
@@ -28,7 +28,7 @@ class orderSuccess extends Component {
                                     <i className="fa fa-check-circle" aria-hidden="true"></i>
                                     <h2>thank you</h2>
                                     <p>Payment Is Has Been Received Order Placed Successfully</p>
-                                    <p>Transaction ID: { payment.paymentID ? payment.paymentID : payment.id }</p>
+                                    <p>Transaction ID: {payment.paymentID ? payment.paymentID : payment.id }</p>
                                 </div>
                             </div>
                         </div>

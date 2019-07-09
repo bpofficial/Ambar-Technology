@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux'
+import React, {Component } from 'react';
+import {connect } from 'react-redux'
 
 
 
@@ -52,19 +52,19 @@ class Details extends Component {
                         <div className="payment-card-bottom">
                             <ul>
                                 <li>
-                                    <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/visa.png`} alt="" /></a>
+                                    <a href="/"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/visa.png`} alt="" /></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/mastercard.png`} alt="" /></a>
+                                    <a href="/"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/mastercard.png`} alt="" /></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/paypal.png`} alt="" /></a>
+                                    <a href="/"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/paypal.png`} alt="" /></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/american-express.png`} alt="" /></a>
+                                    <a href="/"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/american-express.png`} alt="" /></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/discover.png`} alt="" /></a>
+                                    <a href="/"><img src={`${process.env.PUBLIC_URL}/assets/images/icon/discover.png`} alt="" /></a>
                                 </li>
                             </ul>
                         </div>

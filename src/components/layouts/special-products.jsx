@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import {connect} from 'react-redux'
+import React, {Component } from 'react';
+import {Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import {connect } from 'react-redux'
 
-import {getBestSeller, getBestSellerProducts, getMensWear, getNewProducts, getWomensWear} from '../../services/index'
-import {addToCart, addToWishlist, addToCompare} from "../../actions/index";
+import {getBestSeller, getBestSellerProducts, getMensWear, getNewProducts, getWomensWear } from '../../services/index'
+import {addToCart, addToWishlist, addToCompare } from "../../actions/index";
 import ProductItem from './product-item';
 
 class SpecialProducts extends Component {
@@ -30,7 +30,7 @@ class SpecialProducts extends Component {
 
                                         <TabPanel>
                                             <div className="no-slider row">
-                                                { newProducts.map((product, index ) =>
+                                                {newProducts.map((product, index ) =>
                                                     <ProductItem product={product} symbol={'$' /*Symbol*/}
                                                                  onAddToCompareClicked={() => addToCompare(product)}
                                                                  onAddToWishlistClicked={() => addToWishlist(product)}
@@ -40,7 +40,7 @@ class SpecialProducts extends Component {
                                         </TabPanel>
                                         <TabPanel>
                                             <div className="no-slider row">
-                                                { featuredProducts.map((product, index ) =>
+                                                {featuredProducts.map((product, index ) =>
                                                     <ProductItem product={product} symbol={'$' /*Symbol*/}
                                                                  onAddToCompareClicked={() => addToCompare(product)}
                                                                  onAddToWishlistClicked={() => addToWishlist(product)}
@@ -50,7 +50,7 @@ class SpecialProducts extends Component {
                                         </TabPanel>
                                         <TabPanel>
                                             <div className=" no-slider row">
-                                                { bestSeller.map((product, index ) =>
+                                                {bestSeller.map((product, index ) =>
                                                     <ProductItem product={product} symbol={'$' /*Symbol*/}
                                                                  onAddToCompareClicked={() => addToCompare(product)}
                                                                  onAddToWishlistClicked={() => addToWishlist(product)}

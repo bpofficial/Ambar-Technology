@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, {Component } from 'react';
+import {Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
 
@@ -86,7 +86,7 @@ class ProductItem extends Component {
                         </div>
                         {product.variants?
                         <ul className="product-thumb-list">
-                            { product.variants.map((vari, i) =>
+                            {product.variants.map((vari, i) =>
                                 <li className={`grid_thumb_img ${(vari.images === this.state.image)?'active':''}`} key={i}>
                                     <a href="javascript:void(0)" title="Add to Wishlist">
                                         <img src={`${vari.images}`} onClick={() => this.onClickHandle(vari.images)} />
@@ -148,7 +148,7 @@ class ProductItem extends Component {
                                                     <div className="size-box">
                                                         <ul>
                                                             {product.size.map((size, i) => {
-                                                                return <li key={i}><a href="#">{size}</a></li>
+                                                                return <li key={i}><a href="/">{size}</a></li>
                                                             })}
                                                         </ul>
                                                     </div>:''}

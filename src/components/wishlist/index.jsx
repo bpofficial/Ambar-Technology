@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux'
-import {Link} from 'react-router-dom'
+import React, {Component } from 'react';
+import {connect } from 'react-redux'
+import {Link } from 'react-router-dom'
 
 
 import Breadcrumb from '../common/breadcrumb';
-import {addToCartAndRemoveWishlist, removeFromWishlist} from '../../actions'
+import {addToCartAndRemoveWishlist, removeFromWishlist } from '../../actions'
 
 class wishList extends Component {
 

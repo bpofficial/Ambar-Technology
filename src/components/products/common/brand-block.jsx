@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux'
-import { SlideToggle } from 'react-slide-toggle';
+import React, {Component } from 'react';
+import {connect } from 'react-redux'
+import {SlideToggle } from 'react-slide-toggle';
 
 
 class BrandBlock extends Component {
@@ -21,11 +21,11 @@ class BrandBlock extends Component {
                             <div className="collection-collapse-block-content" ref={setCollapsibleElement}>
                                 <div className="collection-brand-filter">
                                     <ul className="category-list">
-                                        <li><a href="#">clothing</a></li>
-                                        <li><a href="#">bags</a></li>
-                                        <li><a href="#">footwear</a></li>
-                                        <li><a href="#">watches</a></li>
-                                        <li><a href="#">accessories</a></li>
+                                        <li><a href="/">clothing</a></li>
+                                        <li><a href="/">bags</a></li>
+                                        <li><a href="/">footwear</a></li>
+                                        <li><a href="/">watches</a></li>
+                                        <li><a href="/">accessories</a></li>
                                     </ul>
                                 </div>
                             </div>

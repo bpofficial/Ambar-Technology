@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component } from 'react';
 import Slider from 'react-slick';
-import {connect} from 'react-redux'
+import {connect } from 'react-redux'
 
-import {getTrendingCollection} from '../../../services/index'
-import {Product4, Product5} from '../../../services/script'
-import {addToCart, addToWishlist, addToCompare} from "../../../actions/index";
+import {getTrendingCollection } from '../../../services/index'
+import {Product4, Product5 } from '../../../services/script'
+import {addToCart, addToWishlist, addToCompare } from "../../../actions/index";
 import ProductItem from '../../features/product/common/product-style-five';
 
 class TopCollection extends Component {
@@ -33,7 +33,7 @@ class TopCollection extends Component {
                         <div className="row">
                             <div className="col">
                                 <Slider {...properties} className="product-4 product-m no-arrow">
-                                    { items.map((product, index ) =>
+                                    {items.map((product, index ) =>
                                         <div key={index}>
                                         <ProductItem product={product} symbol={'$' /*Symbol*/}
                                                      onAddToCompareClicked={() => addToCompare(product)}
