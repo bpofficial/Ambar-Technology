@@ -4,55 +4,71 @@ import { prop } from "typegoose";
 import { Types } from "mongoose";
 import Shipment from "../Shipment/Class";
 import Payment from "../Payment/Class";
-import Product from "../Products/Class";
-import { Min, MaxLength, MinLength } from "class-validator";
+import { Type } from "class-transformer";
 
+export class OrderItem {
 
-
-
-@InputType()
-export class NewOrderInput extends Order {
-    @Field({ description: "Items consituting order.", nullable: true })
+    @Field(type => String)
     @prop({ required: true })
-    items: {
-        sku: String;
-        amount: Number;
-        cost: Number;
-    };
+    sku: string;
+
+    @Field(type => Number)
+    @prop({ required: true })
+    count: number;
+
+    @Field(type => Number)
+    @prop({ required: true })
+    cost: number;
+}
+
+@ObjectType({ description: "Class object representing an OrderItem (product)." })
+export class OrderItemOut {
+
+    @Field(type => String)
+    @prop({ required: true })
+    sku: string;
+
+    @Field(type => Number)
+    @prop({ required: true })
+    count: number;
+
+    @Field(type => Number)
+    @prop({ required: true })
+    cost: number;
 }
 
 @InputType()
-export class EditOrderInput implements Partial<Order> {
+export class OrderItemIn {
 
-    @Field(type => String, { description: "Order number.", nullable: true })
-    orderid: Types.ObjectId;
-
-    @Field(type => [Product], { description: "Items consituting order.", nullable: true })
+    @Field(type => String)
     @prop({ required: true })
-    items?: [Product];
+    sku: string;
+
+    @Field(type => Number)
+    @prop({ required: true })
+    count: number;
+
+    @Field(type => Number)
+    @prop({ required: true })
+    cost: number;
+}
+
+@ArgsType()
+export class OrderInput implements Partial<Order> {
+
+    @Field(type => String, { description: "Order number." })
+    orderid?: Types.ObjectId;
+
+    @Field(type => OrderItemOut, { description: "Items consituting order." })
+    items: OrderItemIn[];
 
     @Field(type => Shipment, { description: "Shipping details.", nullable: true })
-    @prop({ required: false })
     shipping?: Shipment;
 
     @Field(type => String, { description: "Status of order.", nullable: true })
-    @prop({
-        required: false, default: 'Placed', enum: [
-            'Placed',
-            'Processing',
-            'Awaiting Payment',
-            'Awaiting Confirmation',
-            'Awaiting Pickup',
-            'In Transit',
-            'Shipped',
-            'Parked',
-            'Backordered'
-        ]
-    })
     status?: string;
 
     @Field(type => Payment, { description: "Payment of order.", nullable: true })
-    @prop({ required: false })
     payment?: Payment;
 
 }

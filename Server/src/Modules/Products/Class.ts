@@ -74,7 +74,6 @@ export default class Product extends Typegoose {
     @MaxLength(32)
     category?: string;
 
-    count: number;
 }
 
 export const ProductModel = new Product().getModelForClass(Product)

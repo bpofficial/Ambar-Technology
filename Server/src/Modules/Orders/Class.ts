@@ -2,10 +2,10 @@ import { ObjectType, Field } from "type-graphql";
 import { Types } from "mongoose";
 import Shipment from "../Shipment/Class";
 import Payment from "../Payment/Class";
-//import { OutputOrderItem, InputOrderItem } from "./IO";
+import { OrderItem, OrderItemIn, OrderItemOut } from "./IO";
 import { MinLength } from "class-validator";
 import { pre, Typegoose, prop } from "typegoose";
-import Product from "../Products/Class";
+import { Type } from "class-transformer";
 
 
 @pre<Order>('save', (next) => {
@@ -34,17 +34,14 @@ export default class Order extends Typegoose {
     @prop({ required: true, default: () => Date.now() })
     created_at: Date;
 
-    @Field(type => [Object], { description: "Items consituting order." })
+    @Field(type => OrderItemOut, { description: "Items consituting order." })
     @prop({ required: true })
-    items: {
-        sku: String;
-        amount: Number;
-        cost: Number;
-    };
+    @Type(() => OrderItem)
+    items: OrderItemIn[];
 
-    @Field(type => Shipment, { description: "Shipping details." })
-    @prop({ required: true, default: {} })
-    shipping: Shipment;
+    @Field(type => Shipment, { description: "Shipping details.", nullable: true })
+    @prop({ required: false })
+    shipping?: Shipment;
 
     @Field(type => Number, { description: "Grand total of order.", nullable: true })
     @prop({ required: false, default: function () { return this.items.reduce(({ cost }: { cost: number }, i: number) => i + cost, 0) || 0 } })

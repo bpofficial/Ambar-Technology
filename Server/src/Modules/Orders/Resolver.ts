@@ -4,11 +4,12 @@ import {
     Mutation,
     Query,
     Arg,
-    Ctx
+    Ctx,
+    Args
 } from "type-graphql";
 import Order from "./Class";
-import OrderService from "./Service";
-import { NewOrderInput, EditOrderInput } from "./IO";
+//import OrderService from "./Service";
+import { OrderInput } from "./IO";
 import { LOGGED_IN_USER, PUBLIC } from "../../Common/Constants";
 import { default as repository } from "../Base/CRUD";
 import { OrderModel as model } from "./Class";
@@ -20,12 +21,11 @@ export default class OrderResolver {
     @Query(returns => Order || Error, { nullable: true })
     async order(
         @Arg("ID", type => String, {
-            description: "Order Number"
+            description: "Order Number."
         }) id: string,
         @Ctx() ctx: any
     ): Promise<Order | Error | void> {
         const order = await repository.findOne<Order>(model, { number: id });
-        console.log(order)
     }
 
     @Authorized(LOGGED_IN_USER)
@@ -43,40 +43,36 @@ export default class OrderResolver {
         @Ctx() ctx?: any
     ): Promise<Order[] | Error> {
         let args = orderBy !== undefined && search !== undefined ? { orderBy, search } : orderBy !== undefined ? { orderBy } : search !== undefined ? { search } : {}
-        return await OrderService.find(args, ctx)
+        return //await OrderService.find(args, ctx)
     }
 
     @Authorized(LOGGED_IN_USER)
     @Mutation(returns => Boolean || Error)
     async addOrder(
-        @Arg("NewOrder", {
-            description: "Order object to save."
-        }) order: NewOrderInput,
+        @Args() { items }: OrderInput,
         @Ctx() ctx: any
     ): Promise<Boolean | Error> {
-        return await OrderService.add(order, ctx)
+        return //await OrderService.add(order, ctx)
     }
 
-    /*@Authorized(LOGGED_IN_USER)
+    @Authorized(LOGGED_IN_USER)
     @Mutation(returns => Boolean || Error)
     async editOrder(
-        @Arg("EditOrder", type => EditOrderInput, {
-            description: "Updated version of order. Can't change order number."
-        }) order: EditOrderInput,
+        @Args() order: OrderInput,
         @Ctx() ctx: any
     ): Promise<Boolean | Error> {
-        return //await OrderService.edit({ args: order }, ctx)
-    }*/
+        return //await OrderService.edit(order, ctx)
+    }
 
     @Authorized(LOGGED_IN_USER)
     @Mutation(returns => Boolean || Error)
     async removeOrder(
-        @Arg("SKU", type => String, {
-            description: "SKU of order to delete."
-        }) sku: string,
+        @Arg("OrderID", type => String, {
+            description: "Order Number."
+        }) id: string,
         @Ctx() ctx: any
     ): Promise<Boolean | Error> {
-        return await OrderService.delete(sku, ctx)
+        return //await OrderService.delete(sku, ctx)
     }
 
 }

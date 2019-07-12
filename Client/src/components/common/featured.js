@@ -1,0 +1,51 @@
+import React from 'react';
+import Slider from 'react-slick';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
+
+import { getBestSeller } from "../../services";
+
+const FeaturedProducts = ({ items }) => {
+
+    var arrays = [];
+    while (items.length > 0) {
+        arrays.push(items.splice(0, 3));
+    }
+
+    return (
+        <div className="theme-card">
+            <h5 className="title-border">Featured</h5>
+            <Slider className="offer-slider slide-1">
+                {arrays.map((products, index) =>
+                    <div key={index}>
+                        {products.map((product, i) =>
+                            <div className="media" key={i}>
+                                <Link to={`${process.env.PUBLIC_URL}/store/product/${product.id}`}><img className="img-fluid" src={`${product.variants[0].images}`} alt="" /></Link>
+                                <div className="media-body align-self-center">
+                                    <div className="rating">
+                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i>
+                                        <i className="fa fa-star"></i>
+                                    </div>
+                                    <Link to={`${process.env.PUBLIC_URL}/store/product/${product.id}`}><h6>{product.name}</h6></Link>
+                                    <h4>{'$' /*Symbol*/}{(product.price*product.discount/100)}
+                                        <del><span className="money">{'$' /*Symbol*/}{product.price}</span></del></h4>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </Slider>
+        </div>
+    )
+}
+
+function mapStateToProps(state) {
+    return {
+        items: getBestSeller(state.data.products)
+    }
+}
+
+export default connect(mapStateToProps, null)(FeaturedProducts);
