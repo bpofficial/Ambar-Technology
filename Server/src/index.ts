@@ -39,11 +39,11 @@ try {
     })();
 
     // Set static files (&client) to Public/
-    Server.use(express.static(path.resolve(__dirname, 'Public/')));
+    Server.use(express.static(path.resolve('../Build/Public/')));
 
     // Server endpoint matches anything but api or nojs
     Server.get(/\/(?!.*(api|nojs)).*/g, (_req: express.Request, res: express.Response): void => {
-        res.status(200).sendFile(path.resolve(__dirname, 'Public/index.html'));
+        res.status(200).sendFile(path.resolve('../Build/Public/index.html'));
     });
 
     // Server rendered for browsers with js disabled.
