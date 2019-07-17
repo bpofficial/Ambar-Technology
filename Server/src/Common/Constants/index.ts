@@ -34,6 +34,8 @@ export const PERM = {
     }
 }
 
+export const NULLABLE = { nullable: true };
+
 export interface Permission {
     canEdit?: Boolean | String[];
     canCreate?: Boolean;

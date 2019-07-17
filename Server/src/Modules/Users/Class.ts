@@ -1,7 +1,8 @@
 import {
     Field,
     ObjectType,
-    Authorized
+    Authorized,
+    InputType
 } from "type-graphql";
 import { prop, Typegoose, pre, plugin } from "typegoose";
 import { LOGGED_IN_USER, HIDDEN, PUBLIC } from "../../Common/Constants/index";
@@ -19,6 +20,7 @@ import mongooseUniqueValidator = require("mongoose-unique-validator");
     next();
 })
 
+@InputType('UserInput')
 @ObjectType({ description: "Class object representing a User." })
 @plugin(mongooseUniqueValidator)
 export default class User extends Typegoose {

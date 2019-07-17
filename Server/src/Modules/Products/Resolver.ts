@@ -8,15 +8,15 @@ import {
 } from "type-graphql";
 import Product from "./Class";
 import ProductService from "./Service";
-import { LOGGED_IN_ADMIN, PUBLIC } from "../../Common/Constants";
+import { LOGGED_IN_ADMIN, PUBLIC, NULLABLE } from "../../Common/Constants";
 
 @Resolver(Product)
 export default class ProductResolver {
 
     @Authorized(PUBLIC)
-    @Query(returns => Product || Error, { nullable: true })
+    @Query(returns => Product || Error, NULLABLE)
     async product(@Arg("sku",
-        type => String, {
+        _ => String, {
             description: "SKU of product."
         }) sku: string,
         @Ctx() ctx: any
@@ -25,15 +25,15 @@ export default class ProductResolver {
     }
 
     @Authorized(PUBLIC)
-    @Query(returns => [Product] || Error, { nullable: true })
+    @Query(returns => [Product] || Error, NULLABLE)
     async products(
         @Arg("orderBy",
-            type => String, {
+            _ => String, {
                 nullable: true,
                 description: "*field*_asc or *field*_dsc"
             }) orderBy?: string,
         @Arg("search",
-            type => String, {
+            _ => String, {
                 nullable: true
             }) search?: string,
         @Ctx() ctx?: any

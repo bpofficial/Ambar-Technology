@@ -6,7 +6,7 @@ import { ObjectType, Field, InputType } from "type-graphql";
 @ObjectType({ description: "Class representing Payment." })
 export default class Payment extends Typegoose {
 
-    @Field(type => String)
+    @Field(_ => String)
     @prop({ required: true })
     provider: string;
 
