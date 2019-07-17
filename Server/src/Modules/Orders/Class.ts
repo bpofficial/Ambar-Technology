@@ -2,11 +2,9 @@ import { ObjectType, Field } from "type-graphql";
 import { Types } from "mongoose";
 import Shipment from "../Shipment/Class";
 import Payment from "../Payment/Class";
-import { OrderItem, OrderItemIn, OrderItemOut } from "./IO";
+import { OrderItem } from "./IO";
 import { MinLength } from "class-validator";
 import { pre, Typegoose, prop } from "typegoose";
-import { Type } from "class-transformer";
-
 
 @pre<Order>('save', (next) => {
     // Pre-save hook
@@ -34,10 +32,9 @@ export default class Order extends Typegoose {
     @prop({ required: true, default: () => Date.now() })
     created_at: Date;
 
-    @Field(type => OrderItemOut, { description: "Items consituting order." })
+    @Field(type => [OrderItem], { description: "Items consituting order." })
     @prop({ required: true })
-    @Type(() => OrderItem)
-    items: OrderItemIn[];
+    items: OrderItem[];
 
     @Field(type => Shipment, { description: "Shipping details.", nullable: true })
     @prop({ required: false })
