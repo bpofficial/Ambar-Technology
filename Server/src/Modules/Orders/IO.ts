@@ -6,6 +6,8 @@ import Shipment from "../Shipment/Class";
 import Payment from "../Payment/Class";
 import { Type } from "class-transformer";
 
+@InputType('OrderItemInput')
+@ObjectType({ description: 'Class representing a single product in an order.' })
 export class OrderItem {
 
     @Field(type => String)
@@ -21,46 +23,17 @@ export class OrderItem {
     cost: number;
 }
 
-@ObjectType({ description: "Class object representing an OrderItem (product)." })
-export class OrderItemOut {
 
-    @Field(type => String)
-    @prop({ required: true })
-    sku: string;
-
-    @Field(type => Number)
-    @prop({ required: true })
-    count: number;
-
-    @Field(type => Number)
-    @prop({ required: true })
-    cost: number;
-}
-
-@InputType()
-export class OrderItemIn {
-
-    @Field(type => String)
-    @prop({ required: true })
-    sku: string;
-
-    @Field(type => Number)
-    @prop({ required: true })
-    count: number;
-
-    @Field(type => Number)
-    @prop({ required: true })
-    cost: number;
-}
 
 @ArgsType()
 export class OrderInput implements Partial<Order> {
 
-    @Field(type => String, { description: "Order number." })
+    @Field(type => String, { description: "Order number.", nullable: true })
     orderid?: Types.ObjectId;
 
-    @Field(type => OrderItemOut, { description: "Items consituting order." })
-    items: OrderItemIn[];
+    // Comes in the form 'AMOUNT::SKU'. Eg. 3::HR601
+    @Field(type => [OrderItem], { description: "Items consituting order. (#::SKU)" })
+    items: OrderItem[];
 
     @Field(type => Shipment, { description: "Shipping details.", nullable: true })
     shipping?: Shipment;
