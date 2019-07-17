@@ -10,8 +10,8 @@ import "reflect-metadata";
 
 try {
     var dev;
+    require("dotenv").config({ path: "../.env" });
     if (!('MONGODB_URI' in process.env)) {
-        require("dotenv").config({ path: "../.env" });
         dev = true;
     } else {
         dev = false;
@@ -51,8 +51,8 @@ try {
         res.status(403).send().end();
     });
 
-    Server.listen(process.env.PORT || process.env.SERVER_PORT, (svrErr: Error): void => {
-        if (svrErr) throw svrErr; else console.log("Server is running at " + process.env.SERVER_HOST + ":" + process.env.PORT || process.env.SERVER_PORT)
+    Server.listen(process.env.SERVER_PORT || 80, () => {
+        console.log("Server is running at " + process.env.SERVER_HOST + ":" + process.env.SERVER_PORT || 80)
     });
 
 } catch (Err) {
