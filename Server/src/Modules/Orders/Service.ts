@@ -213,14 +213,8 @@ export default class OrderService implements CRUDBaseService {
                     await resolve(res);
                 });
             })
-        }).catch(
-            (err) => {
-                console.warn("CAUGHT: [editOrder] ~ then...catch \n", err.message)
-                throw new GraphQLError(err.message)
-            }
-        )
+        })
     }
-
 
     public static async delete(args: string, ctx: any): Promise<Boolean | Error> {
         return new Promise<Boolean | Error>(async (resolve: Function, reject: Function): Promise<void> => {
