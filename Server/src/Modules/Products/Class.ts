@@ -1,6 +1,7 @@
 import {
     Field,
-    ObjectType
+    ObjectType,
+    InputType
 } from "type-graphql";
 import { prop, Typegoose, pre } from "typegoose";
 import { Min, MinLength, MaxLength } from "class-validator";
@@ -15,6 +16,7 @@ import { Min, MinLength, MaxLength } from "class-validator";
     next();
 })
 
+@InputType('StockInput')
 @ObjectType({ description: "Class object representing Product stock." })
 class Stock {
 
@@ -32,44 +34,44 @@ class Stock {
 @ObjectType({ description: "Class object representing a Product." })
 export default class Product extends Typegoose {
 
-    @Field({ description: "Name of the product." })
+    @Field(type => String, { description: "Name of the product." })
     @prop({ required: true })
     @MinLength(2, { message: "Produt name too short." })
     @MaxLength(64, { message: "Product name too long." })
     name: string;
 
-    @Field({ description: "Stock keeping unit." })
+    @Field(type => String, { description: "Stock keeping unit." })
     @prop({ index: true, unique: true, required: true })
     @MinLength(2)
     @MaxLength(16)
     sku: string;
 
-    @Field({ description: "Long details (HTML, Markdown, text)." })
+    @Field(type => String, { description: "Long details (HTML, Markdown, text)." })
     @prop({ required: true })
     @MinLength(2)
     @MaxLength(2048)
     details: string;
 
-    @Field({ description: "Snippet of 'details' (text)." })
+    @Field(type => String, { description: "Snippet of 'details' (text)." })
     @prop({ required: true })
     @MaxLength(512)
     short: string;
 
-    @Field({ nullable: true, description: "Price of the product in AUD." })
+    @Field(type => Number, { nullable: true, description: "Price of the product in AUD." })
     @prop({ required: true })
     @Min(0.0001)
     price: number;
 
-    @Field({ nullable: true, description: "GST Of the product." })
+    @Field(type => Number, { nullable: true, description: "GST Of the product." })
     @prop({ required: false, default: function () { return (0.1 * this.price || 0) } })
     @Min(0.000001)
-    gst?: number | null;
+    gst?: number;
 
-    @Field({ nullable: true, description: "Current stock count." })
+    @Field(type => Stock, { nullable: true, description: "Current stock count." })
     @prop({ required: false })
     stock?: Stock;
 
-    @Field({ nullable: true, description: "Category of product." })
+    @Field(type => String, { nullable: true, description: "Category of product." })
     @prop({ required: false })
     @MaxLength(32)
     category?: string;
