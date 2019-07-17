@@ -1,8 +1,7 @@
 import { Typegoose, prop } from "typegoose";
 import { ObjectType, Field, InputType } from "type-graphql";
-
+@InputType('ShipmentInput')
 @ObjectType({ description: "Shipping details." })
-@InputType()
 export default class Shipment extends Typegoose {
 
     @Field(type => Number, { description: "Cost of shipment (total)" })
