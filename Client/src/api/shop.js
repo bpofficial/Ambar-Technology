@@ -14,19 +14,20 @@ export default {
             query: gql`
                 query getProducts {
                     products {
-                        sku,
                         name,
-                        price,
-                        discount,
-                        assets,
+                        sku,
                         details,
+                        short,
+                        price,
+                        gst,
                         stock,
                         category,
+                        assets,
+                        discount,
                         variations,
                         rating,
                         onSale,
                         isNew
-                    }
                 }
             `
         })
