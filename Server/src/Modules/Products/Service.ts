@@ -1,6 +1,5 @@
 import Product from "./Class";
 import CRUDBaseService from "../Base/CRUD";
-import { NewProductInput, EditProductInput } from "./IO";
 import { GraphQLError } from "graphql";
 import { ERR_UNAUTHORISED } from "../../Common/Constants/Errors";
 import { ProductModel } from "./Class";
@@ -69,7 +68,7 @@ export default class ProductService implements CRUDBaseService {
         )
     }
 
-    public static async add(args: NewProductInput, ctx: any): Promise<Boolean | Error> {
+    public static async add(args: Partial<Product>, ctx: any): Promise<Boolean | Error> {
         return new Promise<Boolean | Error>(async (resolve: Function, reject: Function): Promise<void> => {
             try {
 
@@ -99,7 +98,7 @@ export default class ProductService implements CRUDBaseService {
      * @param Product \{ Product to edit, Sku to search for \}.
      * @param ctx Custom GraphQL context object of user (derived from token).
      */
-    public static async edit({ args, sku }: { args: EditProductInput, sku?: string }, ctx: any): Promise<Boolean | Error> {
+    public static async edit({ args, sku }: { args: Partial<Product>, sku?: string }, ctx: any): Promise<Boolean | Error> {
         return new Promise<Boolean | Error>(async (resolve: Function, reject: Function): Promise<any> => {
             try {
 

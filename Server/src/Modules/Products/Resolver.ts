@@ -8,7 +8,6 @@ import {
 } from "type-graphql";
 import Product from "./Class";
 import ProductService from "./Service";
-import { NewProductInput, EditProductInput } from "./IO";
 import { LOGGED_IN_ADMIN, PUBLIC } from "../../Common/Constants";
 
 @Resolver(Product)
@@ -48,7 +47,7 @@ export default class ProductResolver {
     async addProduct(
         @Arg("Product", {
             description: "Product object to save."
-        }) product: NewProductInput,
+        }) product: Product,
         @Ctx() ctx: any
     ): Promise<Boolean | Error> {
         return await ProductService.add(product, ctx)
@@ -59,7 +58,7 @@ export default class ProductResolver {
     async editProduct(
         @Arg("Product", {
             description: "Updated version of product."
-        }) product: EditProductInput,
+        }) product: Product,
         @Ctx() ctx: any,
         @Arg("SKU", {
             nullable: true,

@@ -1,8 +1,7 @@
-import { ObjectType, Field } from "type-graphql";
+import { ObjectType, Field, InputType } from "type-graphql";
 import { Types } from "mongoose";
 import Shipment from "../Shipment/Class";
 import Payment from "../Payment/Class";
-import { OrderItem } from "./IO";
 import { MinLength } from "class-validator";
 import { pre, Typegoose, prop } from "typegoose";
 
@@ -16,6 +15,24 @@ import { pre, Typegoose, prop } from "typegoose";
     next();
 })
 
+@InputType('OrderItemInput')
+@ObjectType({ description: 'Class representing a single product in an order.' })
+export class OrderItem {
+
+    @Field(type => String, { description: "Product SKU." })
+    @prop({ required: true })
+    sku: string;
+
+    @Field(type => Number, { description: "# ordered." })
+    @prop({ required: true })
+    count: number;
+
+    @Field(type => Number, { description: "Cost of item." })
+    @prop({ required: true })
+    cost: number;
+
+}
+@InputType('OrderInput')
 @ObjectType({ description: "Class object representing Order." })
 export default class Order extends Typegoose {
 

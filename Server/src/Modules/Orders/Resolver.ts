@@ -7,9 +7,8 @@ import {
     Ctx,
     Args
 } from "type-graphql";
-import Order from "./Class";
+import Order, { OrderItem } from "./Class";
 //import OrderService from "./Service";
-import { OrderInput } from "./IO";
 import { LOGGED_IN_USER, PUBLIC } from "../../Common/Constants";
 import { default as repository } from "../Base/CRUD";
 import { OrderModel as model } from "./Class";
@@ -49,7 +48,10 @@ export default class OrderResolver {
     @Authorized(LOGGED_IN_USER)
     @Mutation(returns => Boolean || Error)
     async addOrder(
-        @Args() { items }: OrderInput,
+        @Arg("order",
+            type => [OrderItem], {
+                description: "Order items."
+            }) order: [OrderItem],
         @Ctx() ctx: any
     ): Promise<Boolean | Error> {
         return //await OrderService.add(order, ctx)
@@ -58,7 +60,15 @@ export default class OrderResolver {
     @Authorized(LOGGED_IN_USER)
     @Mutation(returns => Boolean || Error)
     async editOrder(
-        @Args() order: OrderInput,
+        @Arg("sku",
+            type => String, {
+                nullable: false,
+                description: "SKU of order being edited."
+            }) sku: string,
+        @Arg("order",
+            type => Order, {
+                description: "Edited order."
+            }) order: Partial<Order>,
         @Ctx() ctx: any
     ): Promise<Boolean | Error> {
         return //await OrderService.edit(order, ctx)

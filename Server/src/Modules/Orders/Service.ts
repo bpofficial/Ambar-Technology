@@ -1,7 +1,6 @@
 import CRUDBaseService from "../Base/CRUD";
 import Order, { OrderModel } from "./Class";
 import { ERR_UNAUTHORISED } from "../../Common/Constants/Errors";
-import { OrderInput } from "./IO";
 import { GraphQLError } from "graphql";
 import Product, { ProductModel } from "../Products/Class";
 import { InstanceType } from "typegoose";
@@ -132,7 +131,7 @@ export default class OrderService implements CRUDBaseService {
         })
     }
 
-    public static async edit(args: OrderInput, ctx: any): Promise<Boolean | Error> {
+    public static async edit(args: Partial<Order>, ctx: any): Promise<Boolean | Error> {
         return new Promise<Boolean | Error>(async (resolve: Function, reject: Function): Promise<void> => {
             if (!('number' in args)) await reject(new Error("No order number provided."));
             await OrderModel.findOne({ number: args.orderid }).exec(async (err: Error, res: any) => {

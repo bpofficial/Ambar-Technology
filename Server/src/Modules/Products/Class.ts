@@ -4,7 +4,7 @@ import {
     InputType
 } from "type-graphql";
 import { prop, Typegoose, pre } from "typegoose";
-import { Min, MinLength, MaxLength } from "class-validator";
+import { Min, MinLength, MaxLength, Max } from "class-validator";
 
 @pre<Product>('save', (next) => {
     // Pre-save hook
@@ -18,7 +18,7 @@ import { Min, MinLength, MaxLength } from "class-validator";
 
 @InputType('StockInput')
 @ObjectType({ description: "Class object representing Product stock." })
-class Stock {
+export class Stock {
 
     @Field({ description: "Current available stock." })
     @prop({ required: false, default: 0 })
@@ -29,8 +29,9 @@ class Stock {
     @prop({ required: false, default: 0 })
     @Min(0)
     allocated: number;
-}
 
+}
+@InputType('ProductInput')
 @ObjectType({ description: "Class object representing a Product." })
 export default class Product extends Typegoose {
 
@@ -75,6 +76,32 @@ export default class Product extends Typegoose {
     @prop({ required: false })
     @MaxLength(32)
     category?: string;
+
+    @Field(type => [String], { nullable: true, description: "Assets for product." })
+    @prop({ required: false })
+    assets?: string[];
+
+    @Field(type => Number, { nullable: true, description: "Discount of product." })
+    @prop({ required: false })
+    discount?: number;
+
+    @Field(type => [String], { nullable: true, description: "Variations of product. (List of SKU's)" })
+    @prop({ required: false })
+    variations?: String[];
+
+    @Field(type => Number, { nullable: true, description: "Rating of product." })
+    @prop({ required: false })
+    @Max(5)
+    @Min(0)
+    rating?: number;
+
+    @Field(type => Boolean, { nullable: true, description: "Sale status of product." })
+    @prop({ required: false })
+    onSale?: boolean;
+
+    @Field(type => Boolean, { nullable: true, description: "Recency status of product." })
+    @prop({ required: false })
+    new?: boolean;
 
 }
 
