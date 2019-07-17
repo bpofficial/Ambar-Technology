@@ -216,6 +216,7 @@ export default class OrderService implements CRUDBaseService {
         })
     }
 
+    // TODO: Finish this
     public static async delete(args: string, ctx: any): Promise<Boolean | Error> {
         return new Promise<Boolean | Error>(async (resolve: Function, reject: Function): Promise<void> => {
 
