@@ -2,16 +2,51 @@
  * Mocking client-server processing
  */
 import ApolloClient from 'apollo-boost';
+import gql from 'graphql-tag';
 
 const client = new ApolloClient({
     uri: `${process.env.PUBLIC_URL}/api`
 });
-import _products from './data.json'
-const TIMEOUT = 100
 
 export default {
-    getProducts: (cb, timeout) => setTimeout(() => cb(_products), timeout || TIMEOUT),
-    buyProducts: (payload, cb, timeout) => setTimeout(() => cb(), timeout || TIMEOUT),
+    getProducts: async (cb) => {
+        await client.query({
+            query: gql`
+                query getProducts {
+                    products {
+                        sku,
+                        name,
+                        price,
+                        discount,
+                        assets,
+                        details,
+                        stock,
+                        category,
+                        variations,
+                        rating,
+                        onSale,
+                        isNew
+                    }
+                }
+            `
+        })
+            .then(data => cb(data))
+            .catch(error => console.error(error), cb(null));
+    },
+    buyProducts: (payload, cb) => {
+        await client.query({
+            mutation: gql`
+                mutation buyProducts($items: [String!]!) {
+                    addOrder(items: $items) {
+
+                    }
+                }
+            `,
+            variables: payload
+        })
+            .then(data => cb(data))
+            .catch(error => console.error(error), cb(null));
+    },
     getCategories: (cb, timeout) => setTimeout(() => cb([
         'Regulators',
         'Kegerators'
