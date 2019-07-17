@@ -4,26 +4,24 @@ import { prop } from "typegoose";
 import { Types } from "mongoose";
 import Shipment from "../Shipment/Class";
 import Payment from "../Payment/Class";
-import { Type } from "class-transformer";
 
 @InputType('OrderItemInput')
 @ObjectType({ description: 'Class representing a single product in an order.' })
 export class OrderItem {
 
-    @Field(type => String)
+    @Field(type => String, { description: "Product SKU." })
     @prop({ required: true })
     sku: string;
 
-    @Field(type => Number)
+    @Field(type => Number, { description: "# ordered." })
     @prop({ required: true })
     count: number;
 
-    @Field(type => Number)
+    @Field(type => Number, { description: "Cost of item." })
     @prop({ required: true })
     cost: number;
+
 }
-
-
 
 @ArgsType()
 export class OrderInput implements Partial<Order> {
@@ -31,8 +29,7 @@ export class OrderInput implements Partial<Order> {
     @Field(type => String, { description: "Order number.", nullable: true })
     orderid?: Types.ObjectId;
 
-    // Comes in the form 'AMOUNT::SKU'. Eg. 3::HR601
-    @Field(type => [OrderItem], { description: "Items consituting order. (#::SKU)" })
+    @Field(type => [OrderItem], { description: "Items consituting order." })
     items: OrderItem[];
 
     @Field(type => Shipment, { description: "Shipping details.", nullable: true })
